@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.xxq.filemanager.gui.controller.RegisterUserController">
+   <children>
+      <Label layoutX="49.0" layoutY="42.0" text="用户名:" />
+      <Label layoutX="49.0" layoutY="90.0" text="密码:" />
+      <Label layoutX="49.0" layoutY="141.0" text="电话:" />
+      <Label layoutX="49.0" layoutY="188.0" text="邮箱:" />
+      <Label layoutX="49.0" layoutY="246.0" text="机构:" />
+      <TextField fx:id="R_Username" layoutX="139.0" layoutY="36.0" />
+      <TextField fx:id="R_Password" layoutX="139.0" layoutY="84.0" />
+      <TextField fx:id="R_Phone" layoutX="139.0" layoutY="135.0" />
+      <TextField fx:id="R_Email" layoutX="139.0" layoutY="182.0" />
+      <ComboBox fx:id="R_CDepart" layoutX="139.0" layoutY="240.0" prefWidth="150.0" />
+      <Button layoutX="219.0" layoutY="319.0" mnemonicParsing="false" text="注册" onAction="#insert"/>
+   </children>
+</AnchorPane>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xxq.filemanager.mapper.ArchivesMapper">
+
+    <select id="selectAllArch" resultType="com.xxq.filemanager.entity.ArchivesEntity">
+        select
+        id,
+        classfi_id classId,
+        depart_id departId,
+        archives_name archivesName,
+        archives_type archivesType,
+        borrowStatus,
+        create_time createTime,
+        update_time updateTime,
+        create_by createBy,
+        update_by updateBy,
+        checkFlag
+        from archives
+        where
+        delFlag=0
+        order by id  asc
+    </select>
+    <select id="selectArchByPara" resultType="com.xxq.filemanager.entity.ArchivesEntity" parameterType="com.xxq.filemanager.entity.ArchivesEntity">
+        select
+        id,
+        classfi_id classId,
+        depart_id departId,
+        archives_name archivesName,
+        archives_type archivesType,
+        borrowStatus,
+        create_time createTime,
+        update_time updateTime,
+        create_by createBy,
+        update_by updateBy,
+        checkFlag
+        from archives
+        where
+        delFlag=0
+
+        <if test="id!=null">
+            and id =#{id}
+        </if>
+        <if test="archivesName!=null">
+            and archives_name like #{archivesName}
+        </if>
+        order by id  asc
+    </select>
+
+
+
+
+</mapper>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="640.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.xxq.filemanager.gui.controller.FileAddController">
+    <children>
+        <Label layoutX="37.0" layoutY="21.0" text="编号" />
+        <Label layoutX="37.0" layoutY="67.0" text="性别" />
+        <Label layoutX="37.0" layoutY="121.0" text="生日" />
+        <Label layoutX="37.0" layoutY="167.0" text="邮箱" />
+        <Label layoutX="37.0" layoutY="218.0" text="住址" />
+        <Label layoutX="37.0" layoutY="269.0" text="宗教信仰" />
+        <Label layoutX="332.0" layoutY="21.0" text="姓名" />
+        <Label layoutX="332.0" layoutY="67.0" text="民族" />
+        <Label layoutX="332.0" layoutY="115.0" text="婚姻状况" />
+        <Label layoutX="37.0" layoutY="322.0" text="身份证号" />
+        <Label layoutX="332.0" layoutY="170.0" text="电话" />
+        <Label layoutX="332.0" layoutY="224.0" text="政治背景" />
+        <Label layoutX="332.0" layoutY="269.0" text="职位" />
+        <TextField fx:id="JT_Id" layoutX="117.0" layoutY="15.0" prefHeight="36.0" prefWidth="146.0" />
+        <TextField fx:id="JT_Name" layoutX="417.0" layoutY="15.0" prefHeight="36.0" prefWidth="146.0" />
+        <TextField fx:id="JT_Nation" layoutX="417.0" layoutY="61.0" prefHeight="36.0" prefWidth="146.0" />
+        <TextField fx:id="JT_Gender" layoutX="117.0" layoutY="61.0" prefHeight="36.0" prefWidth="146.0" />
+        <TextField fx:id="JT_Birth" layoutX="117.0" layoutY="115.0" prefHeight="36.0" prefWidth="146.0" />
+        <TextField fx:id="JT_Email" layoutX="117.0" layoutY="161.0" prefHeight="36.0" prefWidth="146.0" />
+        <TextField fx:id="JT_Address" layoutX="117.0" layoutY="212.0" prefHeight="36.0" prefWidth="146.0" />
+        <TextField fx:id="JT_Religion" layoutX="117.0" layoutY="263.0" prefHeight="36.0" prefWidth="146.0" />
+        <TextField fx:id="JT_positon" layoutX="417.0" layoutY="263.0" prefHeight="36.0" prefWidth="146.0" />
+        <TextField fx:id="JT_Political" layoutX="417.0" layoutY="218.0" prefHeight="36.0" prefWidth="146.0" />
+        <TextField fx:id="JT_Phone" layoutX="417.0" layoutY="164.0" prefHeight="36.0" prefWidth="146.0" />
+        <TextField fx:id="JT_Marital" layoutX="417.0" layoutY="115.0" prefHeight="36.0" prefWidth="146.0" />
+        <TextField fx:id="JT_IDCard" layoutX="117.0" layoutY="316.0" prefHeight="36.0" prefWidth="146.0" />
+      <Button layoutX="244.0" layoutY="438.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="118.0" text="添加" />
+    </children>
+</AnchorPane>

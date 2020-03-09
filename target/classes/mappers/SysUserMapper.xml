@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xxq.filemanager.mapper.SysUserMapper">
+    <resultMap id="BaseResultMap" type="com.xxq.filemanager.entity.SysUserEntity">
+        <id column="ID" property="id" jdbcType="INTEGER"/>
+        <result column="DEPART_ID" property="departId" jdbcType="INTEGER"/>
+        <result column="U_NAME" property="username" jdbcType="VARCHAR"/>
+        <result column="U_PASSWORD" property="password" jdbcType="VARCHAR"/>
+        <result column="U_PHONE" property="phone" jdbcType="VARCHAR"/>
+        <result column="ROLE" property="role" jdbcType="VARCHAR"/>
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="UPDATE_BY" property="updateBy" jdbcType="VARCHAR"/>
+        <result column="UPDATE_TIME" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="POWER" property="power" jdbcType="INTEGER"/>
+        <result column="DEL_FLAG" property="delFlag" jdbcType="INTEGER"/>
+        <result column="LOGIN_FLAG" property="loginFlag" jdbcType="INTEGER"/>
+
+    </resultMap>
+    <select id="login" resultType="com.xxq.filemanager.entity.SysUserEntity">
+        select id,
+        depart_id departId,
+        u_name username,
+        u_password password,
+        u_phone phone,
+        email,
+        role,
+        create_time,
+        update_by,
+        update_time,
+        power,
+        del_flag delaFlag,
+        loginFlag
+        from sys_user
+         where
+         u_name = #{username}
+         and
+         u_password=#{password}
+         and
+         del_flag = 0
+
+    </select>
+    <select id="queryUserByPara"  resultType="com.xxq.filemanager.entity.SysUserEntity">
+       select
+       a.id,
+       a.depart_id departId,
+       b.d_name departName,
+       a.u_name username,
+       a.u_password password,
+       a.u_phone phone,
+       a.email,
+       a.role,
+       a.email,
+       a.create_time,
+       a.update_by,
+       a.update_time,
+       a.power,
+       a.del_flag ,
+       a.loginFlag,
+       a.checkFlag
+       from
+       sys_user a
+       inner join
+       sys_depart b
+       on
+        a.depart_id=b.id
+        where
+        a.del_flag=0
+        <if test="departName!=null">
+            and b.d_name like #{departName}
+        </if>
+        <if test="id!=null">
+            and a.id =#{id}
+        </if>
+        <if test="username!=null">
+            and a.u_name like #{username}
+        </if>
+        order by a.id asc
+    </select>
+    <update id="deleteUser" >
+        update
+        sys_user
+        set
+        del_flag=1
+        where del_flag = 0
+        and
+        id=#{id}
+    </update>
+    <update id="updateUser" parameterType="com.xxq.filemanager.entity.SysUserEntity">
+        update sys_user
+        set
+        <if test="departId!=null">
+            depart_id = #{departId},
+        </if>
+
+        <if test="password!=null">
+            u_password = #{password},
+        </if>
+
+        <if test="role!=null">
+            role=#{role},
+        </if>
+
+        <if test="power!=null">
+            power=#{power}
+        </if>
+        where
+        id = #{id}
+    </update>
+    <insert id="insertUser" parameterType="com.xxq.filemanager.entity.SysUserEntity">
+        insert into sys_user(
+        depart_id,
+        u_name,
+        u_password,
+        u_phone,
+        email
+        )
+        values
+        (
+        #{departId,jdbcType=INTEGER},
+        #{username,jdbcType=VARCHAR},
+        #{password,jdbcType=VARCHAR},
+        #{phone,jdbcType=VARCHAR},
+        #{email,jdbcType=VARCHAR}
+        )
+    </insert>
+
+</mapper>

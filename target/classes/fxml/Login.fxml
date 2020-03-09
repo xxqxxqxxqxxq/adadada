@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+
+<BorderPane opacity="0.95" styleClass="canvas" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.xxq.filemanager.gui.controller.LoginController">
+
+    <top>
+        <HBox alignment="CENTER" styleClass="top_contain">
+           <children>
+                  <Label fx:id="label_title" styleClass="label_title" text="用户登录">
+            </Label>
+           </children>
+        </HBox>
+    </top>
+
+    <center>
+        <VBox fx:id="center_contain" spacing="25" styleClass="center_contain">
+           <children>
+                  <HBox alignment="center" spacing="30">
+                     <children>
+                            <Label styleClass="label_start" text="账号:" />
+                            <TextField fx:id="userName" promptText="请输入账号" styleClass="textfield" />
+                     </children>
+                  </HBox>
+   
+                  <HBox alignment="center" spacing="30">
+      <children>
+                            <Label styleClass="label_start" text="密码:" />
+                            <PasswordField fx:id="passWord" promptText="请输入密码" styleClass="textfield" />
+      </children>
+                  </HBox>
+   
+                  <HBox alignment="center" prefHeight="60.0" prefWidth="80.0" spacing="30">
+      <children>
+                        <Button mnemonicParsing="false" onAction="#loginAction" prefHeight="50.0" prefWidth="70.0" text="登录" />
+      </children>
+                  </HBox>
+           </children>
+
+        </VBox>
+    </center>
+
+    <stylesheets>
+        <URL value="@login.css" />
+    </stylesheets>
+</BorderPane>

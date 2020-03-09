@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.xxq.filemanager.gui.controller.UserParaController">
+   <children>
+      <Label layoutX="50.0" layoutY="51.0" text="用户编号" />
+      <Label layoutX="363.0" layoutY="51.0" text="部门" />
+      <Label layoutX="68.0" layoutY="125.0" text="姓名" />
+      <Label layoutX="363.0" layoutY="125.0" text="密码" />
+      <Label layoutX="68.0" layoutY="206.0" text="电话" />
+      <Label layoutX="363.0" layoutY="206.0" text="邮箱" />
+      <Label layoutX="68.0" layoutY="287.0" text="角色" />
+      <Label layoutX="345.0" layoutY="287.0" text="权限等级" />
+      <TextField fx:id="U_Id" layoutX="147.0" layoutY="45.0" prefHeight="36.0" prefWidth="153.0" />
+      <TextField fx:id="U_Depart" layoutX="423.0" layoutY="45.0" prefHeight="36.0" prefWidth="153.0" />
+      <TextField fx:id="U_Password" layoutX="423.0" layoutY="119.0" prefHeight="36.0" prefWidth="153.0" />
+      <TextField fx:id="U_Username" layoutX="147.0" layoutY="119.0" prefHeight="36.0" prefWidth="153.0" />
+      <TextField fx:id="U_Email" layoutX="423.0" layoutY="200.0" prefHeight="36.0" prefWidth="153.0" />
+      <TextField fx:id="U_Phone" layoutX="147.0" layoutY="200.0" prefHeight="36.0" prefWidth="153.0" />
+      <TextField fx:id="U_Role" layoutX="147.0" layoutY="281.0" prefHeight="36.0" prefWidth="153.0" />
+      <TextField fx:id="U_Power" layoutX="423.0" layoutY="281.0" prefHeight="36.0" prefWidth="153.0" />
+      <Button layoutX="269.0" layoutY="338.0" mnemonicParsing="false" text="修改" onAction="#updateUser"/>
+   </children>
+</AnchorPane>
