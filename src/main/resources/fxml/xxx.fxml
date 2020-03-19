@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import java.net.URL?>
+
+<BorderPane prefHeight="650.0" styleClass="green-theme" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.xxq.filemanager.gui.controller.MainController">
+    <top>
+        <AnchorPane prefHeight="80.0">
+           <children>
+               <Label styleClass="font-gray" text="高校档案管理系统" AnchorPane.leftAnchor="10" AnchorPane.topAnchor="20">
+                   <effect>
+                       <Reflection bottomOpacity="0.2" fraction="0.5" topOffset="-5.0" />
+                   </effect>
+                   <font>
+                       <Font name="System Bold" size="26.0" />
+                   </font>
+               </Label>
+               <ImageView fitHeight="45" fitWidth="45" layoutX="1171.0" layoutY="18.0" AnchorPane.rightAnchor="184.0" AnchorPane.topAnchor="18.0">
+                  <image>
+                      <Image url="/photos/head.png" />
+                  </image>
+               </ImageView>
+               <Button fx:id="JB_SignOut" layoutX="1291.0" layoutY="22.0" onAction="#loginout" styleClass="btn-radius-large,b-theme" text="退出" AnchorPane.rightAnchor="49.0" AnchorPane.topAnchor="22.0" />
+            <Button fx:id="JB_login" layoutX="1223.0" layoutY="22.0" onAction="#login" styleClass="btn-radius-large,b-theme" text="登录" />
+           </children>
+        </AnchorPane>
+    </top>
+    <center>
+        <SplitPane dividerPositions="0.5">
+           <items>
+               <AnchorPane minWidth="200" styleClass="dark-gray-theme">
+                  <children>
+                      <Accordion AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <panes>
+                              <TitledPane fx:id="T_TypMng" alignment="TOP_LEFT" text="档案类别管理">
+                                 <content>
+                                     <VBox minHeight="100" spacing="10" styleClass="dark-theme">
+                                        <children>
+                                            <Button fx:id="JB_Kind" styleClass="menu-btn" text="档案类别" />
+                                            <Button styleClass="menu-btn" text="分类统计" />
+                                        </children>
+                                     </VBox>
+                                 </content>
+                              </TitledPane>
+                              <TitledPane fx:id="T_FileMng" alignment="TOP_LEFT" text="档案管理">
+                                 <content>
+                                     <VBox minHeight="100" spacing="10" styleClass="dark-theme">
+                                        <children>
+                                            <Button fx:id="JB_FileMng" onAction="#dealFileMng" styleClass="menu-btn" text="档案信息" />
+                                            <Button styleClass="menu-btn" text="统计分析" />
+                                        </children>
+                                     </VBox>
+                                 </content>
+                              </TitledPane>
+                              <TitledPane fx:id="T_UserMng" alignment="TOP_LEFT" text="用户管理">
+                                 <content>
+                                     <VBox minHeight="130" spacing="10" styleClass="dark-theme">
+                                        <children>
+                                            <Button styleClass="menu-btn" text="管理员信息" />
+                                            <Button fx:id="JB_UserMng" onAction="#dealUserManager" styleClass="menu-btn" text="用户信息" />
+                                        </children>
+                                     </VBox>
+                                 </content>
+                              </TitledPane>
+                              <TitledPane fx:id="T_BorMng" alignment="TOP_LEFT" text="借阅管理">
+                                 <content>
+                                     <VBox minHeight="130" spacing="10" styleClass="dark-theme">
+                                        <children>
+                                            <Button fx:id="JB_BorrowMng" onAction="#dealArchBorrow" styleClass="menu-btn" text="借阅查询" />
+                                            <Button styleClass="menu-btn" text="统计分析" />
+                                        </children>
+                                     </VBox>
+                                 </content>
+                              </TitledPane>
+                              <TitledPane fx:id="T_DepMng" alignment="TOP_LEFT" text="机构管理">
+                                 <content>
+                                     <VBox minHeight="130" spacing="10" styleClass="dark-theme">
+                                        <children>
+                                            <Button fx:id="JB_DepartMng" styleClass="menu-btn" text="机构查询" />
+                                            <Button styleClass="menu-btn" text="机构增加" />
+                                            <Button styleClass="menu-btn" text="机构删除" />
+                                        </children>
+                                     </VBox>
+                                 </content>
+                              </TitledPane>
+                        <TitledPane fx:id="T_PerMng" alignment="TOP_LEFT" text="个人中心">
+                           <content>
+                              <VBox minHeight="130" spacing="10" styleClass="dark-theme">
+                                 <children>
+                                    <Button fx:id="JB_PersonMng" onAction="#dealPersonMng" styleClass="menu-btn" text="个人资料" />
+                                    <Button styleClass="menu-btn" text="借阅申请" />
+                                 </children>
+                              </VBox>
+                           </content>
+                        </TitledPane>
+                          </panes>
+                      </Accordion>
+                  </children>
+               </AnchorPane>
+   
+               <!--中间内容面板-->
+               <StackPane fx:id="JP_Show" minWidth="1060" styleClass="default-theme">
+                   <padding>
+                       <Insets bottom="5" left="30" right="10" top="10" />
+                   </padding>
+               </StackPane>
+           </items>
+            <padding>
+                <Insets top="10" />
+            </padding>
+        </SplitPane>
+    </center>
+    <stylesheets>
+        <URL value="@test.css" />
+    </stylesheets>
+</BorderPane>

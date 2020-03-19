@@ -22,7 +22,7 @@
       <Label layoutX="332.0" layoutY="224.0" text="政治背景" />
       <Label layoutX="332.0" layoutY="269.0" text="职位" />
        <Label layoutX="37.0" layoutY="374.0" text="描述:" />
-      <TextField fx:id="JT_Id" layoutX="117.0" layoutY="15.0" prefHeight="36.0" prefWidth="146.0" />
+      <TextField fx:id="JT_ArchNo" layoutX="117.0" layoutY="15.0" prefHeight="36.0" prefWidth="146.0" />
       <TextField fx:id="JT_Name" layoutX="417.0" layoutY="15.0" prefHeight="36.0" prefWidth="146.0" />
       <TextField fx:id="JT_Nation" layoutX="417.0" layoutY="61.0" prefHeight="36.0" prefWidth="146.0" />
       <TextField fx:id="JT_Gender" layoutX="117.0" layoutY="61.0" prefHeight="36.0" prefWidth="146.0" />
@@ -30,7 +30,7 @@
       <TextField fx:id="JT_Email" layoutX="117.0" layoutY="161.0" prefHeight="36.0" prefWidth="146.0" />
       <TextField fx:id="JT_Address" layoutX="117.0" layoutY="212.0" prefHeight="36.0" prefWidth="146.0" />
       <TextField fx:id="JT_Religion" layoutX="117.0" layoutY="263.0" prefHeight="36.0" prefWidth="146.0" />
-      <TextField fx:id="JT_positon" layoutX="417.0" layoutY="263.0" prefHeight="36.0" prefWidth="146.0" />
+      <TextField fx:id="JT_Positions" layoutX="417.0" layoutY="263.0" prefHeight="36.0" prefWidth="146.0" />
       <TextField fx:id="JT_Political" layoutX="417.0" layoutY="218.0" prefHeight="36.0" prefWidth="146.0" />
       <TextField fx:id="JT_Phone" layoutX="417.0" layoutY="164.0" prefHeight="36.0" prefWidth="146.0" />
       <TextField fx:id="JT_Marital" layoutX="417.0" layoutY="115.0" prefHeight="36.0" prefWidth="146.0" />

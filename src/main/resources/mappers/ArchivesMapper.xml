@@ -5,6 +5,7 @@
     <select id="selectAllArch" resultType="com.xxq.filemanager.entity.ArchivesEntity">
         select
         id,
+        arch_no archNo,
         classfi_id classId,
         depart_id departId,
         archives_name archivesName,
@@ -23,6 +24,7 @@
     <select id="selectArchByPara" resultType="com.xxq.filemanager.entity.ArchivesEntity" parameterType="com.xxq.filemanager.entity.ArchivesEntity">
         select
         id,
+        arch_no archNo,
         classfi_id classId,
         depart_id departId,
         archives_name archivesName,
@@ -37,15 +39,46 @@
         where
         delFlag=0
 
-        <if test="id!=null">
-            and id =#{id}
+        <if test="archNo!=null">
+            and arch_no =#{archNo}
         </if>
         <if test="archivesName!=null">
             and archives_name like #{archivesName}
         </if>
         order by id  asc
     </select>
-
+    <update id="deleteFile">
+        update
+        archives
+        set
+        del_flag=1
+        where del_flag = 0
+        and
+        id=#{id}
+    </update>
+    <insert id="insertOne" parameterType="com.xxq.filemanager.entity.ArchivesEntity">
+        insert into archives
+        (
+        arch_no,
+        classfi_id,
+        depart_id,
+        archives_name,
+        archives_type,
+        create_time,
+        update_time,
+        create_by
+         )
+         values (
+         #{archNo},
+         #{classId},
+         #{departId},
+         #{archivesName},
+         #{archivesType},
+         sysdate(),
+         sysdate(),
+         #{createBy}
+         )
+    </insert>
 
 
 

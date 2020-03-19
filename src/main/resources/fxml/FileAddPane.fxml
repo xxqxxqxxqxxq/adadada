@@ -6,7 +6,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="640.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.xxq.filemanager.gui.controller.FileAddController">
+<?import java.net.URL?>
+<AnchorPane styleClass="default-theme" prefHeight="640.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.xxq.filemanager.gui.controller.FileAddController">
+    <stylesheets>
+        <URL value="@fileadd.css" />
+    </stylesheets>
     <children>
         <Label layoutX="37.0" layoutY="21.0" text="编号" />
         <Label layoutX="37.0" layoutY="67.0" text="性别" />
@@ -21,19 +25,29 @@
         <Label layoutX="332.0" layoutY="170.0" text="电话" />
         <Label layoutX="332.0" layoutY="224.0" text="政治背景" />
         <Label layoutX="332.0" layoutY="269.0" text="职位" />
-        <TextField fx:id="JT_Id" layoutX="117.0" layoutY="15.0" prefHeight="36.0" prefWidth="146.0" />
-        <TextField fx:id="JT_Name" layoutX="417.0" layoutY="15.0" prefHeight="36.0" prefWidth="146.0" />
-        <TextField fx:id="JT_Nation" layoutX="417.0" layoutY="61.0" prefHeight="36.0" prefWidth="146.0" />
+        <TextField fx:id="JT_ArchNo" layoutX="117.0" layoutY="15.0" prefHeight="36.0" prefWidth="146.0" />
+        <TextField fx:id="JT_Name" layoutX="424.0" layoutY="15.0" prefHeight="36.0" prefWidth="146.0" />
+        <TextField fx:id="JT_Nation" layoutX="424.0" layoutY="61.0" prefHeight="36.0" prefWidth="146.0" />
         <TextField fx:id="JT_Gender" layoutX="117.0" layoutY="61.0" prefHeight="36.0" prefWidth="146.0" />
-        <TextField fx:id="JT_Birth" layoutX="117.0" layoutY="115.0" prefHeight="36.0" prefWidth="146.0" />
         <TextField fx:id="JT_Email" layoutX="117.0" layoutY="161.0" prefHeight="36.0" prefWidth="146.0" />
         <TextField fx:id="JT_Address" layoutX="117.0" layoutY="212.0" prefHeight="36.0" prefWidth="146.0" />
         <TextField fx:id="JT_Religion" layoutX="117.0" layoutY="263.0" prefHeight="36.0" prefWidth="146.0" />
-        <TextField fx:id="JT_positon" layoutX="417.0" layoutY="263.0" prefHeight="36.0" prefWidth="146.0" />
-        <TextField fx:id="JT_Political" layoutX="417.0" layoutY="218.0" prefHeight="36.0" prefWidth="146.0" />
-        <TextField fx:id="JT_Phone" layoutX="417.0" layoutY="164.0" prefHeight="36.0" prefWidth="146.0" />
-        <TextField fx:id="JT_Marital" layoutX="417.0" layoutY="115.0" prefHeight="36.0" prefWidth="146.0" />
+        <TextField fx:id="JT_Positions" layoutX="424.0" layoutY="263.0" prefHeight="36.0" prefWidth="146.0" />
+        <TextField fx:id="JT_Political" layoutX="424.0" layoutY="212.0" prefHeight="36.0" prefWidth="146.0" />
+        <TextField fx:id="JT_Phone" layoutX="424.0" layoutY="164.0" prefHeight="36.0" prefWidth="146.0" />
+        <TextField fx:id="JT_Marital" layoutX="424.0" layoutY="115.0" prefHeight="36.0" prefWidth="146.0" />
         <TextField fx:id="JT_IDCard" layoutX="117.0" layoutY="316.0" prefHeight="36.0" prefWidth="146.0" />
-      <Button layoutX="244.0" layoutY="438.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="118.0" text="添加" />
+      <Button layoutX="241.0" layoutY="535.0" styleClass="btn-radius-normal,blue-theme" mnemonicParsing="false" onAction="#addFile" prefHeight="42.0" prefWidth="118.0" text="添加" />
+      <Label layoutX="37.0" layoutY="383.0" text="部门编号" />
+      <TextField fx:id="JT_ArchivesName"  layoutX="424.0" layoutY="316.0" prefHeight="36.0" prefWidth="146.0" />
+        <ComboBox fx:id="C_CDepart" layoutX="115.0" layoutY="377.0" prefWidth="150.0" />
+      <Label layoutX="327.0" layoutY="322.0" text="档案名称" />
+      <Label layoutX="327.0" layoutY="383.0" text="档案类别" />
+      <Label layoutX="50.0" layoutY="439.0" text="创建人" />
+      <TextField fx:id="JT_CreateBy" layoutX="117.0" layoutY="433.0" prefHeight="36.0" prefWidth="146.0" />
+      <TextField fx:id="JT_ArchivesType" layoutX="424.0" layoutY="377.0" prefHeight="36.0" prefWidth="146.0" />
+      <TextField fx:id="JT_ClassId" layoutX="424.0" layoutY="433.0" prefHeight="36.0" prefWidth="146.0" />
+      <Label layoutX="323.0" layoutY="439.0" text="档案分类号" />
+      <DatePicker fx:id="JT_Birth" layoutX="115.0" layoutY="109.0" prefHeight="36.0" prefWidth="150.0" />
     </children>
 </AnchorPane>

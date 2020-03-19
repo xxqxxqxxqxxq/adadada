@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xxq.filemanager.mapper.ArchivesParaMapper">
+
+
+    <select id="selectParaByArchID" resultType="com.xxq.filemanager.entity.ArchivesParaEntity"  parameterType="integer">
+        select
+        id,
+        archives_id archivesId,
+        name,
+        gender,
+        birthdate,
+        id_card idCard,
+        email,
+         positions,
+         address,
+         phone,
+         marital_status maritalStatus,
+         political,
+         religion,
+         nation,
+         create_time createTime,
+         update_time updateTime,
+         create_by createBy,
+         update_by updateBy,
+         remark,
+         delflag
+        from archives_para
+        where
+        delFlag=0
+        and
+        archives_id = #{id}
+        order by id  asc
+    </select>
+    <insert id="insertOne" parameterType="com.xxq.filemanager.entity.ArchivesParaEntity">
+        insert into archives_para
+        (
+        archives_id,
+        name,
+        gender,
+        birthdate,
+        id_card,
+        email,
+        positions,
+        address,
+        phone,
+        marital_status,
+        political,
+        religion,
+        nation,
+        create_time,
+        update_time,
+        create_by
+        )
+        values
+        (
+        #{archivesId},
+        #{name},
+        #{gender},
+        #{birthdate},
+        #{idCard},
+        #{email},
+        #{positions},
+        #{address},
+        #{phone},
+        #{maritalStatus},
+        #{political},
+        #{religion},
+        #{nation},
+        sysdate(),
+        sysdate(),
+        #{createBy}
+        )
+    </insert>
+
+
+
+</mapper>

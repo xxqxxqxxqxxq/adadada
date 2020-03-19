@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.xxq.filemanager.gui.controller.BorrowFileController">
+   <children>
+      <Label layoutX="89.0" layoutY="64.0" text="档案号" />
+      <Label layoutX="89.0" layoutY="138.0" text="借阅人" />
+      <Label layoutX="89.0" layoutY="224.0" text="邮箱" />
+      <TextField layoutX="192.0" layoutY="58.0" />
+      <TextField layoutX="192.0" layoutY="132.0" />
+      <TextField layoutX="192.0" layoutY="218.0" />
+   </children>
+</AnchorPane>
