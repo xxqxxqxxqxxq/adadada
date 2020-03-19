@@ -2,6 +2,7 @@ package com.xxq.filemanager.gui.controller;
 
 import com.xxq.FileClient;
 import com.xxq.filemanager.bean.ArchivesInfo;
+import com.xxq.filemanager.bean.SysUserInfo;
 import com.xxq.filemanager.gui.view.FileAddView;
 import com.xxq.filemanager.gui.view.FileParaView;
 import com.xxq.filemanager.service.interfaceI.ArchivesService;
@@ -25,6 +26,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 /**
@@ -67,7 +69,7 @@ public class FileMngController implements Initializable {
         /**
          * 配置表格，绑定表格的每列
          */
-        idCol.setCellValueFactory(celldata ->celldata.getValue().getId());
+        idCol.setCellValueFactory(celldata ->celldata.getValue().getArchNo());
         numCol.setCellValueFactory(cellData -> cellData.getValue().getNumber());
         timeCol.setCellValueFactory(cellData->cellData.getValue().getCreateTime());
         createCol.setCellValueFactory(cellData -> cellData.getValue().getCreateBy());
@@ -104,19 +106,19 @@ public class FileMngController implements Initializable {
             return;
         }
         ArchivesInfo archivesInfo = archivesInfoList.get(index);
-        Integer id = archivesInfo.getId();
-        fileParaController.showArchPara(id);
+        Integer archNo = archivesInfo.getArchNo();
+        fileParaController.showArchPara(archNo);
         FileClient.showView(FileParaView.class,Modality.NONE);
     }
 
-    private void fileList(){
+    public void fileList(){
         dataTable.getItems().clear();
 
 
         // 档案编号
-        Integer id = null;
+        Integer archNo = null;
         if(StringUtils.isNotEmpty(TF_ID.getText().trim())){
-            id = Integer.valueOf(TF_ID.getText().trim());
+            archNo = Integer.valueOf(TF_ID.getText().trim());
         }
 
         // 档案姓名
@@ -125,10 +127,10 @@ public class FileMngController implements Initializable {
             archivesName = "%" + TF_ArchName.getText().trim() + "%";
         }
         ArchivesInfo archivesInfo = new ArchivesInfo();
-        archivesInfo.setId(id);
+        archivesInfo.setArchNo(archNo);
         archivesInfo.setArchivesName(archivesName);
 
-        if(id == null && archivesName == null){
+        if(archNo == null && archivesName == null){
             // 查询数据
              archivesInfoList = archivesService.queryAllArch();
         }else {
@@ -141,5 +143,37 @@ public class FileMngController implements Initializable {
         }
         dataTable.setItems(this.list);
     }
+    @FXML
+    public void deleteFile() {
+        logger.info("点击删除按钮");
+        List<ArchivesInfo> deleteList = new ArrayList<>();
+        for(int i = 0;i<list.size();i++){
+            SimpleFileProperty sfp = list.get(i);
+            // 判断复选框是否被选中,将选中的数据存到要删除的集合中
+            if(sfp.getCheckBox().isSelected()){
+                ArchivesInfo archivesInfo = new ArchivesInfo();
+                archivesInfo.setId(Integer.valueOf(sfp.getId().getValue()));
+                archivesInfo.setArchivesName(sfp.getArchivesName().getValue());
+                archivesInfo.setBorrowStatus(sfp.getBorrowStatus().getValue());
 
+                deleteList.add(archivesInfo);
+            }
+        }
+        // 如果未选数据
+        if(deleteList.size() == 0){
+            AlertUtil.alert(Alert.AlertType.WARNING,"没有选中要删除的数据",FileClient.getStage());
+            return;
+        }
+        Optional<ButtonType> result = AlertUtil.alert(Alert.AlertType.CONFIRMATION,"确定删除用户？");
+        //确定珊瑚虫
+        if(result.get()==ButtonType.OK){
+            archivesService.deleteOneFile(deleteList);
+            // 删除成功界面重新加载数据
+            fileList();
+            logger.info("删除成功"+deleteList);
+            return;
+
+        }
+        logger.info("取消删除");
+    }
 }

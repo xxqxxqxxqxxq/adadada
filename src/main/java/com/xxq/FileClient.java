@@ -93,6 +93,7 @@ public class FileClient extends AbstractJavaFxApplicationSupport {
         ContextConfig.context.getBean(RegisterUserView.class).getView();
         ContextConfig.context.getBean(UserParaView.class).getView();
         ContextConfig.context.getBean(FileMngView.class).getView();
+        ContextConfig.context.getBean(BorrowFileView.class).getView();
     }
 
 }

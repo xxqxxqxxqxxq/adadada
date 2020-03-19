@@ -1,16 +1,15 @@
 package com.xxq.filemanager.gui.view;
 
-
 import com.xxq.filemanager.springJavafxSupport.AbstractFxmlView;
 import com.xxq.filemanager.springJavafxSupport.FXMLView;
 
 /**
- * @ClassName MainView
+ * @ClassName BorrowFileView
  * @Description: TODO
  * @Author xxq
- * @Date 2020/1/16 14:08
+ * @Date 2020/3/17 22:15
  * @Version V1.0
  **/
-@FXMLView("/fxml/xxx.fxml")
-public class MainView extends AbstractFxmlView {
+@FXMLView("/fxml/FileBorrowPane.fxml")
+public class BorrowFileView extends AbstractFxmlView {
 }

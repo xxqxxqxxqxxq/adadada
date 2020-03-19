@@ -9,4 +9,7 @@ import java.util.List;
 public interface ArchivesMapper {
         List<ArchivesEntity> selectAllArch();
         List<ArchivesEntity> selectArchByPara(ArchivesEntity archivesEntity);
+        void deleteFile(Integer archNo);
+
+    void insertOne(ArchivesEntity archivesEntity);
 }

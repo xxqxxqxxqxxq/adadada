@@ -12,10 +12,11 @@ import java.util.Date;
  * @Version V1.0
  **/
 public class ArchivesEntity {
-    /**
-     * 档案号
-     */
+
     private Integer id;
+    private Integer archNo;
+
+
     /**
      * 档案分类号
      */
@@ -59,8 +60,16 @@ public class ArchivesEntity {
         archivesEntity.setUpdateTime(archivesInfo.getUpdateTime());
         archivesEntity.setCheckFlag(archivesInfo.getCheckFlag());
         archivesEntity.setDelFlag(archivesInfo.getDelFlag());
+        archivesEntity.setArchNo(archivesInfo.getArchNo());
 
         return archivesEntity;
+    }
+    public Integer getArchNo() {
+        return archNo;
+    }
+
+    public void setArchNo(Integer archNo) {
+        this.archNo = archNo;
     }
 
     public String getCheckFlag() {

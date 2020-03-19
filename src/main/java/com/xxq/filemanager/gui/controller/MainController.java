@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TitledPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
@@ -78,7 +79,19 @@ public class MainController implements Initializable {
      * 点击左侧展示展示
      */
     @FXML
-    AnchorPane JP_Show;
+    StackPane JP_Show;
+    @FXML
+    TitledPane T_UserMng;
+    @FXML
+    TitledPane T_TypMng;
+    @FXML
+    TitledPane T_PerMng;
+    @FXML
+    TitledPane T_FileMng;
+    @FXML
+    TitledPane T_BorMng;
+    @FXML
+    TitledPane T_DepMng;
 
     @Autowired
     UserMngView userMngView;
@@ -89,6 +102,8 @@ public class MainController implements Initializable {
     @Autowired
     FileMngView fileMngView;
     @Autowired
+    BorrowFileView borrowFileView;
+    @Autowired
     PersonManagerController personManagerController;
 
     @Autowired
@@ -96,6 +111,54 @@ public class MainController implements Initializable {
 
     public Button getJB_Kind() {
         return JB_Kind;
+    }
+
+    public TitledPane getT_UserMng() {
+        return T_UserMng;
+    }
+
+    public void setT_UserMng(TitledPane t_UserMng) {
+        T_UserMng = t_UserMng;
+    }
+
+    public TitledPane getT_TypMng() {
+        return T_TypMng;
+    }
+
+    public void setT_TypMng(TitledPane t_TypMng) {
+        T_TypMng = t_TypMng;
+    }
+
+    public TitledPane getT_PerMng() {
+        return T_PerMng;
+    }
+
+    public void setT_PerMng(TitledPane t_PerMng) {
+        T_PerMng = t_PerMng;
+    }
+
+    public TitledPane getT_FileMng() {
+        return T_FileMng;
+    }
+
+    public void setT_FileMng(TitledPane t_FileMng) {
+        T_FileMng = t_FileMng;
+    }
+
+    public TitledPane getT_BorMng() {
+        return T_BorMng;
+    }
+
+    public void setT_BorMng(TitledPane t_BorMng) {
+        T_BorMng = t_BorMng;
+    }
+
+    public TitledPane getT_DepMng() {
+        return T_DepMng;
+    }
+
+    public void setT_DepMng(TitledPane t_DepMng) {
+        T_DepMng = t_DepMng;
     }
 
     public void setJB_Kind(Button JB_Kind) {
@@ -143,11 +206,11 @@ public class MainController implements Initializable {
         this.JB_DepartMng = JB_DepartMng;
     }
 
-    public AnchorPane getJP_Show() {
+    public StackPane getJP_Show() {
         return JP_Show;
     }
 
-    public void setJP_Show(AnchorPane JP_Show) {
+    public void setJP_Show(StackPane JP_Show) {
         this.JP_Show = JP_Show;
     }
 
@@ -172,13 +235,13 @@ public class MainController implements Initializable {
         FileClient.sysUser = null;
         JB_SignOut.setVisible(false);
         JB_login.setVisible(true);
-        JB_PersonMng.setVisible(false);
-        JB_DepartMng.setVisible(false);
-        JB_UserMng.setVisible(false);
+        T_UserMng.setVisible(false);
+        T_PerMng.setVisible(false);
+        T_BorMng.setVisible(false);
+        T_FileMng.setVisible(false);
+        T_TypMng.setVisible(false);
+        T_DepMng.setVisible(false);
         JP_Show.setVisible(false);
-        JB_BorrowMng.setVisible(false);
-        JB_FileMng.setVisible(false);
-        JB_Kind.setVisible(false);
     }
     @FXML
     public void login() {
@@ -190,7 +253,12 @@ public class MainController implements Initializable {
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        T_UserMng.setVisible(false);
+        T_PerMng.setVisible(false);
+        T_BorMng.setVisible(false);
+        T_FileMng.setVisible(false);
+        T_TypMng.setVisible(false);
+        T_DepMng.setVisible(false);
     }
 
     @FXML
@@ -210,5 +278,9 @@ public class MainController implements Initializable {
         JP_Show.getChildren().add(fileMngView.getView());
     }
 
-
+    @FXML
+    public void dealArchBorrow() {
+        JP_Show.getChildren().clear();
+        JP_Show.getChildren().add(borrowFileView.getView());
+    }
 }

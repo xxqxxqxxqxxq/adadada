@@ -17,6 +17,7 @@ import java.util.Date;
  **/
 public class SimpleFileProperty {
     private SimpleStringProperty id;
+    private SimpleStringProperty archNo;
     private SimpleStringProperty number;
     private SimpleStringProperty archivesType;
     private SimpleStringProperty archivesName;
@@ -41,6 +42,7 @@ public class SimpleFileProperty {
     }
     public SimpleFileProperty(ArchivesInfo archives, int num, String flag){
         id = new SimpleStringProperty(String.valueOf(archives.getId()));
+        archNo = new SimpleStringProperty(String.valueOf(archives.getArchNo()));
         number = new SimpleStringProperty(String.valueOf(num));
         archivesName = new SimpleStringProperty(archives.getArchivesName());
         archivesType = new SimpleStringProperty(archives.getArchivesType());
@@ -74,6 +76,9 @@ public class SimpleFileProperty {
 
     public SimpleStringProperty getId() {
         return id;
+    }
+    public SimpleStringProperty getArchNo() {
+        return archNo;
     }
     public SimpleStringProperty getNumber() {
         return number;
