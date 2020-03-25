@@ -1,8 +1,10 @@
 package com.xxq.filemanager.gui.controller;
 
 import com.xxq.FileClient;
+import com.xxq.filemanager.bean.ArchivesInfo;
 import com.xxq.filemanager.gui.view.*;
 import com.xxq.filemanager.springJavafxSupport.FXMLController;
+import com.xxq.filemanager.springJavafxSupport.FXMLView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -10,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.StageStyle;
@@ -64,6 +67,8 @@ public class MainController implements Initializable {
      */
     @FXML
     private Button JB_FileMng;
+    @FXML
+    private Button JB_ShowFile;
     /**
      * 借阅管理
      */
@@ -95,19 +100,50 @@ public class MainController implements Initializable {
 
     @Autowired
     UserMngView userMngView;
+
     @Autowired
     LoginView loginView;
+
     @Autowired
     PersonMngView personMngView;
+
     @Autowired
     FileMngView fileMngView;
+
     @Autowired
     BorrowFileView borrowFileView;
+
+    @Autowired
+    AdminInfoView adminInfoView;
+
+    @Autowired
+    ShowFileView showFileView;
+    @Autowired
+    MyBorrowView myBorrowView;
+    @Autowired
+    DepartSearchView departSearchView;
+
     @Autowired
     PersonManagerController personManagerController;
 
     @Autowired
+    AdminController adminController;
+
+    @Autowired
     UserManagerController userManagerController;
+
+    @Autowired
+    ShowFileController showFileController;
+    @Autowired
+    MyBorrowController myBorrowController;
+
+    public Button getJB_ShowFile() {
+        return JB_ShowFile;
+    }
+
+    public void setJB_ShowFile(Button JB_ShowFile) {
+        this.JB_ShowFile = JB_ShowFile;
+    }
 
     public Button getJB_Kind() {
         return JB_Kind;
@@ -231,7 +267,7 @@ public class MainController implements Initializable {
     }
 
     @FXML
-    public void loginout(){
+    public void loginout() {
         FileClient.sysUser = null;
         JB_SignOut.setVisible(false);
         JB_login.setVisible(true);
@@ -243,14 +279,17 @@ public class MainController implements Initializable {
         T_DepMng.setVisible(false);
         JP_Show.setVisible(false);
     }
+
     @FXML
     public void login() {
-        FileClient.showView(LoginView.class,   Modality.APPLICATION_MODAL);
+        FileClient.showView(LoginView.class, Modality.APPLICATION_MODAL);
     }
+
     @FXML
     public void regist() {
-        FileClient.showView(RegisterUserView.class,Modality.NONE);
+        FileClient.showView(RegisterUserView.class, Modality.NONE);
     }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         T_UserMng.setVisible(false);
@@ -262,18 +301,20 @@ public class MainController implements Initializable {
     }
 
     @FXML
-    public void dealUserManager(){
+    public void dealUserManager() {
         JP_Show.getChildren().clear();
         JP_Show.getChildren().add(userMngView.getView());
     }
+
     @FXML
-    public void dealPersonMng(){
+    public void dealPersonMng() {
         JP_Show.getChildren().clear();
         JP_Show.getChildren().add(personMngView.getView());
         personManagerController.showPerson();
     }
+
     @FXML
-    public void dealFileMng(){
+    public void dealFileMng() {
         JP_Show.getChildren().clear();
         JP_Show.getChildren().add(fileMngView.getView());
     }
@@ -282,5 +323,30 @@ public class MainController implements Initializable {
     public void dealArchBorrow() {
         JP_Show.getChildren().clear();
         JP_Show.getChildren().add(borrowFileView.getView());
+    }
+
+    @FXML
+    public void dealAdminInfo() {
+        JP_Show.getChildren().clear();
+        JP_Show.getChildren().add(adminInfoView.getView());
+        adminController.showAdmin();
+    }
+    public  static boolean flag = true;
+    @FXML
+    public void showFile() {
+        JP_Show.getChildren().clear();
+        JP_Show.getChildren().add(showFileView.getView());
+        showFileController.showFile();
+    }
+    @FXML
+    public void dealMyBorrow() {
+        JP_Show.getChildren().clear();
+        JP_Show.getChildren().add(myBorrowView.getView());
+        myBorrowController.showMyBorrow();
+    }
+    @FXML
+    public void dealDepartSearch() {
+        JP_Show.getChildren().clear();
+        JP_Show.getChildren().add(departSearchView.getView());
     }
 }

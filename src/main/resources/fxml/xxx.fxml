@@ -24,13 +24,14 @@
                        <Font name="System Bold" size="26.0" />
                    </font>
                </Label>
-               <ImageView fitHeight="45" fitWidth="45" layoutX="1171.0" layoutY="18.0" AnchorPane.rightAnchor="184.0" AnchorPane.topAnchor="18.0">
+               <ImageView fitHeight="45" fitWidth="45" layoutX="1058.0" layoutY="18.0" AnchorPane.rightAnchor="297.0" AnchorPane.topAnchor="18.0">
                   <image>
                       <Image url="/photos/head.png" />
                   </image>
                </ImageView>
-               <Button fx:id="JB_SignOut" layoutX="1291.0" layoutY="22.0" onAction="#loginout" styleClass="btn-radius-large,b-theme" text="退出" AnchorPane.rightAnchor="49.0" AnchorPane.topAnchor="22.0" />
-            <Button fx:id="JB_login" layoutX="1223.0" layoutY="22.0" onAction="#login" styleClass="btn-radius-large,b-theme" text="登录" />
+               <Button fx:id="JB_SignOut" layoutX="1236.0" layoutY="22.0" onAction="#loginout" styleClass="btn-radius-large,b-theme" text="退出" AnchorPane.rightAnchor="104.0" AnchorPane.topAnchor="22.0" />
+            <Button fx:id="JB_login" layoutX="1162.0" layoutY="23.0" onAction="#login" styleClass="btn-radius-large,b-theme" text="登录" />
+            <Button fx:id="JB_login1" layoutX="1303.0" layoutY="23.0" onAction="#regist" styleClass="btn-radius-large,b-theme" text="注册" />
            </children>
         </AnchorPane>
     </top>
@@ -56,7 +57,7 @@
                                      <VBox minHeight="100" spacing="10" styleClass="dark-theme">
                                         <children>
                                             <Button fx:id="JB_FileMng" onAction="#dealFileMng" styleClass="menu-btn" text="档案信息" />
-                                            <Button styleClass="menu-btn" text="统计分析" />
+                                            <Button fx:id="JB_ShowFile" onAction="#showFile" styleClass="menu-btn" text="档案信息" />
                                         </children>
                                      </VBox>
                                  </content>
@@ -65,7 +66,7 @@
                                  <content>
                                      <VBox minHeight="130" spacing="10" styleClass="dark-theme">
                                         <children>
-                                            <Button styleClass="menu-btn" text="管理员信息" />
+                                            <Button onAction="#dealAdminInfo" styleClass="menu-btn" text="管理员信息" />
                                             <Button fx:id="JB_UserMng" onAction="#dealUserManager" styleClass="menu-btn" text="用户信息" />
                                         </children>
                                      </VBox>
@@ -75,8 +76,8 @@
                                  <content>
                                      <VBox minHeight="130" spacing="10" styleClass="dark-theme">
                                         <children>
-                                            <Button fx:id="JB_BorrowMng" onAction="#dealArchBorrow" styleClass="menu-btn" text="借阅查询" />
-                                            <Button styleClass="menu-btn" text="统计分析" />
+                                            <Button fx:id="JB_BorrowMng" onAction="#dealArchBorrow" styleClass="menu-btn" text="借阅详情" />
+                                            <Button styleClass="menu-btn" text="借阅审批" />
                                         </children>
                                      </VBox>
                                  </content>
@@ -85,7 +86,7 @@
                                  <content>
                                      <VBox minHeight="130" spacing="10" styleClass="dark-theme">
                                         <children>
-                                            <Button fx:id="JB_DepartMng" styleClass="menu-btn" text="机构查询" />
+                                            <Button fx:id="JB_DepartMng" styleClass="menu-btn" text="机构查询" onAction="#dealDepartSearch"/>
                                             <Button styleClass="menu-btn" text="机构增加" />
                                             <Button styleClass="menu-btn" text="机构删除" />
                                         </children>
@@ -98,6 +99,7 @@
                                  <children>
                                     <Button fx:id="JB_PersonMng" onAction="#dealPersonMng" styleClass="menu-btn" text="个人资料" />
                                     <Button styleClass="menu-btn" text="借阅申请" />
+                                     <Button onAction="#dealMyBorrow" styleClass="menu-btn" text="我的借阅" />
                                  </children>
                               </VBox>
                            </content>

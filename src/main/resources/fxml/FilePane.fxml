@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="120.0" prefWidth="100.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.xxq.filemanager.gui.controller.FileController">
+    <children>
+        <Pane fx:id="P_FPane" layoutY="-7.0" onMouseClicked="#mouseClick" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+            <ImageView fx:id="fileImg" fitHeight="90.0" fitWidth="80.0" layoutX="-1.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" />
+            <Label layoutX="50.0" layoutY="83.0" fx:id="L_Info"/>
+            <Label layoutX="50.0" layoutY="100.0" fx:id="L_ArchNo"/>
+                <Label layoutX="0.0" layoutY="83.0" text="档案名"/>
+                <Label layoutX="0.0" layoutY="100.0" text="档案号"/>
+            </children>
+        </Pane>
+    </children>
+</AnchorPane>

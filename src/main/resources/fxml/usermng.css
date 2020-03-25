@@ -1,3 +1,8 @@
+*{
+
+    /*-fx-background-image: url("/photos/background.jpg");*/
+    /*-fx-background-color: #8b918f;*/
+}
 /*深灰色主题*/
 .dark-gray-theme {
     -fx-background-color: rgb(87, 92, 92);
@@ -11,7 +16,6 @@
 .green-theme {
     -fx-background-color: #19f939;
     -fx-text-fill: #fff;
-    -fx-background-image:"head.png" ;
 }
 
 /*灰色主题*/
@@ -64,7 +68,12 @@
     -fx-border-radius: 2px;
     -fx-background-radius: 2px;
 }
-
+.warm-theme{
+    -fx-background-color: #ffaf53;
+}
+.normal{
+    -fx-background-color: #a5cbff;
+}
 /*边框圆角按钮*/
 .btn-radius-large {
     -fx-border-radius: 50px;
@@ -138,8 +147,68 @@
 .radio-button:selected .radio {
     -fx-background-color: rgb(95, 184, 120);
 }
-
+.text-field {
+    /*对齐方式*/
+    -fx-text-alignment: left;
+    /*内容显示方式*/
+    -fx-content-display: inline-block;
+    /*合适高度*/
+    -fx-pref-height: 30px;
+    /*边框色*/
+    -fx-border-color: rgb(230, 230, 230);
+    /*提示文字颜色*/
+    -fx-prompt-text-fill: rgb(162, 162, 162);
+    /*输入文字颜色*/
+    -fx-text-fill: rgb(110, 110, 110);
+    /*边框圆角*/
+    -fx-border-radius: 2px;
+    -fx-background-radius: 2px;
+    /*内边距*/
+    -fx-padding: 5 5 5 5;
+    /*鼠标形状*/
+    -fx-cursor: pointer;
+}
 /*表格内容居中显示*/
 .table-view .table-column {
     -fx-alignment: center;
+    -fx-background-color: transparent;
 }
+
+
+.table-view:focused{
+    -fx-background-color: transparent;
+}
+
+table-view .table-cell{
+    -fx-text-fill: white;
+}
+
+.table-row-cell{
+    -fx-background-color: -fx-table-cell-border-color, #a7a7a7;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em; /* 0 */
+}
+
+.table-row-cell:odd{
+    -fx-background-color: -fx-table-cell-border-color, #9e9e9e;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em; /* 0 */
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #005797;
+    -fx-background-insets: 0;
+    -fx-background-radius: 1;
+}
+table-view > .virtual-flow > .scroll-bar:vertical,
+.table-view > .virtual-flow > .scroll-bar:vertical > .track,
+.table-view > .virtual-flow > .scroll-bar:vertical > .track-background,
+.table-view > .virtual-flow > .scroll-bar:horizontal,
+.table-view > .virtual-flow > .scroll-bar:horizontal > .track,
+.table-view > .virtual-flow > .scroll-bar:horizontal > .track-
+table-view > .virtual-flow > .scroll-bar > .increment-button,
+.table-view > .virtual-flow > .scroll-bar > .decrement-button {
+    -fx-opacity: 0;
+}*
+
+

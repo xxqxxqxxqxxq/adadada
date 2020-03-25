@@ -113,10 +113,15 @@ public class LoginController  implements Initializable{
                 mainController.getT_FileMng().setVisible(true);
                 mainController.getT_TypMng().setVisible(true);
                 mainController.getT_UserMng().setVisible(true);
+                mainController.getJB_FileMng().setVisible(true);
+                mainController.getJB_ShowFile().setVisible(false);
                 loginView.getStage().hide();
             }else {
                 mainController.getT_PerMng().setVisible(true);
                 mainController.getJB_SignOut().setVisible(true);
+                mainController.getT_FileMng().setVisible(true);
+                mainController.getJB_FileMng().setVisible(false);
+                mainController.getJB_ShowFile().setVisible(true);
                 loginView.hide();
             }
 

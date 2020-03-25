@@ -4,6 +4,14 @@
 
 *{
     -fx-text-fill: #30393E;
+    /*-fx-background-image: url("/photos/background.jpg");*/
+}
+/*灰色字体*/
+.font-gray {
+    -fx-text-fill: rgb(122, 122, 122);
+}
+.font-black {
+    -fx-text-fill: rgb(27, 27, 27);
 }
 
 .canvas{
@@ -33,6 +41,7 @@
 .label_start{
     -fx-min-width: 50px;
     -fx-font-family: "等线 Light (标题)";
+    -fx-font-weight: bold;
     -fx-font-size: 1.1em;
     -fx-text-fill: #30393E;
     -fx-alignment: center-left;
@@ -74,5 +83,26 @@
 
 .radio-button{
     -fx-font-size: 1.1em;
+}
+/*鼠标覆盖按钮效果*/
+.btn-basic:hover {
+    /*粗体*/
+    -fx-font-weight: bold;
+    /*透明度*/
+    -fx-opacity: 0.8;
+}
+
+/*边框正常弧度按钮*/
+.button-a {
+    -fx-border-radius: 2px;
+    -fx-background-radius: 2px;
+    -fx-background-color: #080a12;
+}
+
+/*边框圆角按钮*/
+.btn-radius-large {
+    -fx-border-radius: 50px;
+    -fx-background-radius: 50px;
+    -fx-background-color: #a7adc6;
 }
 

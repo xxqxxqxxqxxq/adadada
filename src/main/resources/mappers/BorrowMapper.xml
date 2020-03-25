@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xxq.filemanager.mapper.BorrowMapper">
+
+    <select id="queryAll" resultType="com.xxq.filemanager.entity.BorrowEntity">
+        select
+       id,
+       archives_id archivesId,
+        user_id userId,
+        b_name BName,
+         b_date BDate,
+           back_time backTime,
+            approve,
+             lendFlag,
+             checkFlag
+        from archives_borrowing
+        where lendFlag=1;
+    </select>
+    <select id="amountA" resultType="integer" >
+        select count(*) from archives_borrowing where lendFlag=0;
+    </select>
+    <select id="selectByUserId" resultType="com.xxq.filemanager.entity.BorrowEntity">
+      select
+      a.id,
+      a.archives_id archivesId,
+      a.user_id userId,
+      a.b_name BName,
+      a.b_date BDate,
+      a.back_time backTime,
+      a.approve,
+      a.lendFlag,
+      a.checkFlag,
+      b.archives_name archName
+      from archives_borrowing a
+      inner join archives b
+      on
+      a.archives_id = b.arch_no
+      where a.user_id=#{userId}
+    </select>
+
+
+
+</mapper>

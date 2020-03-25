@@ -3,6 +3,7 @@ package com.xxq.filemanager.table;
 import com.xxq.filemanager.bean.ArchivesInfo;
 import com.xxq.filemanager.bean.SysUserInfo;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 
 import java.text.SimpleDateFormat;

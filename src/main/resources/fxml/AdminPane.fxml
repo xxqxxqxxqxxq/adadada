@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+<?import java.net.URL?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1070.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.xxq.filemanager.gui.controller.AdminController">
+    <stylesheets>
+        <URL value="@admin.css" />
+    </stylesheets>
+    <children>
+       <Label layoutX="97.0" layoutY="74.0" text="用户编号" />
+       <TextField fx:id="A_Number" layoutX="260.0" layoutY="68.0" prefHeight="34.0" prefWidth="170.0" />
+       <Label layoutX="106.0" layoutY="131.0" text="用户名" />
+       <TextField fx:id="A_Username" layoutX="260.0" layoutY="125.0" prefHeight="34.0" prefWidth="170.0" />
+       <Label layoutX="110.0" layoutY="253.0" text="电  话" />
+       <Label layoutX="107.0" layoutY="190.0" text="邮  箱" />
+       <Label layoutX="110.0" layoutY="311.0" text="部  门" />
+       <TextField fx:id="A_Phone" layoutX="260.0" layoutY="247.0" prefHeight="34.0" prefWidth="170.0" />
+       <TextField fx:id="A_Email" layoutX="260.0" layoutY="184.0" prefHeight="34.0" prefWidth="170.0" />
+       <TextField fx:id="A_Depart" layoutX="260.0" layoutY="305.0" prefHeight="34.0" prefWidth="170.0" />
+       <Button fx:id="A_Modify" layoutX="230.0" layoutY="387.0" mnemonicParsing="false" onAction="#modify" styleClass="btn-radius-large" text="修改" />
+         <ImageView fx:id="image" fitHeight="455.0" fitWidth="269.0" layoutX="586.0" layoutY="96.0" styleClass="image" visible="true">
+             <image>
+                 <Image url="/photos/smile.png" />
+             </image>
+         </ImageView>
+
+    </children>
+</AnchorPane>

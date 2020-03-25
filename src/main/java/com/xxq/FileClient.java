@@ -1,10 +1,14 @@
 package com.xxq;
 
+import com.xxq.filemanager.bean.ArchivesInfo;
 import com.xxq.filemanager.bean.DepartInfo;
 import com.xxq.filemanager.bean.SysUserInfo;
 import com.xxq.filemanager.config.ContextConfig;
+import com.xxq.filemanager.entity.BorrowEntity;
 import com.xxq.filemanager.gui.splashscreen.SplashConfig;
 import com.xxq.filemanager.gui.view.*;
+import com.xxq.filemanager.service.interfaceI.ArchivesService;
+import com.xxq.filemanager.service.interfaceI.BorrowService;
 import com.xxq.filemanager.springJavafxSupport.AbstractJavaFxApplicationSupport;
 import com.xxq.filemanager.service.interfaceI.DepartService;
 import com.xxq.filemanager.service.interfaceI.UserService;
@@ -31,11 +35,17 @@ public class FileClient extends AbstractJavaFxApplicationSupport {
 
     public static SysUserInfo sysUser;
     public static List<SysUserInfo> users;
-    public static  List<DepartInfo> departInfoList;
+    public static  List<DepartInfo> departInfoList = new ArrayList<>();
+    public static  List<ArchivesInfo> archvivesList = new ArrayList<>();
+    public static List<BorrowEntity> borrowList = new ArrayList<>();
     @Autowired
     UserService userService;
     @Autowired
     DepartService departService;
+    @Autowired
+    ArchivesService archivesService;
+    @Autowired
+    BorrowService borrowService;
     public static void main(String[] args) {
         new Thread(() -> {
             while (ContextConfig.context == null) {
@@ -70,13 +80,11 @@ public class FileClient extends AbstractJavaFxApplicationSupport {
     @Bean
     public boolean loadDataFromDB() {
         List<DepartInfo> departInfos = departService.selectAllDepart();
-        departInfoList = new ArrayList<>();
-        for(DepartInfo d : departInfos){
-            departInfoList.add(d);
-        }
-        for(DepartInfo d :departInfoList){
-            System.out.println(d.getDepartName());
-        }
+        departInfoList.addAll(departInfos);
+        List<ArchivesInfo> archivesInfoList = archivesService.queryAllArch();
+        archvivesList.addAll(archivesInfoList);
+        List<BorrowEntity> borrowEntities = borrowService.queryAll();
+        borrowList.addAll(borrowEntities);
         return true;
     }
     /**
@@ -94,6 +102,10 @@ public class FileClient extends AbstractJavaFxApplicationSupport {
         ContextConfig.context.getBean(UserParaView.class).getView();
         ContextConfig.context.getBean(FileMngView.class).getView();
         ContextConfig.context.getBean(BorrowFileView.class).getView();
+        ContextConfig.context.getBean(AdminInfoView.class).getView();
+        ContextConfig.context.getBean(FileView.class).getView();
+        ContextConfig.context.getBean(MyBorrowView.class).getView();
+        ContextConfig.context.getBean(DepartSearchView.class).getView();
     }
 
 }

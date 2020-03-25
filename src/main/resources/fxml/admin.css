@@ -1,0 +1,51 @@
+*{
+
+    /*-fx-background-image: url("/photos/background.jpg");*/
+    -fx-background-color: #cdd6d4;
+}
+/*输入框样式*/
+.text-field {
+    /*对齐方式*/
+    -fx-text-alignment: left;
+    /*内容显示方式*/
+    -fx-content-display: inline-block;
+    /*合适高度*/
+    -fx-pref-height: 30px;
+    /*边框色*/
+    -fx-border-color: rgb(230, 230, 230);
+    /*提示文字颜色*/
+    -fx-prompt-text-fill: rgb(162, 162, 162);
+    /*输入文字颜色*/
+    -fx-text-fill: rgb(110, 110, 110);
+    /*边框圆角*/
+    -fx-border-radius: 2px;
+    -fx-background-radius: 2px;
+    /*内边距*/
+    -fx-padding: 5 5 5 5;
+    /*鼠标形状*/
+    -fx-cursor: pointer;
+}
+/*灰色字体*/
+.font-gray {
+    -fx-text-fill: rgb(122, 122, 122);
+}
+.font-black {
+    -fx-text-fill: rgb(27, 27, 27);
+}
+/*边框正常弧度按钮*/
+.button-a {
+    -fx-border-radius: 2px;
+    -fx-background-radius: 2px;
+    -fx-background-color: #080a12;
+}
+
+/*边框圆角按钮*/
+.btn-radius-large {
+    -fx-border-radius: 50px;
+    -fx-background-radius: 50px;
+    -fx-background-color: #a7adc6;
+}
+.image{
+    -fx-background-color: #969c9a;
+}
+
