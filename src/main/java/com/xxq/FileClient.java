@@ -62,7 +62,7 @@ public class FileClient extends AbstractJavaFxApplicationSupport {
             }
             long time = System.currentTimeMillis();
             //从容器里获取一些类给一些赋值,为了方便的给一些工具类调用
-
+            System.out.println(111);
             initialize();
 
         }).start();
