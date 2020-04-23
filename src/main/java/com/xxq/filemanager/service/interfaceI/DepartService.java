@@ -13,4 +13,8 @@ import java.util.List;
  **/
 public interface DepartService {
     List<DepartInfo> selectAllDepart();
+
+    void addOneDepart(String departName);
+
+    int deleteOne(String departName);
 }

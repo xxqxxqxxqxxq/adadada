@@ -7,10 +7,11 @@ import com.xxq.filemanager.gui.view.FileAddView;
 import com.xxq.filemanager.gui.view.FileParaView;
 import com.xxq.filemanager.service.interfaceI.ArchivesService;
 import com.xxq.filemanager.springJavafxSupport.FXMLController;
+import com.xxq.filemanager.table.SimpleBorProperty;
 import com.xxq.filemanager.table.SimpleFileProperty;
 import com.xxq.filemanager.table.SimpleUserProperty;
-import com.xxq.filemanager.util.AlertUtil;
-import com.xxq.filemanager.util.Constants;
+import com.xxq.filemanager.util.*;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -23,6 +24,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.mail.MessagingException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -57,7 +59,8 @@ public class FileMngController implements Initializable {
     private TableColumn<SimpleFileProperty,String> timeCol;
     @FXML
     private TableColumn<SimpleFileProperty,String> statusCol;
-
+    @FXML
+    private TableColumn btnCol;
     @FXML
     private TableColumn cheCol;
     @Autowired
@@ -75,6 +78,53 @@ public class FileMngController implements Initializable {
         createCol.setCellValueFactory(cellData -> cellData.getValue().getCreateBy());
         statusCol.setCellValueFactory(cellData -> cellData.getValue().getBorrowStatus());
         cheCol.setCellValueFactory(new PropertyValueFactory<SimpleFileProperty, CheckBox>("checkBox"));
+        btnCol.setCellFactory((col)->{
+                    TableCell<SimpleFileProperty, String> cell = new TableCell<SimpleFileProperty, String>(){
+
+                        @Override
+                        public void updateItem(String item, boolean empty) {
+                            super.updateItem(item, empty);
+                            //按钮显示文字
+                            Button button = new Button("浏览");
+
+
+                            //按钮点击事件
+                            button.setOnMouseClicked((col) -> {
+                                SimpleFileProperty sfp = new SimpleFileProperty();
+                                int flag = 0;
+                                int index = -1;
+                                for(int i = 0;i<list.size();i++){
+                                     sfp = list.get(i);
+                                    if(sfp.getCheckBox().isSelected()){
+                                        index = i;
+                                        flag ++;
+                                        Integer value = Integer.valueOf(sfp.getArchNo().getValue());
+                                        System.out.println(value);
+                                        FileUtils fileUtils = new FileUtils();
+                                        fileUtils.loadPdf(value);
+                                    }
+                                }
+                                // 如果复选框中选中了不止一条数据
+                                if(flag != 1){
+                                    AlertUtil.alert(Alert.AlertType.WARNING,"请选择其中一条数据",FileClient.getStage());
+                                    return;
+                                }
+
+                            });
+
+                            if (empty) {
+                                //如果此列为空默认不添加元素
+                                setText(null);
+                                setGraphic(null);
+                            } else {
+                                //加载按钮
+                                this.setGraphic(button);
+                            }
+                        }
+                    };
+                    return cell;
+                }
+        );
         fileList();
     }
 
@@ -176,4 +226,9 @@ public class FileMngController implements Initializable {
         }
         logger.info("取消删除");
     }
+//    @FXML
+//    public void showDetails() {
+//        OpenPDF openPDF = new OpenPDF();
+//        openPDF.open();
+//    }
 }

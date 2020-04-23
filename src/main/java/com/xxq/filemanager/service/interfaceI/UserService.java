@@ -16,4 +16,5 @@ public interface UserService {
     void deleteOne(List<SysUserInfo> userInfos);
     void updateUser(SysUserInfo sysUserInfo);
     void insertUser(SysUserInfo sysUserInfo);
+    List<SysUserInfo> queryUserByDID( Integer departId);
 }

@@ -30,4 +30,14 @@ public class DepartServiceImpl implements DepartService {
         );
         return list;
     }
+
+    @Override
+    public void addOneDepart(String departName) {
+        departMapper.insertOne(departName);
+    }
+
+    @Override
+    public int deleteOne(String departName) {
+        return departMapper.deleteOne(departName);
+    }
 }

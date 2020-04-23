@@ -71,6 +71,6 @@
       </HBox>
    </children>
     <stylesheets>
-        <URL value="@usermng.css" />
+        <URL value="@../style/usermng.css" />
     </stylesheets>
 </GridPane>

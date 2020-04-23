@@ -31,7 +31,15 @@ public class UserServiceImpl implements UserService {
         );
         return sysUserInfos;
     }
+    public List<SysUserInfo> queryUserByDID( Integer departId) {
+        List<SysUserInfo> sysUserInfos= new ArrayList<>();
+        List<SysUserEntity> sysUserEntities = sysUserMapper.queryUserByDepartId(departId);
+        sysUserEntities.forEach(x->
+                sysUserInfos.add(SysUserInfo.createFromEntity(x))
 
+        );
+        return sysUserInfos;
+    }
     @Override
     public void deleteOne(List<SysUserInfo> userInfos) {
         for(SysUserInfo sysUserInfo:userInfos){

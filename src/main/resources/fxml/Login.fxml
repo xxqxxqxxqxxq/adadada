@@ -2,62 +2,47 @@
 
 <?import java.lang.*?>
 <?import java.net.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Button?>
 <?import java.net.URL?>
 
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.effect.Reflection?>
-<BorderPane opacity="0.95" styleClass="canvas" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.xxq.filemanager.gui.controller.LoginController">
-
-    <top>
-        <HBox alignment="CENTER" styleClass="top_contain">
-           <children>
-               <Label styleClass="font-gray" text="用户登录" AnchorPane.leftAnchor="10" AnchorPane.topAnchor="20">
-                   <font>
-                       <Font name="System Bold" size="26.0" />
-                   </font>
-               </Label>
-           </children>
-        </HBox>
-    </top>
-
-    <center>
-        <VBox fx:id="center_contain" spacing="25" styleClass="center_contain">
-           <children>
-                  <HBox alignment="center" spacing="30">
-                     <children>
-                         <Label styleClass="label_start" text="账号:" >
-                             <font>
-                                 <Font name="System Bold" size="20.0" />
-                             </font>
-                         </Label>
-                            <TextField fx:id="userName" promptText="请输入账号" styleClass="textfield" />
-                     </children>
-                  </HBox>
-
-                  <HBox alignment="center" spacing="30">
-      <children>
-          <Label styleClass="label_start" text="密码:" >
-              <font>
-                  <Font name="System Bold" size="20.0" />
-              </font>
-          </Label>
-                            <PasswordField fx:id="passWord" promptText="请输入密码" styleClass="textfield" />
-      </children>
-                  </HBox>
-
-                  <HBox alignment="center" prefHeight="60.0" prefWidth="80.0" spacing="30">
-      <children>
-                        <Button mnemonicParsing="false" onAction="#loginAction" prefHeight="50.0" prefWidth="70.0" text="登录" styleClass="btn-radius-large"/>
-      </children>
-                  </HBox>
-           </children>
-
-        </VBox>
-    </center>
-
+<AnchorPane styleClass="login-bg" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.xxq.filemanager.gui.controller.LoginController">
+   <children>
+       <AnchorPane layoutX="-27.0" styleClass="login-card" AnchorPane.leftAnchor="-27.0" AnchorPane.topAnchor="0.0">
+          <children>
+              <Label layoutX="169.0" layoutY="24.0" styleClass="login-title" text="用户登录" AnchorPane.leftAnchor="169.0" AnchorPane.topAnchor="24.0" />
+              <Label styleClass="font-gray" AnchorPane.leftAnchor="190" AnchorPane.topAnchor="65" />
+              <VBox prefWidth="330" spacing="20" AnchorPane.leftAnchor="100" AnchorPane.topAnchor="90">
+                 <children>
+                     <TextField fx:id="userName" focusTraversable="false" promptText="账号" />
+                     <PasswordField fx:id="passWord" focusTraversable="false" promptText="密码" />
+         
+                     <AnchorPane>
+            <children>
+                            <CheckBox text="记住密码" AnchorPane.leftAnchor="0" />
+                            <Label styleClass="font-green" text="忘记密码" AnchorPane.rightAnchor="0" />
+            </children>
+                     </AnchorPane>
+                     <Button onAction="#loginAction" styleClass="login-btn" text="登入" />
+                 </children>
+      
+                  <padding>
+                      <Insets bottom="20" left="20" right="20" top="20" />
+                  </padding>
+              </VBox>
+          </children>
+       </AnchorPane>
+   </children>
     <stylesheets>
-        <URL value="@login.css" />
+        <URL value="@../style/style.css" />
     </stylesheets>
-</BorderPane>
+</AnchorPane>

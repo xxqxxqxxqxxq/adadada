@@ -12,7 +12,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1070.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.xxq.filemanager.gui.controller.AdminController">
     <stylesheets>
-        <URL value="@admin.css" />
+        <URL value="@../style/admin.css" />
     </stylesheets>
     <children>
        <Label layoutX="97.0" layoutY="74.0" text="用户编号" />

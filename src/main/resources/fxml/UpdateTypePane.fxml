@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.xxq.filemanager.gui.controller.UpdateTypeController">
+   <children>
+      <Label layoutX="98.0" layoutY="60.0" text="档案类别号" />
+      <Label layoutX="91.0" layoutY="159.0" text="档案类别名称" />
+      <Label layoutX="73.0" layoutY="264.0" text="新的档案类别名称" />
+      <TextField fx:id="TF_TypeNo" layoutX="279.0" layoutY="54.0" />
+      <TextField fx:id="TF_Type" layoutX="279.0" layoutY="153.0" />
+      <TextField fx:id="TF_NType" layoutX="279.0" layoutY="258.0" />
+      <Button layoutX="169.0" layoutY="327.0" mnemonicParsing="false" onAction="#updateType" text="修改" />
+      <Button layoutX="359.0" layoutY="327.0" mnemonicParsing="false" onAction="#back" text="返回" />
+   </children>
+</AnchorPane>

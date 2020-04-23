@@ -10,6 +10,7 @@ import com.xxq.filemanager.service.interfaceI.ArchivesService;
 import com.xxq.filemanager.springJavafxSupport.FXMLController;
 import com.xxq.filemanager.util.AlertUtil;
 import com.xxq.filemanager.util.Constants;
+import com.xxq.filemanager.util.CreateFile;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -20,6 +21,10 @@ import javafx.scene.control.TextField;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -84,23 +89,24 @@ public class FileAddController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         C_CDepart.getItems().add(Constants.PLEASE_SELECT);
-        for(DepartInfo d: FileClient.departInfoList){
+        for (DepartInfo d : FileClient.departInfoList) {
             C_CDepart.getItems().add(d.getDepartName());
         }
     }
+
     @FXML
-    public void addFile() {
+    public void addFile() throws IOException {
         ArchivesInfo archivesInfo = new ArchivesInfo();
         String departName = null;
-        if(C_CDepart.getSelectionModel().getSelectedItem()!= null){
+        if (C_CDepart.getSelectionModel().getSelectedItem() != null) {
             departName = C_CDepart.getSelectionModel().getSelectedItem().toString();
             // 设置机构名称
-            setdepart(archivesInfo,departName);
-            if (Constants.PLEASE_SELECT.equals(departName)){
+            setdepart(archivesInfo, departName);
+            if (Constants.PLEASE_SELECT.equals(departName)) {
                 departName = null;
             }
         }
-       archivesInfo.setArchNo(Integer.valueOf(JT_ArchNo.getText()));
+        archivesInfo.setArchNo(Integer.valueOf(JT_ArchNo.getText()));
         archivesInfo.setArchivesName(JT_ArchivesName.getText());
         archivesInfo.setCreateBy(JT_CreateBy.getText());
         archivesInfo.setArchivesType(JT_ArchivesType.getText());
@@ -130,15 +136,24 @@ public class FileAddController implements Initializable {
         archivesParaInfo.setIdCard(JT_IDCard.getText());
         archivesParaInfo.setCreateBy(JT_CreateBy.getText());
         archivesService.insertOneFilePara(archivesParaInfo);
-        AlertUtil.alert(Alert.AlertType.INFORMATION,"档案添加成功",FileClient.getStage());
-       fileAddView.hide();
-        logger.info("注册成功！");
+        AlertUtil.alert(Alert.AlertType.INFORMATION, "档案添加成功", FileClient.getStage());
+        fileAddView.hide();
+        logger.info("添加成功！");
+        String data = "编号：" + JT_ArchNo.getText() + "       " +
+                "姓名：" + JT_Name.getText() + "   民族：" + JT_Nation.getText() + "  生日：" + birthdate + "  婚姻状况：" + JT_Marital.getText() + "   " +
+                "邮箱：" + JT_Email.getText() + "   电话：" + JT_Phone.getText() + "   住址：" + JT_Address.getText() + "  政治背景：" + JT_Political.getText() + "   " +
+                "宗教信仰：" + JT_Religion.getText() + "  职位：" + JT_Positions.getText() + "  身份证号：" + JT_IDCard.getText() + "  " +
+                "档案名称:" + JT_ArchivesName.getText() + "  部门编号：" + archivesInfo.getDepartId() + " " +
+                "   档案类别：" + JT_ArchivesType.getText() + "  创建人：" + JT_CreateBy.getText() + "  档案分类号：" + JT_ClassId.getText();
+        CreateFile.writeStringToFile(data, archivesInfo.getArchNo());
         fileMngController.fileList();
 
     }
-    public void setdepart(ArchivesInfo archivesInfo, String text){
-        switch (text){
-            case "党群部门" :
+
+
+    public void setdepart(ArchivesInfo archivesInfo, String text) {
+        switch (text) {
+            case "党群部门":
                 archivesInfo.setDepartId(1);
                 break;
             case "行政部门":

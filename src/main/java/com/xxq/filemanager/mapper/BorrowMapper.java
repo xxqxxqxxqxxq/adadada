@@ -17,4 +17,8 @@ public interface BorrowMapper {
     List<BorrowEntity> queryAll();
     Integer amountA();
     List<BorrowEntity> selectByUserId(Integer archivesId);
+    List<BorrowEntity> queryAllToApprove();
+    int insertOne(BorrowEntity borrowEntity);
+
+    void passOne(BorrowEntity borrowEntity);
 }

@@ -2,18 +2,24 @@ package com.xxq.filemanager.gui.controller;
 
 import com.xxq.filemanager.bean.ArchivesInfo;
 import com.xxq.filemanager.entity.BorrowEntity;
+import com.xxq.filemanager.gui.view.BorApproveView;
 import com.xxq.filemanager.service.interfaceI.BorrowService;
 import com.xxq.filemanager.springJavafxSupport.FXMLController;
 import com.xxq.filemanager.table.SimpleBorProperty;
 import com.xxq.filemanager.table.SimpleFileProperty;
+import com.xxq.filemanager.util.MailUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.mail.MessagingException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -76,10 +82,25 @@ public class BorrowFileController implements Initializable {
     }
     @FXML
     private Label count;
+
+    public Label getCount() {
+        return count;
+    }
+
+    public void setCount(Label count) {
+        this.count = count;
+    }
+
     @FXML
     private TableColumn <SimpleBorProperty,String>labelCol;
     @Autowired
     BorrowService borrowService;
+    @Autowired
+    BorApproveView borApproveView;
+    @Autowired
+    BorApproveController borApproveController;
+    @Autowired
+    MainController mainController;
     private List<BorrowEntity> borrowEntities = new ArrayList<>();
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -101,10 +122,16 @@ public class BorrowFileController implements Initializable {
                             //按钮显示文字
                             Button button = new Button("提醒");
 
+
                             //按钮点击事件
                             button.setOnMouseClicked((col) -> {
                                 //按钮事件自己添加
                                button.setText("已提醒");
+                                try {
+                                    MailUtil.sendAlarmMail();
+                                } catch (MessagingException e) {
+                                    e.printStackTrace();
+                                }
                             });
 
                             if (empty) {
@@ -131,5 +158,10 @@ public class BorrowFileController implements Initializable {
         }
         dataTable.setItems(this.list);
     }
-
+    @FXML
+    public void toApprove() {
+        mainController.getJP_Show().getChildren().clear();
+        mainController.getJP_Show().getChildren().add(borApproveView.getView());
+        borApproveController.showAllToApprove();
+    }
 }

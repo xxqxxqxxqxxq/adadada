@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.xxq.filemanager.gui.controller.UserBorController">
+   <children>
+      <Label layoutX="87.0" layoutY="113.0" text="借阅档案号" />
+      <TextField  layoutX="224.0" fx:id="archNo" layoutY="107.0" />
+      <Label layoutX="102.0" layoutY="176.0" text="借阅人" />
+      <Label layoutX="102.0" layoutY="242.0" text="工号" />
+      <Label layoutX="106.0" layoutY="302.0" text="归还日期" />
+      <TextField fx:id="name" layoutX="224.0" layoutY="170.0" />
+      <TextField  fx:id="userId" layoutX="224.0" layoutY="236.0" />
+      <DatePicker layoutX="220.0" fx:id="backTime" layoutY="296.0" prefHeight="36.0" prefWidth="242.0" />
+      <Button layoutX="191.0" layoutY="350.0" fx:id="submit" mnemonicParsing="false" text="提交申请" onAction="#submit"/>
+   </children>
+</AnchorPane>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script language="javascript" type="text/javascript">
+        window.onload=function(){
+            var box =  document.getElementById('box');
+            var divList = document.getElementById('divList');
+            var copyDiv = document.getElementById('copyDiv');
+            var copyDivW =copyDiv.clientWidth;
+            var speed = 10;    //移动速度，值越大速度越慢
+            function marquee() {
+                if (copyDiv.offsetLeft - box.scrollLeft <= 0){//判断复制的信息是否到达box的最左边
+                    box.scrollLeft -= divList.offsetWidth-copyDivW
+                }else {
+                    box.scrollLeft++
+                }
+            }
+            var timer = setInterval(marquee, speed);//设置定时器
+
+        }
+    </script>
+    <style>
+        .news{
+            float: left;
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+<div  id="box" style="overflow:hidden;height:22px;width:300px;background-color: #7b8986">
+    <div id="divList" style="height: 21px;width: 9999px;">
+        <div class="news">戴口罩、勤洗手，测体温、勤消毒，少聚集、勤通风。</div>
+        <div class="news"> 坚定信心、同舟共济、科学防治、精准施策，坚决打赢疫情防控阻击战</div>
+
+        <!-- 将第一条信息复制 -->
+        <div class="news" id="copyDiv">戴口罩、勤洗手，测体温、勤消毒，少聚集、勤通风。</div>
+    </div>
+
+</div>
+</body>
+</html>

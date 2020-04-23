@@ -6,11 +6,18 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.xxq.filemanager.gui.controller.DepartSearchController">
-   <children>
-      <Label layoutX="35.0" layoutY="73.0" text="请输入机构号或者机构名称：" />
-      <TextField fx:id="TF_Search" layoutX="269.0" layoutY="67.0" />
-      <TextArea layoutX="33.0" layoutY="136.0" prefHeight="200.0" prefWidth="515.0" />
-      <Button layoutX="511.0" layoutY="67.0" mnemonicParsing="false" text="查询" onAction="#btnSearch"/>
-   </children>
-</AnchorPane>
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="com.xxq.filemanager.gui.controller.DepartSearchController">
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    </rowConstraints>
+    <children>
+        <ScrollPane fx:id="sc" prefHeight="600.0" prefWidth="1000.0">
+            <content>
+                <TreeView fx:id="tv" prefHeight="800.0" prefWidth="1000.0" onMouseClicked="#mouseClick"/>
+            </content>
+        </ScrollPane>
+    </children>
+</GridPane>

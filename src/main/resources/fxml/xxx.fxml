@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.web.*?>
 <?import java.lang.*?>
 <?import java.net.*?>
 <?import javafx.scene.image.*?>
@@ -37,91 +38,101 @@
     </top>
     <center>
         <SplitPane dividerPositions="0.5">
-           <items>
-               <AnchorPane minWidth="200" styleClass="dark-gray-theme">
-                  <children>
-                      <Accordion AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                          <panes>
-                              <TitledPane fx:id="T_TypMng" alignment="TOP_LEFT" text="档案类别管理">
-                                 <content>
-                                     <VBox minHeight="100" spacing="10" styleClass="dark-theme">
-                                        <children>
-                                            <Button fx:id="JB_Kind" styleClass="menu-btn" text="档案类别" />
-                                            <Button styleClass="menu-btn" text="分类统计" />
-                                        </children>
-                                     </VBox>
-                                 </content>
-                              </TitledPane>
-                              <TitledPane fx:id="T_FileMng" alignment="TOP_LEFT" text="档案管理">
-                                 <content>
-                                     <VBox minHeight="100" spacing="10" styleClass="dark-theme">
-                                        <children>
-                                            <Button fx:id="JB_FileMng" onAction="#dealFileMng" styleClass="menu-btn" text="档案信息" />
-                                            <Button fx:id="JB_ShowFile" onAction="#showFile" styleClass="menu-btn" text="档案信息" />
-                                        </children>
-                                     </VBox>
-                                 </content>
-                              </TitledPane>
-                              <TitledPane fx:id="T_UserMng" alignment="TOP_LEFT" text="用户管理">
-                                 <content>
-                                     <VBox minHeight="130" spacing="10" styleClass="dark-theme">
-                                        <children>
-                                            <Button onAction="#dealAdminInfo" styleClass="menu-btn" text="管理员信息" />
-                                            <Button fx:id="JB_UserMng" onAction="#dealUserManager" styleClass="menu-btn" text="用户信息" />
-                                        </children>
-                                     </VBox>
-                                 </content>
-                              </TitledPane>
-                              <TitledPane fx:id="T_BorMng" alignment="TOP_LEFT" text="借阅管理">
-                                 <content>
-                                     <VBox minHeight="130" spacing="10" styleClass="dark-theme">
-                                        <children>
-                                            <Button fx:id="JB_BorrowMng" onAction="#dealArchBorrow" styleClass="menu-btn" text="借阅详情" />
-                                            <Button styleClass="menu-btn" text="借阅审批" />
-                                        </children>
-                                     </VBox>
-                                 </content>
-                              </TitledPane>
-                              <TitledPane fx:id="T_DepMng" alignment="TOP_LEFT" text="机构管理">
-                                 <content>
-                                     <VBox minHeight="130" spacing="10" styleClass="dark-theme">
-                                        <children>
-                                            <Button fx:id="JB_DepartMng" styleClass="menu-btn" text="机构查询" onAction="#dealDepartSearch"/>
-                                            <Button styleClass="menu-btn" text="机构增加" />
-                                            <Button styleClass="menu-btn" text="机构删除" />
-                                        </children>
-                                     </VBox>
-                                 </content>
-                              </TitledPane>
-                        <TitledPane fx:id="T_PerMng" alignment="TOP_LEFT" text="个人中心">
-                           <content>
-                              <VBox minHeight="130" spacing="10" styleClass="dark-theme">
-                                 <children>
-                                    <Button fx:id="JB_PersonMng" onAction="#dealPersonMng" styleClass="menu-btn" text="个人资料" />
-                                    <Button styleClass="menu-btn" text="借阅申请" />
-                                     <Button onAction="#dealMyBorrow" styleClass="menu-btn" text="我的借阅" />
-                                 </children>
-                              </VBox>
-                           </content>
-                        </TitledPane>
-                          </panes>
-                      </Accordion>
-                  </children>
-               </AnchorPane>
-   
-               <!--中间内容面板-->
-               <StackPane fx:id="JP_Show" minWidth="1060" styleClass="default-theme">
-                   <padding>
-                       <Insets bottom="5" left="30" right="10" top="10" />
-                   </padding>
-               </StackPane>
-           </items>
+            <items>
+                <AnchorPane minWidth="200" styleClass="dark-gray-theme">
+                    <children>
+                        <Accordion AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <panes>
+                                <TitledPane fx:id="T_TypMng" alignment="TOP_LEFT" text="档案类别管理">
+                                    <content>
+                                        <VBox minHeight="100" spacing="10" styleClass="dark-theme">
+                                            <children>
+                                                <Button fx:id="JB_Kind" onAction="#dealFileType" styleClass="menu-btn" text="所有档案类别" />
+                                                <Button fx:id="JB_A" onAction="#dealDeleteAndAdd" styleClass="menu-btn" text="删除和增加" />
+                                            </children>
+                                        </VBox>
+                                    </content>
+                                </TitledPane>
+                                <TitledPane fx:id="T_FileMng" alignment="TOP_LEFT" text="档案管理">
+                                    <content>
+                                        <VBox minHeight="100" spacing="10" styleClass="dark-theme">
+                                            <children>
+                                                <Button fx:id="JB_FileMng" onAction="#dealFileMng" styleClass="menu-btn" text="档案信息" />
+                                                <Button fx:id="JB_ShowFile" onAction="#showFile" styleClass="menu-btn" text="档案信息" />
+                                            </children>
+                                        </VBox>
+                                    </content>
+                                </TitledPane>
+                                <TitledPane fx:id="T_UserMng" alignment="TOP_LEFT" text="用户管理">
+                                    <content>
+                                        <VBox minHeight="130" spacing="10" styleClass="dark-theme">
+                                            <children>
+                                                <Button onAction="#dealAdminInfo" styleClass="menu-btn" text="管理员信息" />
+                                                <Button fx:id="JB_UserMng" onAction="#dealUserManager" styleClass="menu-btn" text="用户信息" />
+                                            </children>
+                                        </VBox>
+                                    </content>
+                                </TitledPane>
+                                <TitledPane fx:id="T_BorMng" alignment="TOP_LEFT" text="借阅管理">
+                                    <content>
+                                        <VBox minHeight="130" spacing="10" styleClass="dark-theme">
+                                            <children>
+                                                <Button fx:id="JB_BorrowMng" onAction="#dealArchBorrow" styleClass="menu-btn" text="借阅详情" />
+                                            </children>
+                                        </VBox>
+                                    </content>
+                                </TitledPane>
+                                <TitledPane fx:id="T_DepMng" alignment="TOP_LEFT" text="机构管理">
+                                    <content>
+                                        <VBox minHeight="130" spacing="10" styleClass="dark-theme">
+                                            <children>
+                                                <Button fx:id="JB_DepartMng" onAction="#dealDepartSearch" styleClass="menu-btn" text="机构查询" />
+                                            </children>
+                                        </VBox>
+                                    </content>
+                                </TitledPane>
+                                <TitledPane fx:id="T_OtherMng" alignment="TOP_LEFT" text="其他">
+                                    <content>
+                                        <VBox minHeight="130" spacing="10" styleClass="dark-theme">
+                                            <children>
+                                                <Button fx:id="JB_OtherMng" onAction="#dealOtherMng" styleClass="menu-btn" text="数据统计" />
+                                            </children>
+                                        </VBox>
+                                    </content>
+                                </TitledPane>
+                                <TitledPane fx:id="T_PerMng" alignment="TOP_LEFT" text="个人中心">
+                                    <content>
+                                        <VBox minHeight="130" spacing="10" styleClass="dark-theme">
+                                            <children>
+                                                <Button fx:id="JB_PersonMng" onAction="#dealPersonMng" styleClass="menu-btn" text="个人资料" />
+                                                <Button onAction="#dealUserBor" styleClass="menu-btn" text="借阅申请" />
+                                                <Button onAction="#dealMyBorrow" styleClass="menu-btn" text="我的借阅" />
+                                            </children>
+                                        </VBox>
+                                    </content>
+                                </TitledPane>
+
+                            </panes>
+                        </Accordion>
+                    </children>
+                </AnchorPane>
+
+                <!--中间内容面板-->
+                <StackPane fx:id="JP_Show" minWidth="1060" styleClass="default-theme">
+                    <padding>
+                        <Insets bottom="5" left="30" right="10" top="10" />
+                    </padding>
+               <children>
+                  <WebView fx:id="webView" prefHeight="31.0" prefWidth="330.0" style="-fx-background-color:  #7b8986;-fx-border-style: 0" />
+               </children>
+                </StackPane>
+            </items>
             <padding>
                 <Insets top="10" />
             </padding>
         </SplitPane>
     </center>
     <stylesheets>
-        <URL value="@test.css" />
+        <URL value="@../style/test.css" />
     </stylesheets>
 </BorderPane>

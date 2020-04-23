@@ -21,6 +21,7 @@ public class SimpleFileProperty {
     private SimpleStringProperty archNo;
     private SimpleStringProperty number;
     private SimpleStringProperty archivesType;
+    private SimpleStringProperty classId;
     private SimpleStringProperty archivesName;
     private SimpleStringProperty borrowStatus;
     /**
@@ -31,7 +32,7 @@ public class SimpleFileProperty {
      * 创建人
      */
     private SimpleStringProperty createBy;
-
+    private Button button=new Button("提醒");
     private CheckBox checkBox= new CheckBox();
     public SimpleFileProperty() {
         id = new SimpleStringProperty();
@@ -40,12 +41,14 @@ public class SimpleFileProperty {
         createBy = new SimpleStringProperty();
         borrowStatus = new SimpleStringProperty();
         createTime = new SimpleStringProperty();
+        classId = new SimpleStringProperty();
     }
     public SimpleFileProperty(ArchivesInfo archives, int num, String flag){
         id = new SimpleStringProperty(String.valueOf(archives.getId()));
         archNo = new SimpleStringProperty(String.valueOf(archives.getArchNo()));
         number = new SimpleStringProperty(String.valueOf(num));
         archivesName = new SimpleStringProperty(archives.getArchivesName());
+        classId = new SimpleStringProperty(String.valueOf(archives.getClassId()));
         archivesType = new SimpleStringProperty(archives.getArchivesType());
         borrowStatus = new SimpleStringProperty(archives.getBorrowStatus());
         createBy= new SimpleStringProperty(archives.getCreateBy());
@@ -61,7 +64,7 @@ public class SimpleFileProperty {
     public void setId(String id) {
         this.id = new SimpleStringProperty(id);
     }
-
+    public void setClassId(String classId){this.classId=new SimpleStringProperty(classId);}
     public void setArchivesName(String archivesName) {
         this.archivesName= new SimpleStringProperty(archivesName);
     }
@@ -77,6 +80,10 @@ public class SimpleFileProperty {
 
     public SimpleStringProperty getId() {
         return id;
+    }
+
+    public SimpleStringProperty getClassId() {
+        return classId;
     }
     public SimpleStringProperty getArchNo() {
         return archNo;
@@ -105,7 +112,7 @@ public class SimpleFileProperty {
     public CheckBox getCheckBox() {
         return checkBox;
     }
-
+    public Button getButton(){return button;}
     public void setDelCheckBox(CheckBox checkBox) {
         this.checkBox = checkBox;
     }

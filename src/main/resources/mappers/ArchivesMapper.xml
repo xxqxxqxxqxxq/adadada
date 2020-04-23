@@ -79,7 +79,77 @@
          #{createBy}
          )
     </insert>
+    <insert id="insertType" parameterType="com.xxq.filemanager.entity.ArchTypeEntity">
+        insert into archives_classification
+        (
+        type,
+        type_no,
+        create_time,
+        update_time,
+        create_by
+         )
+         values (
+         #{type},
+         #{typeNo},
+         sysdate(),
+         sysdate(),
+         #{createBy}
+         )
+    </insert>
+    <select id="selectByArchClassId" resultType="com.xxq.filemanager.entity.ArchivesEntity" parameterType="com.xxq.filemanager.entity.ArchivesEntity">
+        select
+        id,
+        arch_no archNo,
+        classfi_id classId,
+        depart_id departId,
+        archives_name archivesName,
+        archives_type archivesType,
+        borrowStatus,
+        create_time createTime,
+        update_time updateTime,
+        create_by createBy,
+        update_by updateBy,
+        checkFlag
+        from archives
+        where
+        delFlag=0
+        and classfi_id=#{classId}
+        order by id  asc
+    </select>
+    <select id="queryAllType" resultType="com.xxq.filemanager.entity.ArchTypeEntity">
+        select
+       id, type,type_no typeNo,create_time createTime, create_by createBy, delFlag, checkFlag
+        from archives_classification
+        where  delFlag = 0
+    </select>
+    <update id="deletOneType" parameterType="com.xxq.filemanager.entity.ArchTypeEntity">
+        update archives_classification
+        set
+        delFlag = 1
+        where type_no=#{typeNo}
+    </update>
+    <update id="updateType" parameterType="com.xxq.filemanager.entity.ArchTypeEntity">
+        update archives_classification
+        set
+        type = #{type}
+        where
+        type_no = #{typeNo}
 
+    </update>
+    <update id="updateBorStatusByArchNo" parameterType="com.xxq.filemanager.entity.ArchTypeEntity">
+        update archives
+        set
+        borrowStatus=#{borrowStatus}
+        where
+        arch_no = #{archNo}
 
+    </update>
+    <update id="updateArchClassId" parameterType="com.xxq.filemanager.entity.ArchivesEntity">
+        update archives
+        set
+        classfi_id= #{classId}
+        where
+        delFlag = 0
 
+    </update>
 </mapper>

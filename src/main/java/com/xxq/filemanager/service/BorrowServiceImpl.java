@@ -33,4 +33,23 @@ public class BorrowServiceImpl implements BorrowService {
     public List<BorrowEntity> queryByUserId(Integer userId) {
         return borrowMapper.selectByUserId(userId);
     }
+
+    /**
+     * 查询所有待审批的请求
+     * @return
+     */
+    @Override
+    public List<BorrowEntity> queryAllToApprove() {
+        return borrowMapper.queryAllToApprove();
+    }
+
+    @Override
+    public int addOne(BorrowEntity borrowEntity) {
+       return borrowMapper.insertOne(borrowEntity);
+    }
+
+    @Override
+    public void approve(BorrowEntity borrowEntity) {
+        borrowMapper.passOne(borrowEntity);
+    }
 }

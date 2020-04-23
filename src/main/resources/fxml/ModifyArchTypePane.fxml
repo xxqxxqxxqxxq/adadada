@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.xxq.filemanager.gui.controller.ModifyTypeController">
+   <children>
+      <Label layoutX="94.0" layoutY="87.0" text="请输入档案号:" />
+      <TextField fx:id="TF_TypeNo" layoutX="224.0" layoutY="81.0" />
+      <Button layoutX="147.0" layoutY="224.0" mnemonicParsing="false" onAction="#addNewType" text="添加" />
+      <Button layoutX="424.0" layoutY="224.0" mnemonicParsing="false" onAction="#deleteOne" text="删除" />
+      <Label layoutX="118.0" layoutY="135.0" text="档案类型：" />
+      <TextField fx:id="TF_Type" layoutX="224.0" layoutY="129.0" />
+   </children>
+</AnchorPane>

@@ -39,6 +39,15 @@ public class ShowFileController implements Initializable {
     private static Logger logger = Logger.getLogger(ShowFileController.class);
     @FXML
     private ScrollPane scPane;
+
+    public ScrollPane getScPane() {
+        return scPane;
+    }
+
+    public void setScPane(ScrollPane scPane) {
+        this.scPane = scPane;
+    }
+
     public static Map<Integer, FileController> filePanes = new HashMap<>();
     public static FlowPane flowPane = new FlowPane();
     static {

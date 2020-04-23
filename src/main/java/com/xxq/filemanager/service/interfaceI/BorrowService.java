@@ -16,4 +16,8 @@ public interface BorrowService {
     List<BorrowEntity> queryAll();
     Integer toApprove();
     List<BorrowEntity> queryByUserId(Integer userId);
+    List<BorrowEntity> queryAllToApprove();
+    int addOne(BorrowEntity borrowEntity);
+
+    void approve(BorrowEntity borrowEntity);
 }

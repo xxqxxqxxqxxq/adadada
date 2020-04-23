@@ -44,6 +44,7 @@
             <TableColumn fx:id="timeCol" prefWidth="116.0" text="创建时间" />
             <TableColumn fx:id="createCol" prefWidth="116.0" text="责任人" />
             <TableColumn fx:id="statusCol" prefWidth="116.0" text="借阅状态" />
+            <TableColumn fx:id="btnCol" prefWidth="116.0" text="查看文件" />
         </columns>
       </TableView>
       <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
@@ -51,10 +52,11 @@
             <Button mnemonicParsing="false" onAction="#look" styleClass="btn-radius-large,blue-theme" text="查看" />
             <Button mnemonicParsing="false" onAction="#addFile" styleClass="btn-radius-large,warm-theme" text="新增" />
             <Button mnemonicParsing="false" onAction="#deleteFile" styleClass="btn-radius-large,warning-theme" text="删除" />
+<!--             <Button mnemonicParsing="false" onAction="#showDetails" styleClass="btn-radius-large,warning-theme" text="删除" />-->
          </children>
       </HBox>
    </children>
     <stylesheets>
-        <URL value="@filemng.css" />
+        <URL value="@../style/filemng.css" />
     </stylesheets>
 </GridPane>

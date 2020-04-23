@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.xxq.filemanager.gui.controller.FileTypeParaController">
+   <children>
+      <Label layoutX="65.0" layoutY="44.0" text="档案类别" />
+      <TextField fx:id="TF_Type" layoutX="168.0" layoutY="38.0" />
+      <TableView fx:id="dataTable" layoutX="33.0" layoutY="83.0" prefHeight="288.0" prefWidth="523.0">
+        <columns>
+            <TableColumn fx:id="numCol" prefWidth="119.0" text="序号" />
+          <TableColumn fx:id="archNoCol" prefWidth="119.0" text="档案号" />
+          <TableColumn fx:id="archNameCol" prefWidth="105.0" text="档案名称" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

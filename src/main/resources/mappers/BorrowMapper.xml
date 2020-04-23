@@ -16,6 +16,20 @@
         from archives_borrowing
         where lendFlag=1;
     </select>
+    <select id="queryAllToApprove" resultType="com.xxq.filemanager.entity.BorrowEntity">
+        select
+       id,
+       archives_id archivesId,
+        user_id userId,
+        b_name BName,
+         b_date BDate,
+           back_time backTime,
+            approve,
+             lendFlag,
+             checkFlag
+        from archives_borrowing
+        where lendFlag=0;
+    </select>
     <select id="amountA" resultType="integer" >
         select count(*) from archives_borrowing where lendFlag=0;
     </select>
@@ -36,8 +50,39 @@
       on
       a.archives_id = b.arch_no
       where a.user_id=#{userId}
+      and a.lendFlag=1
     </select>
+    <update id="passOne" parameterType="com.xxq.filemanager.entity.BorrowEntity">
+        update archives_borrowing
+        set
+        <if test="approve!=null">
+            approve = #{approve},
+        </if>
 
+        <if test="lendFlag!=null">
+            lendFlag = 1
+        </if>
+
+    </update>
+    <insert id="insertOne" parameterType="com.xxq.filemanager.entity.BorrowEntity">
+        insert into archives_borrowing
+        (
+        archives_id,
+        user_id,
+        b_name,
+        b_date,
+        borrow_time,
+         back_time
+          )
+        values (
+        #{archivesId},
+        #{userId},
+        #{BName},
+        sysdate(),
+         sysdate(),
+        #{backTime}
+        )
+    </insert>
 
 
 </mapper>

@@ -90,7 +90,7 @@ public class FileClient extends AbstractJavaFxApplicationSupport {
      * 所有窗口的初始化都在这里提前进行加载
      */
     private static void initStage() {
-        logger.info("串口初始化");
+        logger.info("窗口初始化");
         ContextConfig.context.getBean(MainView.class).getView();
         ContextConfig.context.getBean(LoginView.class).getView();
         ContextConfig.context.getBean(FileAddView.class).getView();
@@ -105,6 +105,15 @@ public class FileClient extends AbstractJavaFxApplicationSupport {
         ContextConfig.context.getBean(FileView.class).getView();
         ContextConfig.context.getBean(MyBorrowView.class).getView();
         ContextConfig.context.getBean(DepartSearchView.class).getView();
+        ContextConfig.context.getBean(FileTypeView.class).getView();
+        ContextConfig.context.getBean(FileTypeParaView.class).getView();
+        ContextConfig.context.getBean(UserBorView.class).getView();
+        ContextConfig.context.getBean(BorApproveView.class).getView();
+        ContextConfig.context.getBean(ModifyTypeView.class).getView();
+        ContextConfig.context.getBean(UpdateTypeView.class).getView();
+        ContextConfig.context.getBean(OtherView.class).getView();
+        ContextConfig.context.getBean(AddDepartView.class).getView();
+
     }
 
 }

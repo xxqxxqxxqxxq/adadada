@@ -5,6 +5,7 @@ import com.xxq.filemanager.bean.ArchivesInfo;
 import com.xxq.filemanager.gui.view.*;
 import com.xxq.filemanager.springJavafxSupport.FXMLController;
 import com.xxq.filemanager.springJavafxSupport.FXMLView;
+import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,11 +15,15 @@ import javafx.scene.control.TitledPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 import javafx.stage.Modality;
 import javafx.stage.StageStyle;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import sun.applet.Main;
 
+import javax.swing.plaf.nimbus.State;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -32,6 +37,7 @@ import java.util.ResourceBundle;
 @FXMLController
 public class MainController implements Initializable {
     private static Logger logger = Logger.getLogger(MainController.class);
+    private MainView mainView;
     /**
      * 注销按钮
      */
@@ -86,6 +92,8 @@ public class MainController implements Initializable {
     @FXML
     StackPane JP_Show;
     @FXML
+    AnchorPane A_Gonggao;
+    @FXML
     TitledPane T_UserMng;
     @FXML
     TitledPane T_TypMng;
@@ -97,6 +105,8 @@ public class MainController implements Initializable {
     TitledPane T_BorMng;
     @FXML
     TitledPane T_DepMng;
+    @FXML
+    TitledPane T_OtherMng;
 
     @Autowired
     UserMngView userMngView;
@@ -122,7 +132,18 @@ public class MainController implements Initializable {
     MyBorrowView myBorrowView;
     @Autowired
     DepartSearchView departSearchView;
-
+    @Autowired
+    UserBorView userBorView;
+    @Autowired
+    FileTypeView fileTypeView;
+    @Autowired
+    BorApproveView borApproveView;
+    @Autowired
+    ModifyTypeView modifyTypeView;
+    @Autowired
+    UpdateTypeView updateTypeView;
+    @Autowired
+    OtherView otherView;
     @Autowired
     PersonManagerController personManagerController;
 
@@ -131,11 +152,16 @@ public class MainController implements Initializable {
 
     @Autowired
     UserManagerController userManagerController;
-
+    @Autowired
+    OtherController otherController;
     @Autowired
     ShowFileController showFileController;
     @Autowired
     MyBorrowController myBorrowController;
+    @Autowired
+    FileDiviMngController fileDiviMngController;
+    @Autowired
+    BorApproveController borApproveController;
 
     public Button getJB_ShowFile() {
         return JB_ShowFile;
@@ -147,6 +173,22 @@ public class MainController implements Initializable {
 
     public Button getJB_Kind() {
         return JB_Kind;
+    }
+
+    public TitledPane getT_OtherMng() {
+        return T_OtherMng;
+    }
+
+    public MainView getMainView() {
+        return mainView;
+    }
+
+    public void setMainView(MainView mainView) {
+        this.mainView = mainView;
+    }
+
+    public void setT_OtherMng(TitledPane t_OtherMng) {
+        T_OtherMng = t_OtherMng;
     }
 
     public TitledPane getT_UserMng() {
@@ -266,6 +308,7 @@ public class MainController implements Initializable {
         this.JB_SignOut = JB_SignOut;
     }
 
+
     @FXML
     public void loginout() {
         FileClient.sysUser = null;
@@ -277,9 +320,11 @@ public class MainController implements Initializable {
         T_FileMng.setVisible(false);
         T_TypMng.setVisible(false);
         T_DepMng.setVisible(false);
+        T_OtherMng.setVisible(false);
         JP_Show.setVisible(false);
     }
-
+    @FXML
+    private WebView webView;
     @FXML
     public void login() {
         FileClient.showView(LoginView.class, Modality.APPLICATION_MODAL);
@@ -298,6 +343,12 @@ public class MainController implements Initializable {
         T_FileMng.setVisible(false);
         T_TypMng.setVisible(false);
         T_DepMng.setVisible(false);
+        T_OtherMng.setVisible(false);
+
+        final WebEngine webengine = webView.getEngine();
+        String url = Main.class.getResource("/html/index.html").toExternalForm();
+        webengine.load(url);
+
     }
 
     @FXML
@@ -332,6 +383,7 @@ public class MainController implements Initializable {
         adminController.showAdmin();
     }
     public  static boolean flag = true;
+    public  static boolean fileTypeFlag = true;
     @FXML
     public void showFile() {
         JP_Show.getChildren().clear();
@@ -348,5 +400,30 @@ public class MainController implements Initializable {
     public void dealDepartSearch() {
         JP_Show.getChildren().clear();
         JP_Show.getChildren().add(departSearchView.getView());
+    }
+    @FXML
+    public void dealFileType() {
+        JP_Show.getChildren().clear();
+        JP_Show.getChildren().add(fileTypeView.getView());
+       // fileDiviMngController.show();
+        fileDiviMngController.show1();
+    }
+    @FXML
+    public void dealUserBor() {
+        JP_Show.getChildren().clear();
+        JP_Show.getChildren().add(userBorView.getView());
+    }
+    @FXML
+    public void dealDeleteAndAdd() {
+        JP_Show.getChildren().clear();
+        JP_Show.getChildren().add(modifyTypeView.getView());
+
+    }
+    @FXML
+    public void dealOtherMng() {
+        JP_Show.getChildren().clear();
+        JP_Show.getChildren().add(otherView.getView());
+        otherController.lineChart();
+        otherController.show();
     }
 }

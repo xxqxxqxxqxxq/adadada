@@ -2,8 +2,10 @@ package com.xxq.filemanager.service;
 
 import com.xxq.filemanager.bean.ArchivesInfo;
 import com.xxq.filemanager.bean.ArchivesParaInfo;
+import com.xxq.filemanager.entity.ArchTypeEntity;
 import com.xxq.filemanager.entity.ArchivesEntity;
 import com.xxq.filemanager.entity.ArchivesParaEntity;
+import com.xxq.filemanager.entity.FileTypeEntity;
 import com.xxq.filemanager.mapper.ArchivesMapper;
 import com.xxq.filemanager.mapper.ArchivesParaMapper;
 import com.xxq.filemanager.service.interfaceI.ArchivesService;
@@ -38,6 +40,12 @@ public class ArchiveServiceImpl implements ArchivesService {
         return archEntityToInfo(archivesEntities);
     }
 
+    @Override
+    public List<ArchivesInfo> queryArchByClassId(ArchivesInfo archivesInfo) {
+        return archEntityToInfo(archivesMapper.selectByArchClassId(archivesInfo.getClassId()));
+
+    }
+
     /**
      * 根据档案id查询，档案参数
      *
@@ -65,6 +73,36 @@ public class ArchiveServiceImpl implements ArchivesService {
     @Override
     public void insertOneFilePara(ArchivesParaInfo archivesParaInfo) {
         archivesParaMapper.insertOne(ArchivesParaEntity.createEntityFromInfo(archivesParaInfo));
+    }
+
+    @Override
+    public List<ArchTypeEntity> queryAllType() {
+        return archivesMapper.queryAllType();
+    }
+
+    @Override
+    public boolean addOneType(ArchTypeEntity archTypeEntity) {
+        return archivesMapper.insertType(archTypeEntity);
+    }
+
+    @Override
+    public void deleteOneType(ArchTypeEntity archTypeEntity) {
+        archivesMapper.deletOneType(archTypeEntity);
+    }
+
+    @Override
+    public boolean updateOneType(ArchTypeEntity archTypeEntity) {
+        return archivesMapper.updateType(archTypeEntity);
+    }
+
+    @Override
+    public boolean updateArchClassId(ArchivesEntity archivesEntity) {
+        return archivesMapper.updateArchClassId(archivesEntity);
+    }
+
+    @Override
+    public int updateBorStatus(ArchivesEntity archivesEntity) {
+        return archivesMapper.updateBorStatusByArchNo(archivesEntity);
     }
 
     /**

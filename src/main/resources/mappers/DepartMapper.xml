@@ -9,10 +9,26 @@
         amount,
         del_flag delFlag
         from sys_depart
-
+        where  del_flag = 0
     </select>
+    <insert id="insertOne" parameterType="string">
+        insert into
+        sys_depart
+        (
+        d_name,
+        amount
 
-
+        )
+        values (
+        #{departName},
+        0
+        )
+    </insert>
+    <update id="deleteOne" parameterType="string">
+        update sys_depart
+        set del_flag =1
+        where d_name = #{departName}
+    </update>
 
 
 
