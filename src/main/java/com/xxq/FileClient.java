@@ -34,7 +34,6 @@ public class FileClient extends AbstractJavaFxApplicationSupport {
     private static Logger logger=Logger.getLogger(FileClient.class);
 
     public static SysUserInfo sysUser;
-    public static List<SysUserInfo> users;
     public static  List<DepartInfo> departInfoList = new ArrayList<>();
     public static  List<ArchivesInfo> archvivesList = new ArrayList<>();
     public static List<BorrowEntity> borrowList = new ArrayList<>();
@@ -113,7 +112,8 @@ public class FileClient extends AbstractJavaFxApplicationSupport {
         ContextConfig.context.getBean(UpdateTypeView.class).getView();
         ContextConfig.context.getBean(OtherView.class).getView();
         ContextConfig.context.getBean(AddDepartView.class).getView();
-
+        ContextConfig.context.getBean(UserLoginView.class).getView();
+        ContextConfig.context.getBean(UploadView.class).getView();
     }
 
 }

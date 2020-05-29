@@ -12,7 +12,7 @@ import org.apache.ibatis.annotations.Mapper;
  **/
 @Mapper
 public interface ArchivesParaMapper {
-    ArchivesParaEntity selectParaByArchID(Integer id);
+    ArchivesParaEntity selectParaByArchID(String id);
 
     void insertOne(ArchivesParaEntity entityFromInfo);
 }

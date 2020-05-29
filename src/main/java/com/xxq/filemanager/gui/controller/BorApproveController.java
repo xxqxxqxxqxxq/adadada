@@ -11,6 +11,7 @@ import com.xxq.filemanager.service.interfaceI.BorrowService;
 import com.xxq.filemanager.service.interfaceI.UserService;
 import com.xxq.filemanager.springJavafxSupport.FXMLController;
 import com.xxq.filemanager.util.AlertUtil;
+import com.xxq.filemanager.util.DateUtil;
 import com.xxq.filemanager.util.MailUtil;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -61,7 +62,7 @@ public class BorApproveController implements Initializable {
          borrowEntities = borrowService.queryAllToApprove();
        for (int i =0;i<borrowEntities.size();i++){
            BorrowEntity borrowEntity = borrowEntities.get(i);
-           Label label = new Label(borrowEntity.getBName()+"的借阅申请：借阅档案号："+borrowEntity.getArchivesId()+"  归还日期："+borrowEntity.getBackTime());
+           Label label = new Label(borrowEntity.getBName()+"的借阅申请：借阅档案号："+borrowEntity.getArchivesId()+"  归还日期："+ DateUtil.tranfer(borrowEntity.getBackTime()));
            label.setLayoutY(i*30);
 
                Show.getChildren().add(label);

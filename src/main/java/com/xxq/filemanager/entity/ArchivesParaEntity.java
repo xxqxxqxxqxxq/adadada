@@ -14,7 +14,7 @@ import java.util.Date;
 
 public class ArchivesParaEntity {
     private Integer id;
-    private Integer archivesId;
+    private String archivesId;
     private String name;
     private String gender;
     private Date birthdate;
@@ -102,11 +102,11 @@ public class ArchivesParaEntity {
                 '}';
     }
 
-    public Integer getArchivesId() {
+    public String getArchivesId() {
         return archivesId;
     }
 
-    public void setArchivesId(Integer archivesId) {
+    public void setArchivesId(String archivesId) {
         this.archivesId = archivesId;
     }
 

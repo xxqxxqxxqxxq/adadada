@@ -15,7 +15,9 @@ import java.io.File;
  * @Version V1.0
  **/
 public class OpenPDF extends Component {
-    public void open(){
+
+    public String open(){
+        String photoPath = "";
         JFileChooser chooseFile = new JFileChooser();
         FileFilter filter = new FileFilter() {
             //要过滤的文件
@@ -25,7 +27,7 @@ public class OpenPDF extends Component {
                     return true;
                 }
                 //显示满足条件的文件
-                return f.getName().endsWith(".txt") || f.getName().endsWith(".java");
+                return f.getName().endsWith(".txt") || f.getName().endsWith(".png");
             }
 
             /**
@@ -33,7 +35,7 @@ public class OpenPDF extends Component {
              */
             public String getDescription() {
 
-                return "*.txt,*.java";
+                return "*.txt,*.png";
             }
         };
 
@@ -66,6 +68,7 @@ public class OpenPDF extends Component {
             Runtime runtime = Runtime.getRuntime();
             try {
                 System.out.println(f.getAbsolutePath());
+                photoPath=f.getAbsolutePath();
                 //打开文件
                 runtime.exec("rundll32 url.dll FileProtocolHandler " + f.getAbsolutePath());
             } catch (Exception ex) {
@@ -73,6 +76,7 @@ public class OpenPDF extends Component {
             }
 
         }
+        return photoPath;
     }
 
 }

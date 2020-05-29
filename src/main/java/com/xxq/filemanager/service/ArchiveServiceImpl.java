@@ -2,10 +2,7 @@ package com.xxq.filemanager.service;
 
 import com.xxq.filemanager.bean.ArchivesInfo;
 import com.xxq.filemanager.bean.ArchivesParaInfo;
-import com.xxq.filemanager.entity.ArchTypeEntity;
-import com.xxq.filemanager.entity.ArchivesEntity;
-import com.xxq.filemanager.entity.ArchivesParaEntity;
-import com.xxq.filemanager.entity.FileTypeEntity;
+import com.xxq.filemanager.entity.*;
 import com.xxq.filemanager.mapper.ArchivesMapper;
 import com.xxq.filemanager.mapper.ArchivesParaMapper;
 import com.xxq.filemanager.service.interfaceI.ArchivesService;
@@ -53,14 +50,14 @@ public class ArchiveServiceImpl implements ArchivesService {
      * @return
      */
     @Override
-    public ArchivesParaInfo queryArchParaByAID(Integer id) {
+    public ArchivesParaInfo queryArchParaByAID(String id) {
         return ArchivesParaInfo.createInfoFromEntity(archivesParaMapper.selectParaByArchID(id));
     }
 
     @Override
     public void deleteOneFile(List<ArchivesInfo> archivesInfos) {
         for(ArchivesInfo a : archivesInfos){
-            archivesMapper.deleteFile(a.getArchNo());
+            archivesMapper.deleteFile(ArchivesEntity.createEntityFromInfo(a));
         }
 
     }
@@ -86,8 +83,8 @@ public class ArchiveServiceImpl implements ArchivesService {
     }
 
     @Override
-    public void deleteOneType(ArchTypeEntity archTypeEntity) {
-        archivesMapper.deletOneType(archTypeEntity);
+    public boolean deleteOneType(ArchTypeEntity archTypeEntity) {
+       return archivesMapper.deletOneType(archTypeEntity);
     }
 
     @Override
@@ -105,6 +102,21 @@ public class ArchiveServiceImpl implements ArchivesService {
         return archivesMapper.updateBorStatusByArchNo(archivesEntity);
     }
 
+    @Override
+    public int insertArchPath(ArchPathEntity archPathEntity) {
+        return archivesMapper.insertPath(archPathEntity);
+    }
+
+    @Override
+    public ArchTypeEntity queryArchType(Integer typeNo) {
+        return archivesMapper.queryTypeByTypeNo(typeNo);
+    }
+
+    @Override
+    public String findPath(String archNo) {
+        return archivesMapper.findPath(archNo);
+    }
+
     /**
      * 将List<ArchivesEntity>转化为List</ArchivesInfo>
      * @return
@@ -117,4 +129,5 @@ public class ArchiveServiceImpl implements ArchivesService {
         );
         return archivesInfoList;
     }
+
 }

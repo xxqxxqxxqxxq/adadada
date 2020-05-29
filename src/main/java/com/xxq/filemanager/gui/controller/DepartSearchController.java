@@ -104,6 +104,10 @@ public class DepartSearchController implements Initializable {
                 menuItem1.setOnAction(actionEvent -> {
                     String departName = item.getValue();
                     departService.deleteOne(departName);
+                    SysUserInfo sysUserInfo = new SysUserInfo();
+                    setdepart(sysUserInfo,departName);
+
+                    departService.deleteUserByDId(sysUserInfo.getDepartId());
                     root.getChildren().remove(item);
                 });
                 contextMenu = new ContextMenu(menuItem1);
@@ -129,6 +133,24 @@ public class DepartSearchController implements Initializable {
         addDepartView.showView(Modality.NONE);
   }
 
-
+    public void setdepart(SysUserInfo sysUserInfo,String text){
+        switch (text){
+            case "党群部门" :
+                sysUserInfo.setDepartId(1);
+                break;
+            case "行政部门":
+                sysUserInfo.setDepartId(2);
+                break;
+            case "教学单位":
+                sysUserInfo.setDepartId(3);
+                break;
+            case "科研单位":
+                sysUserInfo.setDepartId(4);
+                break;
+            case "党基层组织":
+                sysUserInfo.setDepartId(5);
+                break;
+        }
+    }
 
 }

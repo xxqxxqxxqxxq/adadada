@@ -56,7 +56,8 @@ public class BorrowFileController implements Initializable {
     private TableColumn checkCol;
     @FXML
     private TableColumn buttonCol;
-
+    @FXML
+    private ImageView img;
     public TableColumn getCheckCol() {
         return checkCol;
     }
@@ -104,6 +105,7 @@ public class BorrowFileController implements Initializable {
     private List<BorrowEntity> borrowEntities = new ArrayList<>();
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        img.setImage(new Image("/photos/breq.png"));
         count.setText(String.valueOf(borrowService.toApprove()));
         numberCol.setCellValueFactory(celldata ->celldata.getValue().getNumber());
         archCol.setCellValueFactory(celldata ->celldata.getValue().getArchNo());

@@ -13,19 +13,24 @@
 }
 /*警告色主题*/
 .warning-theme {
-    -fx-background-color: rgb(254, 212, 105);
+    -fx-background-color: rgb(49, 39, 254);
     -fx-text-fill: #fff;
 }
 
 /*暖色主题*/
 .warm-theme {
-    -fx-background-color: rgb(255, 241, 227);
+    -fx-background-color: rgb(104, 255, 171);
     -fx-text-fill: #fff;
 }
 
 /*蓝色主题*/
 .blue-theme {
     -fx-background-color: rgb(43, 83, 93);
+    -fx-text-fill: #fff;
+}
+/*蓝色主题*/
+.black-theme {
+    -fx-background-color: rgb(17, 12, 16);
     -fx-text-fill: #fff;
 }
 /*鼠标覆盖按钮效果*/
@@ -149,13 +154,13 @@ table-view .table-cell{
     -fx-background-insets: 0;
     -fx-background-radius: 1;
 }
-table-view > .virtual-flow > .scroll-bar:vertical,
+.table-view > .virtual-flow > .scroll-bar:vertical,
 .table-view > .virtual-flow > .scroll-bar:vertical > .track,
 .table-view > .virtual-flow > .scroll-bar:vertical > .track-background,
 .table-view > .virtual-flow > .scroll-bar:horizontal,
 .table-view > .virtual-flow > .scroll-bar:horizontal > .track,
-.table-view > .virtual-flow > .scroll-bar:horizontal > .track-
-table-view > .virtual-flow > .scroll-bar > .increment-button,
+.table-view > .virtual-flow > .scroll-bar:horizontal > .track,
+.table-view > .virtual-flow > .scroll-bar > .increment-button,
 .table-view > .virtual-flow > .scroll-bar > .decrement-button {
     -fx-opacity: 0;
 }*

@@ -3,11 +3,15 @@ package com.xxq.filemanager.gui.controller;
 import com.xxq.FileClient;
 import com.xxq.filemanager.bean.DepartInfo;
 import com.xxq.filemanager.bean.SysUserInfo;
+import com.xxq.filemanager.entity.DepartEntity;
 import com.xxq.filemanager.gui.view.RegisterUserView;
+import com.xxq.filemanager.service.interfaceI.DepartService;
 import com.xxq.filemanager.springJavafxSupport.FXMLController;
 import com.xxq.filemanager.service.interfaceI.UserService;
 import com.xxq.filemanager.util.AlertUtil;
 import com.xxq.filemanager.util.Constants;
+import com.xxq.filemanager.util.OpenPDF;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -45,7 +49,8 @@ public class RegisterUserController implements Initializable {
     private ComboBox R_CDepart;
     @Autowired
     RegisterUserView registerUserView;
-
+    @Autowired
+    DepartService departService;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         R_CDepart.getItems().add(Constants.PLEASE_SELECT);
@@ -66,25 +71,42 @@ public class RegisterUserController implements Initializable {
         String phone = R_Phone.getText();
         String email = R_Email.getText();
         String departName = null;
+
+        Integer count;
+
         if(R_CDepart.getSelectionModel().getSelectedItem()!= null){
             departName = R_CDepart.getSelectionModel().getSelectedItem().toString();
             // 设置机构名称
+            count = departService.queryAmountByDepartName(departName);
             userParaController.setdepart(sysUserInfo,departName);
+            count = count +1;
+            DepartEntity departEntity = new DepartEntity();
+            departEntity.setAmount(count);
+            departEntity.setDepartName(departName);
+            departService.updateAmount(departEntity);
             if (Constants.PLEASE_SELECT.equals(departName)){
                 departName = null;
             }
         }
         if (departName == null||username==null||password==null||email==null||phone==null) {
-            AlertUtil.alert(Alert.AlertType.WARNING,"部门不能为空",FileClient.getStage());
+            AlertUtil.alert(Alert.AlertType.WARNING,"请完善必填信息！",FileClient.getStage());
         }else {
             sysUserInfo.setUsername(username);
             sysUserInfo.setPassword(password);
             sysUserInfo.setPhone(phone);
             sysUserInfo.setEmail(email);
+            sysUserInfo.setPhoto(photoPath);
         }
+
         userService.insertUser(sysUserInfo);
         AlertUtil.alert(Alert.AlertType.INFORMATION,"注册成功",FileClient.getStage());
         registerUserView.hide();
         logger.info("注册成功！"+sysUserInfo);
+    }
+    public static String photoPath;
+    @FXML
+    public void choosePic() {
+        OpenPDF openPDF = new OpenPDF();
+        photoPath= openPDF.open();
     }
 }

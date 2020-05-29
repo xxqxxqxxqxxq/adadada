@@ -1,6 +1,7 @@
 package com.xxq.filemanager.service.interfaceI;
 
 import com.xxq.filemanager.bean.DepartInfo;
+import com.xxq.filemanager.entity.DepartEntity;
 
 import java.util.List;
 
@@ -17,4 +18,8 @@ public interface DepartService {
     void addOneDepart(String departName);
 
     int deleteOne(String departName);
+    int updateAmount(DepartEntity departEntity);
+    int queryAmountByDepartName(String departName);
+
+    int deleteUserByDId(Integer departId);
 }

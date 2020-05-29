@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.xxq.filemanager.gui.controller.UploadController">
+   <children>
+      <Label layoutX="78.0" layoutY="325.0" text="附件：" />
+      <Button layoutX="151.0" layoutY="319.0" mnemonicParsing="false" onAction="#look" text="浏览" />
+      <Label fx:id="L_FilePath" layoutX="254.0" layoutY="325.0" text="Label" />
+      <Button layoutX="454.0" layoutY="319.0" mnemonicParsing="false" onAction="#upload" text="上传" />
+      <Label layoutX="69.0" layoutY="56.0" text="档案编号" />
+      <Label layoutX="51.0" layoutY="105.0" text="档案分类号" />
+      <Label layoutX="69.0" layoutY="157.0" text="档案名称" />
+      <TextField id="1" fx:id="ArchNo" layoutX="202.0" layoutY="50.0" />
+      <TextField id="2" fx:id="Arch_Type" layoutX="202.0" layoutY="99.0" />
+      <TextField id="3" fx:id="ArchName" layoutX="202.0" layoutY="151.0" />
+      <Label layoutX="69.0" layoutY="200.0" />
+      <Label layoutX="69.0" layoutY="200.0" text="档案类型" />
+      <TextField id="3" fx:id="ArchType" layoutX="202.0" layoutY="200.0" />
+      <Label layoutX="87.0" layoutY="258.0" text="部门" />
+      <TextField id="3" fx:id="Depart" layoutX="202.0" layoutY="252.0" />
+   </children>
+</AnchorPane>

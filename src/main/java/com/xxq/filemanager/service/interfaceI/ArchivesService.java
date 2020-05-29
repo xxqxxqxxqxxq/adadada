@@ -2,6 +2,7 @@ package com.xxq.filemanager.service.interfaceI;
 
 import com.xxq.filemanager.bean.ArchivesInfo;
 import com.xxq.filemanager.bean.ArchivesParaInfo;
+import com.xxq.filemanager.entity.ArchPathEntity;
 import com.xxq.filemanager.entity.ArchTypeEntity;
 import com.xxq.filemanager.entity.ArchivesEntity;
 import com.xxq.filemanager.entity.FileTypeEntity;
@@ -12,7 +13,7 @@ public interface ArchivesService {
     List<ArchivesInfo> queryAllArch();
     List<ArchivesInfo> queryArchByPara(ArchivesInfo archivesInfo);
     List<ArchivesInfo> queryArchByClassId(ArchivesInfo archivesInfo);
-    ArchivesParaInfo queryArchParaByAID(Integer id);
+    ArchivesParaInfo queryArchParaByAID(String id);
     void deleteOneFile(List<ArchivesInfo> archivesInfoList);
 
     void insertOneFile(ArchivesInfo archivesInfo);
@@ -22,10 +23,16 @@ public interface ArchivesService {
 
     boolean addOneType(ArchTypeEntity archTypeEntity);
 
-    void deleteOneType(ArchTypeEntity archTypeEntity);
+    boolean deleteOneType(ArchTypeEntity archTypeEntity);
 
     boolean updateOneType(ArchTypeEntity archTypeEntity);
     boolean updateArchClassId(ArchivesEntity archivesEntity);
 
     int updateBorStatus(ArchivesEntity archivesEntity);
+
+    int insertArchPath(ArchPathEntity archPathEntity);
+
+    ArchTypeEntity queryArchType(Integer typeNo);
+
+    String findPath(String value);
 }

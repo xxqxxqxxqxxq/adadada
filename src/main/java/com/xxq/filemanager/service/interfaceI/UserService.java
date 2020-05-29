@@ -1,6 +1,7 @@
 package com.xxq.filemanager.service.interfaceI;
 
 import com.xxq.filemanager.bean.SysUserInfo;
+import com.xxq.filemanager.entity.SysUserEntity;
 
 import java.util.List;
 
@@ -17,4 +18,8 @@ public interface UserService {
     void updateUser(SysUserInfo sysUserInfo);
     void insertUser(SysUserInfo sysUserInfo);
     List<SysUserInfo> queryUserByDID( Integer departId);
+
+    int updateUserInfo(SysUserEntity sysUserEntity);
+
+    int updatePhoto(SysUserEntity sysUserEntity);
 }

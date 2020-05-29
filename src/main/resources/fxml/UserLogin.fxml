@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
+<?import java.net.URL?>
+
+<AnchorPane styleClass="back" prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.xxq.filemanager.gui.controller.UserLoginController">
+   <children>
+   
+      <StackPane fx:id="stackPane" alignment="CENTER" layoutX="300.0" layoutY="90.0" prefHeight="400" prefWidth="400">
+         <children>
+            <HBox fx:id="hBox2" alignment="CENTER" prefHeight="400" prefWidth="400" styleClass="back2" style="-fx-background-color: #c1ff9a">
+
+      </HBox>
+            <HBox fx:id="hBox1" alignment="CENTER" prefHeight="400" prefWidth="400" styleClass="back1" style="-fx-background-color: #c1ff9a" />
+         </children>
+      </StackPane>
+      <Button layoutX="22.0"  onAction="#fileMng" layoutY="107.0" mnemonicParsing="false" prefHeight="157.0" prefWidth="236.0" styleClass="btn-radius-normal" text="档案管理" />
+      <Button layoutX="14.0" layoutY="354.0" onAction="#borReq" mnemonicParsing="false" prefHeight="157.0" prefWidth="236.0" styleClass="btn-radius-normal" text="借阅申请" />
+      <Button layoutX="748.0" layoutY="107.0" onAction="#myBor" mnemonicParsing="false" prefHeight="157.0" prefWidth="236.0" styleClass="btn-radius-normal" text="我的借阅" />
+      <Button layoutX="748.0" layoutY="354.0" onAction="#myInfo" mnemonicParsing="false" prefHeight="157.0" prefWidth="236.0" styleClass="btn-radius-normal" text="我的资料" />
+   </children>
+   <stylesheets>
+      <URL value="@../style/userlogin.css" />
+   </stylesheets>
+</AnchorPane>

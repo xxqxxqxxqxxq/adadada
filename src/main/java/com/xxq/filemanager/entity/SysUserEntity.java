@@ -43,7 +43,7 @@ public class SysUserEntity {
     private Integer delFlag;
     private Integer loginFlag;
     private String checkFlag;
-
+    private String photo;
 
     public static SysUserEntity createFromInfo(SysUserInfo sysUserInfo) {
         SysUserEntity sysUserEntity = new SysUserEntity();
@@ -62,8 +62,18 @@ public class SysUserEntity {
         sysUserEntity.setDepartId(sysUserInfo.getDepartId());
         sysUserEntity.setPhone(sysUserInfo.getPhone());
         sysUserEntity.setEmail(sysUserInfo.getEmail());
+        sysUserEntity.setPhoto(sysUserInfo.getPhoto());
         return sysUserEntity;
     }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
     public String getEmail() {
         return email;
     }

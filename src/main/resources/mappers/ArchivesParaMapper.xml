@@ -3,7 +3,7 @@
 <mapper namespace="com.xxq.filemanager.mapper.ArchivesParaMapper">
 
 
-    <select id="selectParaByArchID" resultType="com.xxq.filemanager.entity.ArchivesParaEntity"  parameterType="integer">
+    <select id="selectParaByArchID" resultType="com.xxq.filemanager.entity.ArchivesParaEntity"  parameterType="string">
         select
         id,
         archives_id archivesId,

@@ -47,7 +47,7 @@ public class SimpleBorProperty {
     }
     public SimpleBorProperty(BorrowEntity borrowEntity, int num, String flag){
         id = new SimpleStringProperty(String.valueOf(borrowEntity.getId()));
-        archNo = new SimpleStringProperty(String.valueOf(borrowEntity.getArchivesId()));
+        archNo = new SimpleStringProperty(borrowEntity.getArchivesId());
         userId = new SimpleStringProperty(String.valueOf(borrowEntity.getUserId()));
         number = new SimpleStringProperty(String.valueOf(num));
         archName =new SimpleStringProperty(borrowEntity.getArchName());

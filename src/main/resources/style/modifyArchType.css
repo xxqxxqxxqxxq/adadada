@@ -1,0 +1,25 @@
+.back{
+    -fx-background-image: url("/photos/ww.gif");
+    /*-fx-background-image: url("/photos/background.jpg");*/
+}
+.text-field {
+    -fx-background-color: #9ab0ff;
+
+    -fx-border-color: yellow;
+
+    -fx-text-fill: white;
+}
+
+.button {
+    -fx-background-color: #1f6080;
+}
+
+.button:hover {
+    -fx-background-color: #309fff;
+}
+
+.button:pressed {
+    -fx-background-color: red;
+}
+
+

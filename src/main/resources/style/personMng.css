@@ -1,0 +1,44 @@
+.back{
+    -fx-background-color: linear-gradient(to bottom,#99CCFF,#CCFFFF)
+}
+
+.text-field1{
+    -fx-font-family: "Quicksand";
+    -fx-font-size: 18;
+    -fx-padding: 1,1,1,1;
+    -fx-border-color: grey;
+    -fx-border-width: 2;
+    -fx-border-radius: 1;
+    -fx-border: gone;
+    -fx-background-color: transparent;
+    -fx-text-fill: grey;
+}
+
+.text-field {
+    -fx-background-color: -fx-text-box-border, -fx-background ;
+    -fx-background-insets: 0, 0 0 1 0 ;
+    -fx-background-radius: 0 ;
+}
+.text-field:focused {
+    -fx-background-color: -fx-focus-color, -fx-background ;
+}
+
+
+/**
+ *Button通用样式
+ */
+.button:hover{
+    -fx-cursor: hand;
+}
+
+.button{
+    -fx-background-color: linear-gradient(to bottom,#7dc2fe,#004883);
+    -fx-font-size: 14px;
+    -fx-pref-width:64px;
+    -fx-pref-height: 28px;
+    -fx-text-alignment: center;
+    -fx-text-fill: #fff;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+}
+

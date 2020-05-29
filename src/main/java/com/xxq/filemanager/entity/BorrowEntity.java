@@ -11,7 +11,7 @@ import java.util.Date;
  **/
 public class BorrowEntity {
     private Integer id;
-    private Integer archivesId;
+    private String archivesId;
     private String archName;
     private Integer userId;
     private String BName;
@@ -45,11 +45,11 @@ public class BorrowEntity {
         this.id = id;
     }
 
-    public Integer getArchivesId() {
+    public String getArchivesId() {
         return archivesId;
     }
 
-    public void setArchivesId(Integer archivesId) {
+    public void setArchivesId(String archivesId) {
         this.archivesId = archivesId;
     }
 

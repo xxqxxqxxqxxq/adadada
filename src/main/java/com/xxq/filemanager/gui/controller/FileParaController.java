@@ -1,10 +1,14 @@
 package com.xxq.filemanager.gui.controller;
 
+import com.xxq.FileClient;
 import com.xxq.filemanager.bean.ArchivesParaInfo;
 import com.xxq.filemanager.service.interfaceI.ArchivesService;
 import com.xxq.filemanager.springJavafxSupport.FXMLController;
+import com.xxq.filemanager.util.AlertUtil;
+import com.xxq.filemanager.util.DateUtil;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import org.apache.log4j.Logger;
@@ -59,12 +63,13 @@ public class FileParaController implements Initializable {
 
     }
 
-    public void showArchPara(Integer archNo){
+    public void showArchPara(String archNo){
         ArchivesParaInfo archivesParaInfo = archivesService.queryArchParaByAID(archNo);
+
         JT_ArchNo.setText(String.valueOf(archNo));
         JT_Name.setText(archivesParaInfo.getName());
         JT_Address.setText(archivesParaInfo.getAddress());
-        JT_Birth.setText(String.valueOf(archivesParaInfo.getBirthdate()));
+        JT_Birth.setText(DateUtil.tranfer(archivesParaInfo.getBirthdate()));
         JT_Email.setText(archivesParaInfo.getEmail());
         JT_IDCard.setText(archivesParaInfo.getIdCard());
         JT_Marital.setText(archivesParaInfo.getMaritalStatus());

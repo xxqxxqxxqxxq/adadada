@@ -16,6 +16,8 @@
       <TextField fx:id="R_Phone" layoutX="139.0" layoutY="135.0" />
       <TextField fx:id="R_Email" layoutX="139.0" layoutY="182.0" />
       <ComboBox fx:id="R_CDepart" layoutX="139.0" layoutY="240.0" prefWidth="150.0" />
-      <Button layoutX="219.0" layoutY="319.0" mnemonicParsing="false" text="注册" onAction="#insert"/>
+      <Button layoutX="219.0" layoutY="319.0" mnemonicParsing="false" onAction="#insert" text="注册" />
+      <Label layoutX="429.0" layoutY="42.0" text="照片" />
+      <Button layoutX="471.0" layoutY="36.0" mnemonicParsing="false" text="选择" onAction="#choosePic"/>
    </children>
 </AnchorPane>

@@ -1,7 +1,11 @@
 package com.xxq.filemanager.util;
 
 import com.sun.mail.util.MailSSLSocketFactory;
+import com.xxq.filemanager.bean.ArchivesInfo;
+import com.xxq.filemanager.entity.ArchivesEntity;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -83,6 +87,33 @@ public class MailUtil {
     }
 
 
+    public  static void backFileMail(String receiverMail,String archNo) throws AddressException, MessagingException {
+        Properties properties = new Properties();
+        properties.put("mail.transport.protocol", "smtp"); // 连接协议
+        properties.put("mail.smtp.host", "smtp.qq.com"); // 主机名
+        properties.put("mail.smtp.port", 465);  // 端口号
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.ssl.enable", "true");  // 设置是否使用ssl安全连接 ---一般都使用
+        properties.put("mail.debug", "true"); // 设置是否显示debug信息 true 会在控制台显示相关信息
+        // 得到回话对象
+        Session session = Session.getInstance(properties);
+        // 获取邮件对象
+        Message message = new MimeMessage(session);
+        // 设置发件人邮箱地址
+        message.setFrom(new InternetAddress("916885684@qq.com"));
+        // 设置收件人地址
+        message.setRecipients( RecipientType.TO, new InternetAddress[] { new InternetAddress(receiverMail) });
+        // 设置邮件标题
+        message.setSubject("借阅已归还");
+        // 设置邮件内容
+        message.setText("内容为：档案号："+archNo+"借阅已归还");
+        // 得到邮差对象
+        Transport transport = session.getTransport();
+        // 连接自己的邮箱账户
+        transport.connect("916885684@qq.com", "jodfgikgmgppbcaf");// 密码为刚才得到的授权码
+        // 发送邮件
+        transport.sendMessage(message, message.getAllRecipients());
+    }
     public  static void backMail(String receiverMail) throws AddressException, MessagingException {
         Properties properties = new Properties();
         properties.put("mail.transport.protocol", "smtp"); // 连接协议
@@ -110,6 +141,33 @@ public class MailUtil {
         // 发送邮件
         transport.sendMessage(message, message.getAllRecipients());
     }
+    public static void sendModifyPasswordMail(String username) throws AddressException, MessagingException {
+        Properties properties = new Properties();
+        properties.put("mail.transport.protocol", "smtp"); // 连接协议
+        properties.put("mail.smtp.host", "smtp.qq.com"); // 主机名
+        properties.put("mail.smtp.port", 465);  // 端口号
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.ssl.enable", "true");  // 设置是否使用ssl安全连接 ---一般都使用
+        properties.put("mail.debug", "true"); // 设置是否显示debug信息 true 会在控制台显示相关信息
+        // 得到回话对象
+        Session session = Session.getInstance(properties);
+        // 获取邮件对象
+        Message message = new MimeMessage(session);
+        // 设置发件人邮箱地址
+        message.setFrom(new InternetAddress("916885684@qq.com"));
+        // 设置收件人地址
+        message.setRecipients( RecipientType.TO, new InternetAddress[] { new InternetAddress("728832542@qq.com") });
+        // 设置邮件标题
+        message.setSubject("由用户"+username+"发出的借阅邮件");
+        // 设置邮件内容
+        message.setText("内容为：密码忘记。");
+        // 得到邮差对象
+        Transport transport = session.getTransport();
+        // 连接自己的邮箱账户
+        transport.connect("916885684@qq.com", "jodfgikgmgppbcaf");// 密码为刚才得到的授权码
+        // 发送邮件
+        transport.sendMessage(message, message.getAllRecipients());
+    }
     public static void main(String[] args)  {
 //        String lender = "xxq";
 //        String receiverMail = "728832542@qq.com";
@@ -118,5 +176,8 @@ public class MailUtil {
 //        } catch (MessagingException e) {
 //            e.printStackTrace();
 //        }
+        List<ArchivesEntity> list = new ArrayList<>();
+        List<ArchivesInfo> list1= new ArrayList<>();
+        boolean b = list.removeAll(list1);
     }
 }

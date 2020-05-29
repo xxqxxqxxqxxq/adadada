@@ -5,6 +5,8 @@ import com.xxq.filemanager.bean.ArchivesInfo;
 import com.xxq.filemanager.bean.ArchivesParaInfo;
 import com.xxq.filemanager.bean.DepartInfo;
 import com.xxq.filemanager.bean.SysUserInfo;
+import com.xxq.filemanager.config.ContextConfig;
+import com.xxq.filemanager.entity.ArchPathEntity;
 import com.xxq.filemanager.gui.view.FileAddView;
 import com.xxq.filemanager.service.interfaceI.ArchivesService;
 import com.xxq.filemanager.springJavafxSupport.FXMLController;
@@ -106,7 +108,7 @@ public class FileAddController implements Initializable {
                 departName = null;
             }
         }
-        archivesInfo.setArchNo(Integer.valueOf(JT_ArchNo.getText()));
+        archivesInfo.setArchNo(JT_ArchNo.getText());
         archivesInfo.setArchivesName(JT_ArchivesName.getText());
         archivesInfo.setCreateBy(JT_CreateBy.getText());
         archivesInfo.setArchivesType(JT_ArchivesType.getText());
@@ -114,7 +116,7 @@ public class FileAddController implements Initializable {
         archivesService.insertOneFile(archivesInfo);
 
         ArchivesParaInfo archivesParaInfo = new ArchivesParaInfo();
-        archivesParaInfo.setArchivesId(Integer.valueOf(JT_ArchNo.getText()));
+        archivesParaInfo.setArchivesId(JT_ArchNo.getText());
         archivesParaInfo.setName(JT_Name.getText());
         archivesParaInfo.setGender(JT_Gender.getText());
         archivesParaInfo.setNation(JT_Nation.getText());
@@ -145,12 +147,39 @@ public class FileAddController implements Initializable {
                 "宗教信仰：" + JT_Religion.getText() + "  职位：" + JT_Positions.getText() + "  身份证号：" + JT_IDCard.getText() + "  " +
                 "档案名称:" + JT_ArchivesName.getText() + "  部门编号：" + archivesInfo.getDepartId() + " " +
                 "   档案类别：" + JT_ArchivesType.getText() + "  创建人：" + JT_CreateBy.getText() + "  档案分类号：" + JT_ClassId.getText();
-        CreateFile.writeStringToFile(data, archivesInfo.getArchNo());
+        writeStringToFile(data, archivesInfo.getArchNo());
         fileMngController.fileList();
 
     }
 
-
+    public  void writeStringToFile(String data,String archNo) {
+        byte[] sourceByte = data.getBytes();
+        String path = "F:/XxqWork/bishe/filemanager/src/main/resources/file/";
+        String fileName = archNo+".txt";
+        ArchivesService bean = ContextConfig.context.getBean(ArchivesService.class);
+        ArchPathEntity archPathEntity = new ArchPathEntity();
+        archPathEntity.setArchNo(archNo);
+        archPathEntity.setPath(path+fileName);
+//        bean.insertArchPath(archPathEntity);
+        if(null != sourceByte){
+            try {
+                File file = new File(path+fileName);//文件路径（路径+文件名）
+                if (!file.exists()) {   //文件不存在则创建文件，先创建目录
+                    File dir = new File(file.getParent());
+                    dir.mkdirs();
+                    file.createNewFile();
+                }
+                FileOutputStream outStream = new FileOutputStream(file); //文件输出流将数据写入文件
+                outStream.write(sourceByte);
+                outStream.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+                // do something
+            } finally {
+                // do something
+            }
+        }
+    }
     public void setdepart(ArchivesInfo archivesInfo, String text) {
         switch (text) {
             case "党群部门":

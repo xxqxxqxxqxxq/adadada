@@ -80,7 +80,8 @@ public class MainController implements Initializable {
      */
     @FXML
     private Button JB_BorrowMng;
-
+@FXML
+private Button JB_regist;
     /**
      * 机构管理
      */
@@ -165,6 +166,14 @@ public class MainController implements Initializable {
 
     public Button getJB_ShowFile() {
         return JB_ShowFile;
+    }
+
+    public Button getJB_regist() {
+        return JB_regist;
+    }
+
+    public void setJB_regist(Button JB_regist) {
+        this.JB_regist = JB_regist;
     }
 
     public void setJB_ShowFile(Button JB_ShowFile) {
@@ -311,9 +320,11 @@ public class MainController implements Initializable {
 
     @FXML
     public void loginout() {
+        JP_Show.getChildren().clear();
         FileClient.sysUser = null;
         JB_SignOut.setVisible(false);
         JB_login.setVisible(true);
+        JB_regist.setVisible(true);
         T_UserMng.setVisible(false);
         T_PerMng.setVisible(false);
         T_BorMng.setVisible(false);
@@ -344,7 +355,7 @@ public class MainController implements Initializable {
         T_TypMng.setVisible(false);
         T_DepMng.setVisible(false);
         T_OtherMng.setVisible(false);
-
+        JB_SignOut.setVisible(false);
         final WebEngine webengine = webView.getEngine();
         String url = Main.class.getResource("/html/index.html").toExternalForm();
         webengine.load(url);
@@ -405,7 +416,6 @@ public class MainController implements Initializable {
     public void dealFileType() {
         JP_Show.getChildren().clear();
         JP_Show.getChildren().add(fileTypeView.getView());
-       // fileDiviMngController.show();
         fileDiviMngController.show1();
     }
     @FXML
@@ -424,6 +434,5 @@ public class MainController implements Initializable {
         JP_Show.getChildren().clear();
         JP_Show.getChildren().add(otherView.getView());
         otherController.lineChart();
-        otherController.show();
     }
 }

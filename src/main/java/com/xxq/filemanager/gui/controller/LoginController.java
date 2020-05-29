@@ -5,9 +5,11 @@ import com.xxq.filemanager.bean.SysUserInfo;
 import com.xxq.filemanager.gui.view.LoginView;
 import com.xxq.filemanager.gui.view.MainView;
 import com.xxq.filemanager.gui.view.RegisterUserView;
+import com.xxq.filemanager.gui.view.UserLoginView;
 import com.xxq.filemanager.springJavafxSupport.FXMLController;
 import com.xxq.filemanager.service.interfaceI.LoginService;
 import com.xxq.filemanager.util.AlertUtil;
+import com.xxq.filemanager.util.MailUtil;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +19,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -24,6 +27,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.mail.MessagingException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -57,6 +61,8 @@ public class LoginController implements Initializable {
     private RadioButton BT_Manager;
     @Autowired
     MainController mainController;
+    @Autowired
+    UserLoginView userLoginView;
     public TextField getUserName() {
         return userName;
     }
@@ -105,8 +111,10 @@ public class LoginController implements Initializable {
         String password = passWord.getText().trim();
         if (StringUtils.isEmpty(username) || StringUtils.isEmpty(password)) {
             AlertUtil.alert(Alert.AlertType.WARNING, "用户名或密码不能为空", stage);
+            return;
         }
         SysUserInfo userInfo = loginService.login(username, password);
+
         boolean login = userInfo != null;
         if (login && FileClient.sysUser == null) {
             logger.info("登陆成功");
@@ -123,6 +131,9 @@ public class LoginController implements Initializable {
                 mainController.getJB_FileMng().setVisible(true);
                 mainController.getT_OtherMng().setVisible(true);
                 mainController.getJB_ShowFile().setVisible(false);
+                mainController.getJB_SignOut().setVisible(true);
+                mainController.getJB_regist().setVisible(false);
+                mainController.getJP_Show().setVisible(true);
                 loginView.getStage().hide();
             }else {
                 mainController.getT_PerMng().setVisible(true);
@@ -131,6 +142,10 @@ public class LoginController implements Initializable {
                 mainController.getJB_FileMng().setVisible(false);
                 mainController.getT_OtherMng().setVisible(false);
                 mainController.getJB_ShowFile().setVisible(true);
+                mainController.getJB_SignOut().setVisible(true);
+                mainController.getJB_regist().setVisible(false);
+                mainController.getJP_Show().setVisible(true);
+                mainController.getJP_Show().getChildren().add(userLoginView.getView());
                 loginView.hide();
             }
 
@@ -140,6 +155,10 @@ public class LoginController implements Initializable {
 
     }
 
-
-
+    @FXML
+    public void sendEmail() throws MessagingException {
+        String username = userName.getText();
+        MailUtil.sendModifyPasswordMail(username);
+        AlertUtil.alert(Alert.AlertType.INFORMATION,"已经通知管理员，请稍后查看邮箱");
+    }
 }

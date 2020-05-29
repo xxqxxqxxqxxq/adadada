@@ -14,7 +14,7 @@ import java.util.Date;
 public class ArchivesEntity {
 
     private Integer id;
-    private Integer archNo;
+    private String archNo;
 
 
     /**
@@ -64,11 +64,12 @@ public class ArchivesEntity {
 
         return archivesEntity;
     }
-    public Integer getArchNo() {
+
+    public String getArchNo() {
         return archNo;
     }
 
-    public void setArchNo(Integer archNo) {
+    public void setArchNo(String archNo) {
         this.archNo = archNo;
     }
 

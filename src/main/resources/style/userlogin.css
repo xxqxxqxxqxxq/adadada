@@ -1,0 +1,18 @@
+/*边框正常弧度按钮*/
+.btn-radius-normal {
+    -fx-border-radius: 2px;
+    -fx-background-radius: 2px;
+    -fx-background-color: #aaffee;
+}
+.back{
+    -fx-background-image: url("/photos/ww.gif");
+    /*-fx-background-image: url("/photos/background.jpg");*/
+}
+.back1{
+    -fx-background-image: url("/photos/school.jpg");
+    /*-fx-background-image: url("/photos/background.jpg");*/
+}
+.back2{
+    -fx-background-image: url("/photos/june1.jpg");
+    /*-fx-background-image: url("/photos/background.jpg");*/
+}

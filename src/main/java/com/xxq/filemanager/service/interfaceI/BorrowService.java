@@ -20,4 +20,8 @@ public interface BorrowService {
     int addOne(BorrowEntity borrowEntity);
 
     void approve(BorrowEntity borrowEntity);
+
+    BorrowEntity queryByArchNo(String archNo);
+
+    int backArch(String value);
 }

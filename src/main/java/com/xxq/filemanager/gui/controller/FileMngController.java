@@ -5,6 +5,7 @@ import com.xxq.filemanager.bean.ArchivesInfo;
 import com.xxq.filemanager.bean.SysUserInfo;
 import com.xxq.filemanager.gui.view.FileAddView;
 import com.xxq.filemanager.gui.view.FileParaView;
+import com.xxq.filemanager.gui.view.UploadView;
 import com.xxq.filemanager.service.interfaceI.ArchivesService;
 import com.xxq.filemanager.springJavafxSupport.FXMLController;
 import com.xxq.filemanager.table.SimpleBorProperty;
@@ -25,6 +26,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.mail.MessagingException;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -67,6 +69,7 @@ public class FileMngController implements Initializable {
     ArchivesService archivesService;
     @Autowired
     FileParaController fileParaController;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         /**
@@ -98,10 +101,19 @@ public class FileMngController implements Initializable {
                                     if(sfp.getCheckBox().isSelected()){
                                         index = i;
                                         flag ++;
-                                        Integer value = Integer.valueOf(sfp.getArchNo().getValue());
+                                        String value = sfp.getArchNo().getValue();
+                                        String path = archivesService.findPath(value);
+                                        if(path!=null){
+                                            value = null;
+                                        }
                                         System.out.println(value);
+
                                         FileUtils fileUtils = new FileUtils();
-                                        fileUtils.loadPdf(value);
+                                        try {
+                                            fileUtils.loadPdf(value,path);
+                                        } catch (IOException e) {
+                                            e.printStackTrace();
+                                        }
                                     }
                                 }
                                 // 如果复选框中选中了不止一条数据
@@ -156,7 +168,12 @@ public class FileMngController implements Initializable {
             return;
         }
         ArchivesInfo archivesInfo = archivesInfoList.get(index);
-        Integer archNo = archivesInfo.getArchNo();
+        String archNo = archivesInfo.getArchNo();
+        String path = archivesService.findPath(archNo);
+        if(path!=null){
+            AlertUtil.alert(Alert.AlertType.WARNING,"该档案没有参数，请直接阅读文件", FileClient.getStage());
+            return;
+        }
         fileParaController.showArchPara(archNo);
         FileClient.showView(FileParaView.class,Modality.NONE);
     }
@@ -166,9 +183,9 @@ public class FileMngController implements Initializable {
 
 
         // 档案编号
-        Integer archNo = null;
+        String archNo = null;
         if(StringUtils.isNotEmpty(TF_ID.getText().trim())){
-            archNo = Integer.valueOf(TF_ID.getText().trim());
+            archNo = TF_ID.getText().trim();
         }
 
         // 档案姓名
@@ -203,6 +220,7 @@ public class FileMngController implements Initializable {
             if(sfp.getCheckBox().isSelected()){
                 ArchivesInfo archivesInfo = new ArchivesInfo();
                 archivesInfo.setId(Integer.valueOf(sfp.getId().getValue()));
+                archivesInfo.setArchNo(sfp.getArchNo().getValue());
                 archivesInfo.setArchivesName(sfp.getArchivesName().getValue());
                 archivesInfo.setBorrowStatus(sfp.getBorrowStatus().getValue());
 
@@ -225,6 +243,10 @@ public class FileMngController implements Initializable {
 
         }
         logger.info("取消删除");
+    }
+    @FXML
+    public void upload() {
+        FileClient.showView(UploadView.class, Modality.NONE);
     }
 //    @FXML
 //    public void showDetails() {

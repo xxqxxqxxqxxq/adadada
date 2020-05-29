@@ -1,6 +1,7 @@
 package com.xxq.filemanager.mapper;
 
 import com.xxq.filemanager.bean.ArchivesInfo;
+import com.xxq.filemanager.entity.ArchPathEntity;
 import com.xxq.filemanager.entity.ArchTypeEntity;
 import com.xxq.filemanager.entity.ArchivesEntity;
 import com.xxq.filemanager.entity.FileTypeEntity;
@@ -14,7 +15,7 @@ public interface ArchivesMapper {
 
     List<ArchivesEntity> selectArchByPara(ArchivesEntity archivesEntity);
 
-    void deleteFile(Integer archNo);
+    void deleteFile(ArchivesEntity archivesEntity);
 
     void insertOne(ArchivesEntity archivesEntity);
 
@@ -24,11 +25,16 @@ public interface ArchivesMapper {
 
     boolean insertType(ArchTypeEntity archTypeEntity);
 
-    void deletOneType(ArchTypeEntity archTypeEntity);
+    boolean deletOneType(ArchTypeEntity archTypeEntity);
     boolean updateArchClassId(ArchivesEntity archivesEntity);
 
     boolean updateType(ArchTypeEntity archTypeEntity);
 
     int updateBorStatusByArchNo(ArchivesEntity archivesEntity);
+    int insertPath(ArchPathEntity archPathEntity);
+
+    ArchTypeEntity queryTypeByTypeNo(Integer typeNo);
+
+    String findPath(String archNo);
 }
 

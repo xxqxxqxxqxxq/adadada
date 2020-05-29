@@ -10,6 +10,9 @@ public interface DepartMapper {
     List<DepartEntity> queryDepartAll();
 
     void insertOne(String departName);
-
+    Integer queryAmountByDepartName(String departName);
     int deleteOne(String departName);
+    int updateAmount(DepartEntity departEntity);
+
+    int deleteUserBuDID(Integer departId);
 }

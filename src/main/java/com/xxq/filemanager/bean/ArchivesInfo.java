@@ -17,7 +17,7 @@ public class ArchivesInfo {
     /**
      * 档案号
      */
-    private Integer archNo;
+    private String archNo;
     /**
      * 档案分类号
      */
@@ -68,11 +68,11 @@ public class ArchivesInfo {
         return id;
     }
 
-    public Integer getArchNo() {
+    public String getArchNo() {
         return archNo;
     }
 
-    public void setArchNo(Integer archNo) {
+    public void setArchNo(String archNo) {
         this.archNo = archNo;
     }
 

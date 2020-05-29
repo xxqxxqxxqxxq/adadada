@@ -41,6 +41,16 @@ public class SysUserInfo {
      * 用来判断tableView有没有被选中
      */
     private String checkFlag;
+    private String photo;
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
     public String getDepartName() {
         return departName;
     }
@@ -82,6 +92,7 @@ public class SysUserInfo {
         userInfo.setUpdateTime(entity.getUpdateTime());
         userInfo.setCheckFlag(entity.getCheckFlag());
         userInfo.setDepartId(entity.getDepartId());
+        userInfo.setPhoto(entity.getPhoto());
         return userInfo;
     }
 

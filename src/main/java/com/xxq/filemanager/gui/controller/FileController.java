@@ -3,10 +3,13 @@ package com.xxq.filemanager.gui.controller;
 import com.xxq.FileClient;
 import com.xxq.filemanager.bean.ArchivesInfo;
 import com.xxq.filemanager.entity.BorrowEntity;
+import com.xxq.filemanager.gui.view.FileParaView;
 import com.xxq.filemanager.gui.view.FileView;
+import com.xxq.filemanager.service.interfaceI.ArchivesService;
 import com.xxq.filemanager.service.interfaceI.BorrowService;
 import com.xxq.filemanager.springJavafxSupport.FXMLController;
 import com.xxq.filemanager.util.AlertUtil;
+import com.xxq.filemanager.util.FileUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -14,9 +17,11 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -40,6 +45,8 @@ public class FileController implements Initializable {
     private Label L_Info;
     @FXML
     private Label L_ArchNo;
+    @Autowired
+    ArchivesService archivesService;
     @Autowired
     FileParaController fileParaController;
     @Autowired
@@ -81,15 +88,31 @@ public class FileController implements Initializable {
 
     }
     @FXML
-    public void mouseClick() {
-//        BorrowEntity borrowEntity = borrowService.queryByArchNo(Integer.valueOf(L_ArchNo.getText()));
+    public void mouseClick() throws IOException {
+        String  archNo = L_ArchNo.getText();
+        BorrowEntity borrowEntity = borrowService.queryByArchNo(archNo);
 
-//        boolean a = FileClient.sysUser.getId() == borrowEntity.getUserId();
-//            if(!a){
-//                AlertUtil.alert(Alert.AlertType.WARNING,"您没有权限查看档案");
-//            }
-//            fileParaController.showArchPara(borrowEntity.getArchivesId());
-        AlertUtil.alert(Alert.AlertType.WARNING,"您没有权限查看档案");
+            if(borrowEntity==null){
+                AlertUtil.alert(Alert.AlertType.WARNING,"您没有权限查看档案");
+                return;
+            }
+        String path = archivesService.findPath(archNo);
+
+          if(FileClient.sysUser.getId() == borrowEntity.getUserId()){
+              if(path!=null){
+                  archNo = null;
+                  FileUtils fileUtils = new FileUtils();
+                  fileUtils.loadPdf(archNo,path);
+                  return;
+              }
+                FileClient.showView(FileParaView.class, Modality.NONE);
+                fileParaController.showArchPara(borrowEntity.getArchivesId());
+
+            }else {
+                AlertUtil.alert(Alert.AlertType.WARNING,"您没有权限查看档案");
+            }
+
+
     }
 
 

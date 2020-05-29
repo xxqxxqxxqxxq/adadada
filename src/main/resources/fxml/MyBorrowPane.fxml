@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import java.net.URL?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.xxq.filemanager.gui.controller.MyBorrowController">
+<AnchorPane styleClass="background" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.xxq.filemanager.gui.controller.MyBorrowController">
    <children>
-      <TableView fx:id="dataTable" layoutX="21.0" layoutY="115.0" prefHeight="245.0" prefWidth="553.0">
+      <TableView fx:id="dataTable" layoutX="21.0" layoutY="115.0" prefHeight="400.0" prefWidth="800.0">
         <columns>
-          <TableColumn fx:id="numCol" prefWidth="75.0" />
+            <TableColumn fx:id="checkCol" minWidth="0.0" prefWidth="57.0" />
+          <TableColumn fx:id="numCol" prefWidth="53.0" />
           <TableColumn fx:id="archNoCol" prefWidth="148.0" text="借阅档案号" />
-            <TableColumn fx:id="archNameCol" prefWidth="96.0" text="名称" />
-            <TableColumn fx:id="backTimeCol" prefWidth="123.0" text="归还日期" />
-            <TableColumn fx:id="btnCol" prefWidth="106.0" />
+            <TableColumn fx:id="archNameCol" prefWidth="181.0" text="名称" />
+            <TableColumn fx:id="backTimeCol" prefWidth="238.0" text="归还日期" />
+            <TableColumn fx:id="btnCol" prefWidth="111.0" />
         </columns>
       </TableView>
-      <Button layoutX="46.0" layoutY="59.0" mnemonicParsing="false" text="查看详情" />
    </children>
+    <stylesheets>
+        <URL value="@../style/mybor.css" />
+    </stylesheets>
 </AnchorPane>

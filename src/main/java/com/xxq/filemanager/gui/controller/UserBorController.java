@@ -1,8 +1,11 @@
 package com.xxq.filemanager.gui.controller;
 
 import com.xxq.FileClient;
+import com.xxq.filemanager.bean.ArchivesInfo;
 import com.xxq.filemanager.bean.SysUserInfo;
+import com.xxq.filemanager.entity.ArchivesEntity;
 import com.xxq.filemanager.entity.BorrowEntity;
+import com.xxq.filemanager.service.interfaceI.ArchivesService;
 import com.xxq.filemanager.service.interfaceI.BorrowService;
 import com.xxq.filemanager.springJavafxSupport.FXMLController;
 import com.xxq.filemanager.util.AlertUtil;
@@ -13,6 +16,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.mail.MessagingException;
@@ -20,6 +25,7 @@ import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 
 /**
@@ -41,20 +47,35 @@ public class UserBorController implements Initializable {
     private DatePicker backTime;
     @Autowired
     BorrowService borrowService;
+    @Autowired
+    ArchivesService archivesService;
+    @FXML
+    private ImageView img;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        img.setImage(new Image("/photos/yjyh.jpeg"));
     }
     @FXML
     public void submit() {
-        BorrowEntity borrowEntity = new BorrowEntity();
+        ArchivesInfo archivesInfo = new ArchivesInfo();
+        archivesInfo.setArchNo(archNo.getText());
+        List<ArchivesInfo> archivesInfos = archivesService.queryArchByPara(archivesInfo);
+        ArchivesInfo archivesInfo1 = archivesInfos.get(0);
 
+        if (archivesInfo1==null){
+            AlertUtil.alert(Alert.AlertType.WARNING,"该档案不存在,无法借阅", FileClient.getStage());
+            return;
+        }
+        if ("已借阅".equals(archivesInfo1.getBorrowStatus())){
+            AlertUtil.alert(Alert.AlertType.WARNING,"该档案已被借阅,无法借阅", FileClient.getStage());
+            return;
+        }
         if(name.getText()==null||archNo.getText()==null||name.getText()==null||backTime==null){
             AlertUtil.alert(Alert.AlertType.WARNING,"请完善借阅信息", FileClient.getStage());
 
         }
-
-        borrowEntity.setArchivesId(Integer.valueOf(archNo.getText()));
+        BorrowEntity borrowEntity = new BorrowEntity();
+        borrowEntity.setArchivesId(archNo.getText());
         borrowEntity.setBName(name.getText());
         SimpleDateFormat sdf = new SimpleDateFormat("yy-MM-dd");
         Date backDate = new Date();

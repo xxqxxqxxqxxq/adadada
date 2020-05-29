@@ -17,26 +17,32 @@
 
     </resultMap>
     <select id="login" resultType="com.xxq.filemanager.entity.SysUserEntity">
-        select id,
-        depart_id departId,
-        u_name username,
-        u_password password,
-        u_phone phone,
-        email,
-        role,
-        create_time,
-        update_by,
-        update_time,
-        power,
-        del_flag delaFlag,
-        loginFlag
-        from sys_user
+        select a.id,
+        a.depart_id departId,
+        b.d_name departName,
+        a.u_name username,
+        a.u_password password,
+        a.u_phone phone,
+        a.email,
+        a.role,
+        a.create_time,
+        a.update_by,
+        a.update_time,
+        a.power,
+        a.del_flag delaFlag,
+        a.loginFlag,
+        a.photo
+        from sys_user a
+        inner join
+            sys_depart b
          where
+         a.depart_id=b.id
+         and
          u_name = #{username}
          and
          u_password=#{password}
          and
-         del_flag = 0
+         a.del_flag = 0
 
     </select>
     <select id="queryUserByPara"  resultType="com.xxq.filemanager.entity.SysUserEntity">
@@ -56,7 +62,8 @@
        a.power,
        a.del_flag ,
        a.loginFlag,
-       a.checkFlag
+       a.checkFlag,
+       a.photo
        from
        sys_user a
        inner join
@@ -106,23 +113,7 @@
         where
         id = #{id}
     </update>
-    <insert id="insertUser" parameterType="com.xxq.filemanager.entity.SysUserEntity">
-        insert into sys_user(
-        depart_id,
-        u_name,
-        u_password,
-        u_phone,
-        email
-        )
-        values
-        (
-        #{departId,jdbcType=INTEGER},
-        #{username,jdbcType=VARCHAR},
-        #{password,jdbcType=VARCHAR},
-        #{phone,jdbcType=VARCHAR},
-        #{email,jdbcType=VARCHAR}
-        )
-    </insert>
+
     <select id="queryUserByDepartId" resultType="com.xxq.filemanager.entity.SysUserEntity">
    select id,
         depart_id departId,
@@ -136,11 +127,104 @@
         update_time,
         power,
         del_flag delaFlag,
-        loginFlag
+        loginFlag,
+        photo
         from sys_user
          where
          del_flag = 0
          and
         depart_id=#{departId}
     </select>
+    <update id="updateUserInfo" parameterType="com.xxq.filemanager.entity.SysUserEntity">
+        update sys_user
+        set
+        <if test="phone!=null">
+            u_phone=#{phone},
+        </if>
+
+        <if test="email!=null">
+            email=#{email}
+        </if>
+        where
+        id = #{id}
+    </update>
+    <update id="updatePhoto" parameterType="com.xxq.filemanager.entity.SysUserEntity">
+        update sys_user
+        set
+        <if test="photo!=null">
+            photo=#{photo}
+        </if>
+        where
+        id = #{id}
+    </update>
+    <!-- 动态sql插入方法二   start -->
+    <!-- 对应的插入字段的名字 -->
+<!--    <insert id="insertUser" parameterType="com.xxq.filemanager.entity.SysUserEntity">-->
+<!--        insert into sys_user(-->
+<!--        depart_id,-->
+<!--        u_name,-->
+<!--        u_password,-->
+<!--        u_phone,-->
+<!--        email,-->
+<!--        photo-->
+<!--        )-->
+<!--        values-->
+<!--        (-->
+<!--        #{departId,jdbcType=INTEGER},-->
+<!--        #{username,jdbcType=VARCHAR},-->
+<!--        #{password,jdbcType=VARCHAR},-->
+<!--        #{phone,jdbcType=VARCHAR},-->
+<!--        #{email,jdbcType=VARCHAR},-->
+<!--        #{photo,jdbcType=VARCHAR}-->
+<!--        )-->
+<!--    </insert>-->
+
+    <insert id="insertUser" parameterType="com.xxq.filemanager.entity.SysUserEntity">
+        insert into sys_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="departId != null">
+                depart_id,
+            </if>
+            <if test="username != null">
+                u_name,
+            </if>
+            <if test="password != null">
+                u_password,
+            </if>
+            <if test="phone != null">
+                u_phone,
+            </if>
+            <if test="email != null">
+                email,
+            </if>
+            <if test="photo != null">
+                photo
+            </if>
+        </trim>
+
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="departId != null">
+                #{departId,jdbcType=INTEGER},
+            </if>
+            <if test="username != null">
+                #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="photo != null">
+                #{photo,jdbcType=VARCHAR}
+            </if>
+
+        </trim>
+
+    </insert>
+
+
 </mapper>

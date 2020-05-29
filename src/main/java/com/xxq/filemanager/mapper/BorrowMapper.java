@@ -21,4 +21,8 @@ public interface BorrowMapper {
     int insertOne(BorrowEntity borrowEntity);
 
     void passOne(BorrowEntity borrowEntity);
+
+    BorrowEntity queryByArch(String archNo);
+
+    int back(String archNo);
 }

@@ -14,8 +14,8 @@
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
   <rowConstraints>
-    <RowConstraints maxHeight="129.0" minHeight="0.0" prefHeight="48.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="749.0" minHeight="10.0" prefHeight="749.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="175.0" minHeight="0.0" prefHeight="175.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="749.0" minHeight="10.0" prefHeight="624.0" vgrow="SOMETIMES" />
     <RowConstraints maxHeight="30.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
@@ -28,13 +28,28 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <AnchorPane prefHeight="50.0" prefWidth="1029.0">
-               <children>
-                  <Label layoutX="129.0" layoutY="13.0" text="待审批数：" />
-                  <Label fx:id="count" layoutX="245.0" layoutY="20.0" />
-                  <Button layoutX="319.0" layoutY="7.0" mnemonicParsing="false" onAction="#toApprove" text="去审批" />
-               </children>
-            </AnchorPane>
+             <Pane prefHeight="200.0" prefWidth="200.0">
+                <children>
+                    <Button layoutX="896.0" layoutY="88.0" mnemonicParsing="false" onAction="#toApprove" styleClass="button1" text="去审批" />
+                  <HBox layoutX="34.0" layoutY="13.0" prefHeight="150.0" prefWidth="282.0" styleClass="hbox">
+                     <children>
+                        <VBox prefHeight="120.0" prefWidth="175.0" styleClass="vbox">
+                           <children>
+                                <Label prefHeight="54.0" prefWidth="133.0" styleClass="font" text="待审批数：" />
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="120.0" prefWidth="109.0">
+                           <children>
+                              <Label />
+                              <Label />
+                                <Label fx:id="count" prefHeight="44.0" prefWidth="92.0" text="1222" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <ImageView fitHeight="150.0" fx:id="img" fitWidth="335.0" layoutX="436.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" />
+                </children>
+             </Pane>
          </children>
       </GridPane>
       <AnchorPane prefHeight="366.0" prefWidth="600.0" GridPane.rowIndex="1">
@@ -42,7 +57,7 @@
             <ImageView fitHeight="150.0" fitWidth="540.0" layoutX="211.0" layoutY="556.0" pickOnBounds="true" preserveRatio="true" />
             <ScrollPane layoutX="44.0" layoutY="43.0" prefHeight="376.0" prefWidth="992.0">
                <content>
-                  <TableView fx:id="dataTable" prefHeight="357.0" prefWidth="955.0">
+                  <TableView fx:id="dataTable" prefHeight="357.0" prefWidth="955.0" styleClass="background">
                      <columns>
                         <TableColumn fx:id="checkCol" prefWidth="54.0" />
                         <TableColumn fx:id="numberCol" prefWidth="86.0" text="序号" />
@@ -61,6 +76,6 @@
       </AnchorPane>
    </children>
    <stylesheets>
-      <URL value="@../style/borrow.css" />
+      <URL value="@../style/borReq.css" />
    </stylesheets>
 </GridPane>

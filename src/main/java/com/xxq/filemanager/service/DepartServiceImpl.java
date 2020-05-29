@@ -40,4 +40,19 @@ public class DepartServiceImpl implements DepartService {
     public int deleteOne(String departName) {
         return departMapper.deleteOne(departName);
     }
+
+    @Override
+    public int updateAmount(DepartEntity departEntity) {
+        return departMapper.updateAmount(departEntity);
+    }
+
+    @Override
+    public int queryAmountByDepartName(String departName) {
+        return departMapper.queryAmountByDepartName(departName);
+    }
+
+    @Override
+    public int deleteUserByDId(Integer departId) {
+        return departMapper.deleteUserBuDID(departId);
+    }
 }

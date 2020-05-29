@@ -40,6 +40,17 @@ public class UserServiceImpl implements UserService {
         );
         return sysUserInfos;
     }
+
+    @Override
+    public int updateUserInfo(SysUserEntity sysUserEntity) {
+        return sysUserMapper.updateUserInfo(sysUserEntity);
+    }
+
+    @Override
+    public int updatePhoto(SysUserEntity sysUserEntity) {
+        return sysUserMapper.updatePhoto(sysUserEntity);
+    }
+
     @Override
     public void deleteOne(List<SysUserInfo> userInfos) {
         for(SysUserInfo sysUserInfo:userInfos){

@@ -52,4 +52,14 @@ public class BorrowServiceImpl implements BorrowService {
     public void approve(BorrowEntity borrowEntity) {
         borrowMapper.passOne(borrowEntity);
     }
+
+    @Override
+    public BorrowEntity queryByArchNo(String archNo) {
+        return borrowMapper.queryByArch(archNo);
+    }
+
+    @Override
+    public int backArch(String archNo) {
+        return borrowMapper.back(archNo);
+    }
 }

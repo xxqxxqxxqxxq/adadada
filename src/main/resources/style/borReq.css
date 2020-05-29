@@ -1,0 +1,94 @@
+.pane {
+    -fx-background-color: #8fbc8f
+}
+
+.grid {
+    -fx-background-color: white;
+    -fx-background-radius: 5.0;
+    -fx-background-insets: 0.0 5.0 0.0 5.0;
+    -fx-padding: 10;
+    -fx-hgap: 10;
+    -fx-vgap: 10;
+}
+
+.vbox {
+    /* -fx-background-image: url("graphics/arrow_t_up_right.png");
+    -fx-background-size: 96, 205;
+    -fx-background-repeat: no-repeat;*/
+    -fx-border-color: #c6fff5;
+    -fx-border-width: 2px;
+    -fx-padding: 10;
+    -fx-spacing: 8;
+}
+
+.hbox {
+    -fx-background-color: #c6f7ff;
+    -fx-padding: 15;
+    -fx-spacing: 25;
+}
+
+#hbox-custom {
+    /* -fx-background-image: url("graphics/cloud.png");
+    -fx-background-size: 64,64;
+    -fx-padding: 18 4 18 6;
+    -fx-spacing: 25;*/
+    -fx-padding: 8;
+    -fx-background-radius: 5.0;
+}
+
+.flow-tile {
+            -fx-padding: 10.0 3.0 5.0 0.0;
+            -fx-hgap: 4;
+            -fx-vgap: 4;
+        }
+
+#button-custom {
+    /* -fx-rotate: 45;*/
+    -fx-text-alignment: center;
+}
+.font{
+    -fx-font-family: 隶书;
+    -fx-font-size: 20;
+}
+/*表格头部背景*/
+.table-view .column-header-background{
+    -fx-background-image: url("/photos/hello.jpg");
+    -fx-background-size: stretch;
+}
+
+/*表格内容区域*/
+.table-view .placeholder{
+    -fx-background-color: transparent;
+}
+
+/*表格列*/
+.table-column{
+    -fx-background-color: transparent;
+    -fx-alignment: center;
+}
+
+/*表格内容区域每行的样式*/
+.table-row-cell{
+    -fx-pref-height: 35;
+    -fx-background-color: #befafa;
+}
+.table-row-cell:odd{
+    -fx-background-color: #beecfb;
+}
+.table-row-cell .text{
+    -fx-fill: #1c91c5;
+    -fx-font-family: "FZCuYuan-M03S";
+    -fx-font-size: 10pt;
+}
+/**
+ *Button通用样式
+ */
+.button1:hover{
+    -fx-cursor: hand;
+}
+
+.button1 {
+    -fx-border-radius: 2px;
+    -fx-background-radius: 2px;
+    -fx-background-color: #ffffd8;
+}

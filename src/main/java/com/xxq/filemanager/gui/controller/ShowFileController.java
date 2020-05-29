@@ -66,6 +66,7 @@ public class ShowFileController implements Initializable {
     }
     @FXML
     public void showWarning() {
+
         AlertUtil.alert(Alert.AlertType.WARNING, "没有访问权限！！！");
     }
 

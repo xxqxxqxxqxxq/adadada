@@ -21,6 +21,19 @@
         delFlag=0
         order by id  asc
     </select>
+    <select id="queryTypeByTypeNo" resultType="com.xxq.filemanager.entity.ArchTypeEntity">
+         select
+       id, type,type_no typeNo,create_time createTime, create_by createBy, delFlag, checkFlag
+        from archives_classification
+        where
+         type_no = #{typeNo}
+    </select>
+    <select id="findPath" resultType="string">
+        select path
+        from
+        archives_path
+        where  archNo=#{archNo}
+    </select>
     <select id="selectArchByPara" resultType="com.xxq.filemanager.entity.ArchivesEntity" parameterType="com.xxq.filemanager.entity.ArchivesEntity">
         select
         id,
@@ -47,14 +60,13 @@
         </if>
         order by id  asc
     </select>
-    <update id="deleteFile">
+    <update id="deleteFile" parameterType="com.xxq.filemanager.entity.ArchivesEntity">
         update
         archives
         set
-        del_flag=1
-        where del_flag = 0
-        and
-        id=#{id}
+        delFlag=1
+        where
+        arch_no=#{archNo}
     </update>
     <insert id="insertOne" parameterType="com.xxq.filemanager.entity.ArchivesEntity">
         insert into archives
@@ -152,4 +164,12 @@
         delFlag = 0
 
     </update>
+    <insert id="insertPath">
+        insert into archives_path
+        (archNo, path)
+        values (
+        #{archNo},
+        #{path}
+        )
+    </insert>
 </mapper>

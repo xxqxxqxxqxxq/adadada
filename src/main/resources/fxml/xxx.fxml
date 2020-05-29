@@ -30,9 +30,9 @@
                       <Image url="/photos/head.png" />
                   </image>
                </ImageView>
-               <Button fx:id="JB_SignOut" layoutX="1236.0" layoutY="22.0" onAction="#loginout" styleClass="btn-radius-large,b-theme" text="退出" AnchorPane.rightAnchor="104.0" AnchorPane.topAnchor="22.0" />
+               <Button fx:id="JB_SignOut" layoutX="1234.0" layoutY="23.0" onAction="#loginout" styleClass="btn-radius-large,b-theme" text="退出" AnchorPane.rightAnchor="94.0" AnchorPane.topAnchor="23.0" />
             <Button fx:id="JB_login" layoutX="1162.0" layoutY="23.0" onAction="#login" styleClass="btn-radius-large,b-theme" text="登录" />
-            <Button fx:id="JB_login1" layoutX="1303.0" layoutY="23.0" onAction="#regist" styleClass="btn-radius-large,b-theme" text="注册" />
+            <Button fx:id="JB_regist" layoutX="1303.0" layoutY="23.0" onAction="#regist" styleClass="btn-radius-large,b-theme" text="注册" />
            </children>
         </AnchorPane>
     </top>

@@ -11,13 +11,18 @@
         from sys_depart
         where  del_flag = 0
     </select>
+    <select id="queryAmountByDepartName" resultType="integer">
+        select amount
+        from
+        sys_depart
+        where d_name=#{departName}
+    </select>
     <insert id="insertOne" parameterType="string">
         insert into
         sys_depart
         (
         d_name,
         amount
-
         )
         values (
         #{departName},
@@ -29,7 +34,16 @@
         set del_flag =1
         where d_name = #{departName}
     </update>
-
+    <update id="updateAmount" parameterType="com.xxq.filemanager.entity.DepartEntity">
+        update sys_depart
+        set amount=#{amount}
+        where d_name=#{departName}
+    </update>
+    <update id="deleteUserBuDID" parameterType="integer">
+        update sys_user
+        set del_flag =1
+        where depart_id = #{departId}
+    </update>
 
 
 </mapper>

@@ -8,6 +8,7 @@ import com.xxq.filemanager.gui.view.UpdateTypeView;
 import com.xxq.filemanager.service.interfaceI.ArchivesService;
 import com.xxq.filemanager.springJavafxSupport.FXMLController;
 import com.xxq.filemanager.util.AlertUtil;
+import com.xxq.filemanager.util.DateUtil;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -57,6 +58,8 @@ public class FileDiviMngController implements Initializable {
     UpdateTypeView updateTypeView;
     @Autowired
     UpdateTypeController updateTypeController;
+    @Autowired
+    ModifyTypeController modifyTypeController;
     private static final int MAX_THREADS = 8;
     //线程池配置
     private final Executor exec = Executors.newFixedThreadPool(MAX_THREADS, runnable -> {
@@ -101,8 +104,9 @@ public class FileDiviMngController implements Initializable {
         }
     }
     public void show1(){
-        if(MainController.fileTypeFlag){
+            add.getChildren().clear();
             List<ArchTypeEntity> fileTypeEntities = archivesService.queryAllType();
+
             for(ArchTypeEntity archTypeEntity:fileTypeEntities) {
                 HBox hBox = new HBox();
                 hBox.setPrefSize(300, 240);
@@ -130,22 +134,18 @@ public class FileDiviMngController implements Initializable {
             imageView.setClip(circle);
             imageView.getStyleClass().add("hover-change");
                 leftBox.getChildren().addAll(imageView);
-                //右边垂直布局放姓名、部门、邮箱、电话
                 VBox rightBox = new VBox();
                 rightBox.setSpacing(15);
-//                rightBox.setStyle("-fx-background-image: url(/photos/background.jpg)");
-//                rightBox.setStyle("-fx-background-color: #9ab0ff");
                 Label typeNoLabel = new Label(String.valueOf(archTypeEntity.getTypeNo()));
                 typeNoLabel.getStyleClass().add("font-title");
                 Label typeLabel = new Label(archTypeEntity.getType());
                 Label createByLabel = new Label(archTypeEntity.getCreateBy());
-                Label dateLabel = new Label(archTypeEntity.getCreateTime().toString());
+                Label dateLabel = new Label(DateUtil.tranfer(archTypeEntity.getCreateTime()));
                 Button lookBtn = new Button("查看");
-//                lookBtn.getStyleClass().add("warning-theme");
                 Button modifyBtn = new Button("修改");
-//                modifyBtn.getStyleClass().add("warning-theme");
+                Button delBtn = new Button("删除");
                 rightBox.getChildren().addAll(typeNoLabel, typeLabel,
-                        createByLabel, dateLabel, lookBtn,modifyBtn);
+                        createByLabel, dateLabel, lookBtn,modifyBtn,delBtn);
                 //左右两个垂直布局加入水平布局
                 hBox.getChildren().addAll(leftBox, rightBox);
                 //水平布局加入大的内容容器
@@ -158,11 +158,15 @@ public class FileDiviMngController implements Initializable {
                 modifyBtn.setOnAction(event -> {
                     update(archTypeEntity.getTypeNo(),archTypeEntity.getType());
                 });
+                delBtn.setOnAction(event -> {
+                    boolean b = modifyTypeController.deleteOne(archTypeEntity.getTypeNo());
+                    if (b){
+                        add.getChildren().remove(hBox);
+                    }
 
+                });
             MainController.fileTypeFlag = false;
             }
-        }
-
 
     }
 

@@ -14,4 +14,8 @@ public interface SysUserMapper {
     void updateUser(SysUserEntity sysUserEntity);
     int insertUser(SysUserEntity sysUserEntity);
     List<SysUserEntity> queryUserByDepartId(Integer departId);
+
+    int updateUserInfo(SysUserEntity sysUserEntity);
+
+    int updatePhoto(SysUserEntity sysUserEntity);
 }

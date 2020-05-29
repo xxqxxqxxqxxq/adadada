@@ -45,7 +45,7 @@ public class SimpleFileProperty {
     }
     public SimpleFileProperty(ArchivesInfo archives, int num, String flag){
         id = new SimpleStringProperty(String.valueOf(archives.getId()));
-        archNo = new SimpleStringProperty(String.valueOf(archives.getArchNo()));
+        archNo = new SimpleStringProperty(archives.getArchNo());
         number = new SimpleStringProperty(String.valueOf(num));
         archivesName = new SimpleStringProperty(archives.getArchivesName());
         classId = new SimpleStringProperty(String.valueOf(archives.getClassId()));
