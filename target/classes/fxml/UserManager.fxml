@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import java.net.URL?>
 
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="535.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.xxq.filemanager.gui.controller.UserManagerController">
   <columnConstraints>
@@ -18,25 +20,27 @@
    <children>
       <GridPane>
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="517.0" minWidth="10.0" prefWidth="48.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="517.0" minWidth="10.0" prefWidth="122.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="494.0" minWidth="10.0" prefWidth="85.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="494.0" minWidth="10.0" prefWidth="162.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="494.0" minWidth="10.0" prefWidth="76.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="494.0" minWidth="10.0" prefWidth="160.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="494.0" minWidth="10.0" prefWidth="207.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="517.0" minWidth="10.0" prefWidth="55.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="517.0" minWidth="10.0" prefWidth="169.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="494.0" minWidth="10.0" prefWidth="80.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="494.0" minWidth="10.0" prefWidth="145.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="494.0" minWidth="10.0" prefWidth="35.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="494.0" minWidth="10.0" prefWidth="55.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="494.0" minWidth="10.0" prefWidth="138.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="494.0" minWidth="10.0" prefWidth="29.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="494.0" minWidth="10.0" prefWidth="145.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" onAction="#btnQueryUser" text="查询" GridPane.columnIndex="6" />
+            <Button mnemonicParsing="false" onAction="#btnQueryUser" styleClass="btn-radius-normal,normal" text="查询" GridPane.columnIndex="8" />
             <Label text="部门" />
-            <ComboBox fx:id="CMB_DepartName" prefWidth="150.0" GridPane.columnIndex="1" />
-            <TextField fx:id="TF_Username" GridPane.columnIndex="5" />
+            <ComboBox fx:id="CMB_DepartName" prefHeight="36.0" prefWidth="121.0" GridPane.columnIndex="1" />
+            <TextField fx:id="TF_Username" GridPane.columnIndex="6" />
             <Label text="用户编号" GridPane.columnIndex="2" />
             <TextField fx:id="TF_UserId" GridPane.columnIndex="3" />
-            <Label text="姓名" GridPane.columnIndex="4" />
+            <Label text="姓名" GridPane.columnIndex="5" />
          </children>
       </GridPane>
       <GridPane GridPane.rowIndex="2">
@@ -47,7 +51,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TableView fx:id="dataTable" prefHeight="200.0" prefWidth="200.0">
+            <TableView fx:id="dataTable" prefHeight="200.0" prefWidth="200.0" styleClass="table-view">
               <columns>
                   <TableColumn fx:id="delCol" prefWidth="137.0" />
                 <TableColumn fx:id="idCol" prefWidth="116.0" text="用户编号" />
@@ -61,9 +65,12 @@
       </GridPane>
       <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
          <children>
-            <Button mnemonicParsing="false" onAction="#deleteUser" text="删除" />
-            <Button mnemonicParsing="false" onAction="#showUser" text="查看" />
+            <Button mnemonicParsing="false" onAction="#deleteUser" styleClass="btn-radius-normal,warm-theme" text="删除" />
+            <Button mnemonicParsing="false" onAction="#showUser" styleClass="btn-radius-normal,normal" text="查看" />
          </children>
       </HBox>
    </children>
+    <stylesheets>
+        <URL value="@../style/usermng.css" />
+    </stylesheets>
 </GridPane>
