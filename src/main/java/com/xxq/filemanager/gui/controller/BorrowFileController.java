@@ -102,7 +102,7 @@ public class BorrowFileController implements Initializable {
     BorApproveController borApproveController;
     @Autowired
     MainController mainController;
-    private List<BorrowEntity> borrowEntities = new ArrayList<>();
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         img.setImage(new Image("/photos/breq.png"));
@@ -153,6 +153,7 @@ public class BorrowFileController implements Initializable {
     }
     public void showList(){
         dataTable.getItems().clear();
+        List<BorrowEntity> borrowEntities = new ArrayList<>();
         // 将数据绑定到tableView中
         borrowEntities = borrowService.queryAll();
         for(int i = 0;i<borrowEntities.size();i++){

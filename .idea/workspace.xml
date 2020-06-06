@@ -1,35 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8c9657ab-1c38-49c3-8998-52d3d09e1195" name="Default Changelist" comment="" />
-    <list id="c9b46559-4bf2-4a1d-bb64-803b707f5fad" name="Default Chang" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/770ee5b5-bb9e-498d-b052-b7dfddaf3314.xml" beforeDir="false" />
+    <list default="true" id="8c9657ab-1c38-49c3-8998-52d3d09e1195" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/xxq/filemanager/config/BorrowMap.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/fxml/UpdateDepart.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/xxq/FileClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/xxq/FileClient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/xxq/filemanager/bean/ArchivesInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/xxq/filemanager/bean/ArchivesInfo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/xxq/filemanager/entity/ArchivesEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/xxq/filemanager/entity/ArchivesEntity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/xxq/filemanager/gui/controller/FileAddController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/xxq/filemanager/gui/controller/FileAddController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/xxq/filemanager/gui/controller/FileMngController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/xxq/filemanager/gui/controller/FileMngController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/xxq/filemanager/gui/controller/FileParaController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/xxq/filemanager/gui/controller/FileParaController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/xxq/filemanager/gui/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/xxq/filemanager/gui/controller/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xxq/filemanager/config/ContextConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xxq/filemanager/config/ContextConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xxq/filemanager/gui/controller/BorApproveController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xxq/filemanager/gui/controller/BorApproveController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xxq/filemanager/gui/controller/BorrowFileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xxq/filemanager/gui/controller/BorrowFileController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xxq/filemanager/gui/controller/DepartSearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xxq/filemanager/gui/controller/DepartSearchController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xxq/filemanager/gui/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xxq/filemanager/gui/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xxq/filemanager/gui/controller/RegisterUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xxq/filemanager/gui/controller/RegisterUserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xxq/filemanager/gui/controller/UploadController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xxq/filemanager/gui/controller/UploadController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xxq/filemanager/gui/controller/UserManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xxq/filemanager/gui/controller/UserManagerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xxq/filemanager/gui/controller/UserParaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xxq/filemanager/gui/controller/UserParaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xxq/filemanager/util/MailUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xxq/filemanager/util/MailUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/Upload.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/Upload.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/xxx.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/xxx.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/BorrowMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/BorrowMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/xxq/filemanager/config/ContextConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/xxq/filemanager/config/ContextConfig.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/xxq/filemanager/gui/controller/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/xxq/filemanager/gui/controller/MainController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/xxq/filemanager/gui/controller/RegisterUserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/xxq/filemanager/gui/controller/RegisterUserController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/xxq/filemanager/gui/controller/UserManagerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/xxq/filemanager/gui/controller/UserManagerController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/xxq/filemanager/gui/view/MainView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/xxq/filemanager/gui/view/MainView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/xxq/filemanager/mapper/ArchivesMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/xxq/filemanager/mapper/ArchivesMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/xxq/filemanager/service/ArchiveServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/xxq/filemanager/service/ArchiveServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/xxq/filemanager/service/interfaceI/ArchivesService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/xxq/filemanager/service/interfaceI/ArchivesService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/xxq/filemanager/table/SimpleFileProperty.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/xxq/filemanager/table/SimpleFileProperty.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fxml/1.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fxml/2.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fxml/22.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fxml/FileAddPane.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/FileAddPane.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fxml/FileMngPane.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/FileMngPane.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fxml/FileParaPane.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/FileParaPane.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fxml/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/Login.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fxml/UserManager.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/UserManager.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fxml/login.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mappers/ArchivesMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mappers/ArchivesMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/xxq/filemanager/gui/controller/UserParaController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/xxq/filemanager/gui/controller/UserParaController.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -73,6 +66,13 @@
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="filemanager: schema" type="76f4a085:MysqlImplModel$Schema" />
         <item name="archives: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="MySQL - filemanager@127.0.0.1" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="filemanager: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="archives_borrowing: table" type="285a2a93:MysqlImplModel$Table" />
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
@@ -156,7 +156,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="project.propCompiler" />
@@ -344,7 +344,6 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="8c9657ab-1c38-49c3-8998-52d3d09e1195" name="Default Changelist" comment="" />
-      <changelist id="c9b46559-4bf2-4a1d-bb64-803b707f5fad" name="Default Chang" comment="" />
       <created>1577330887904</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -474,7 +473,13 @@
       <workItem from="1590595005267" duration="638000" />
       <workItem from="1590678288945" duration="4565000" />
       <workItem from="1590740437405" duration="2874000" />
-      <workItem from="1590807296200" duration="346000" />
+      <workItem from="1590807296200" duration="624000" />
+      <workItem from="1590901920449" duration="6290000" />
+      <workItem from="1591016903684" duration="8363000" />
+      <workItem from="1591192378693" duration="9176000" />
+      <workItem from="1591246994371" duration="1122000" />
+      <workItem from="1591319599426" duration="764000" />
+      <workItem from="1591352816227" duration="1202000" />
     </task>
     <task id="LOCAL-00001" summary="xxq">
       <created>1583751393178</created>
@@ -539,7 +544,14 @@
       <option name="project" value="LOCAL" />
       <updated>1590743372058</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Default Chang">
+      <created>1590807691737</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1590807691738</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -575,7 +587,8 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="xxq" />
-    <option name="LAST_COMMIT_MESSAGE" value="xxq" />
+    <MESSAGE value="Default Chang" />
+    <option name="LAST_COMMIT_MESSAGE" value="Default Chang" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -585,6 +598,11 @@
           <line>6</line>
           <properties field="KEY_STAGE_HEIGHT" class="com.xxq.filemanager.springJavafxSupport.Constant" />
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/xxq/filemanager/util/MailUtil.java</url>
+          <line>133</line>
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

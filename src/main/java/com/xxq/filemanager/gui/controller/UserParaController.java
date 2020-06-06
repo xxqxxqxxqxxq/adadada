@@ -1,16 +1,23 @@
 package com.xxq.filemanager.gui.controller;
 
+import com.xxq.filemanager.bean.DepartInfo;
 import com.xxq.filemanager.bean.SysUserInfo;
 import com.xxq.filemanager.gui.view.UserParaView;
+import com.xxq.filemanager.service.interfaceI.DepartService;
 import com.xxq.filemanager.springJavafxSupport.FXMLController;
 import com.xxq.filemanager.service.interfaceI.UserService;
+import com.xxq.filemanager.util.AlertUtil;
+import com.xxq.filemanager.util.MailUtil;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.mail.MessagingException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 /**
@@ -46,12 +53,14 @@ public class UserParaController implements Initializable {
     @Autowired
     UserService userService;
     @Autowired
+    DepartService departService;
+    @Autowired
     UserManagerController userManagerController;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
     }
-
+    private SysUserInfo userInfo;
     /**
      * 查看用户详情
      */
@@ -65,39 +74,35 @@ public class UserParaController implements Initializable {
         U_Phone.setText(sysUserInfo.getPhone());
         U_Username.setText(sysUserInfo.getUsername());
         U_Power.setText(sysUserInfo.getPower().toString());
+        userInfo = sysUserInfo;
     }
     @FXML
-    public void updateUser() {
+    public void updateUser() throws MessagingException {
         logger.info("点击更新按钮");
        SysUserInfo sysUserInfo=new SysUserInfo();
         String text = U_Depart.getText();
         setdepart(sysUserInfo,text);
+        String passwordText = U_Password.getText();
         sysUserInfo.setId(Integer.valueOf(U_Id.getText().trim()));
-        sysUserInfo.setPassword(U_Password.getText().trim());
+        sysUserInfo.setPassword(U_Password.getText());
         sysUserInfo.setRole(U_Role.getText().trim());
         sysUserInfo.setPower(Integer.valueOf(U_Power.getText().trim()));
         System.out.println(sysUserInfo);
+        if(!userInfo.getPassword().equals(passwordText)){
+            MailUtil.modifyPasswordMailSuccess(userInfo.getEmail(),passwordText);
+        }
         userService.updateUser(sysUserInfo);
         userManagerController.userList();
+        AlertUtil.alert(Alert.AlertType.INFORMATION,"用户信息修改成功");
         userParaView.hide();
     }
     public void setdepart(SysUserInfo sysUserInfo,String text){
-        switch (text){
-            case "党群部门" :
-                sysUserInfo.setDepartId(1);
-                break;
-            case "行政部门":
-                sysUserInfo.setDepartId(2);
-                break;
-            case "教学单位":
-                sysUserInfo.setDepartId(3);
-                break;
-            case "科研单位":
-                sysUserInfo.setDepartId(4);
-                break;
-            case "党基层组织":
-                sysUserInfo.setDepartId(5);
-                break;
-        }
+        List<DepartInfo> departInfos = departService.selectAllDepart();
+        departInfos.forEach(x->{
+            if (x.getDepartName().equals(sysUserInfo.getDepartName())){
+                sysUserInfo.setDepartId(x.getId());
+            }
+        });
+
     }
 }

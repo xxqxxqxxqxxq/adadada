@@ -357,6 +357,7 @@ private Button JB_regist;
         T_OtherMng.setVisible(false);
         JB_SignOut.setVisible(false);
         final WebEngine webengine = webView.getEngine();
+        webView.setContextMenuEnabled(false);
         String url = Main.class.getResource("/html/index.html").toExternalForm();
         webengine.load(url);
 

@@ -22,6 +22,6 @@
       <Label layoutX="69.0" layoutY="200.0" text="档案类型" />
       <TextField id="3" fx:id="ArchType" layoutX="202.0" layoutY="200.0" />
       <Label layoutX="87.0" layoutY="258.0" text="部门" />
-      <TextField id="3" fx:id="Depart" layoutX="202.0" layoutY="252.0" />
+      <ComboBox layoutX="202.0" fx:id="CMB_DepartName1" layoutY="252.0" prefWidth="150.0" />
    </children>
 </AnchorPane>

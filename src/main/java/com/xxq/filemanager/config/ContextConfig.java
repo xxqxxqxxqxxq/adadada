@@ -8,6 +8,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.ConfigurableEnvironment;
 
+import java.util.HashMap;
+
 @Configuration
 public class ContextConfig {
 
@@ -39,6 +41,12 @@ public class ContextConfig {
         context = c;
         env = context.getEnvironment();
         return c;
+    }
+
+    @Bean
+    public BorrowMap map(ConfigurableApplicationContext c) {
+        logger.info("map注入成功");
+        return new BorrowMap();
     }
 
 }

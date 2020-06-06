@@ -3,24 +3,20 @@ package com.xxq.filemanager.gui.controller;
 import com.xxq.FileClient;
 import com.xxq.filemanager.bean.DepartInfo;
 import com.xxq.filemanager.bean.SysUserInfo;
-import com.xxq.filemanager.entity.BorrowEntity;
 import com.xxq.filemanager.gui.view.AddDepartView;
-import com.xxq.filemanager.gui.view.DepartSearchView;
 import com.xxq.filemanager.service.interfaceI.DepartService;
 import com.xxq.filemanager.service.interfaceI.UserService;
 import com.xxq.filemanager.springJavafxSupport.FXMLController;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.scene.control.cell.TextFieldTreeCell;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.swing.event.ChangeListener;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
@@ -35,7 +31,7 @@ import java.util.ResourceBundle;
  * @Version V1.0
  **/
 @FXMLController
-public class DepartSearchController implements Initializable {
+public class DepartSearchController implements Initializable{
     @FXML
     private TextField TF_Search;
     @Autowired
@@ -65,6 +61,8 @@ public class DepartSearchController implements Initializable {
     private void initTreeView(){
 
         List<DepartInfo> departInfos = departService.selectAllDepart();
+
+        FileClient.departInfoList.clear();
         FileClient.departInfoList.addAll(departInfos);
         tv.setRoot(root);
         for (DepartInfo d:departInfos){
@@ -79,6 +77,8 @@ public class DepartSearchController implements Initializable {
 
         }
 
+
+
     }
     @FXML
     public void mouseClick(MouseEvent mouseEvent) {
@@ -89,9 +89,12 @@ public class DepartSearchController implements Initializable {
             System.out.println("Selected Text : " + item.getValue());
             MenuItem menuItem = new MenuItem();
             MenuItem menuItem1 = new MenuItem();
+
             if(item.getValue().equals("部门")){
                 // 鼠标右击后显示的菜单
                 menuItem = new MenuItem("添加");
+
+
                 // 点击菜单的响应事件
                 menuItem.setOnAction(actionEvent -> {
                     map.put("item",item);
@@ -101,6 +104,7 @@ public class DepartSearchController implements Initializable {
                 contextMenu = new ContextMenu(menuItem);
             }else {
                 menuItem1 = new MenuItem("删除");
+
                 menuItem1.setOnAction(actionEvent -> {
                     String departName = item.getValue();
                     departService.deleteOne(departName);

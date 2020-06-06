@@ -90,7 +90,10 @@
         <if test="lendFlag!=null">
             lendFlag = 1
         </if>
-
+        where
+        archives_id = #{archivesId}
+        and
+        b_name = #{BName}
     </update>
     <update id="back">
         update archives_borrowing

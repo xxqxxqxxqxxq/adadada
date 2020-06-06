@@ -123,7 +123,7 @@
                         <Insets bottom="5" left="30" right="10" top="10" />
                     </padding>
                <children>
-                  <WebView fx:id="webView" prefHeight="31.0" prefWidth="330.0" style="-fx-background-color:  #7b8986;-fx-border-style: 0" />
+                  <WebView fx:id="webView" prefHeight="31.0" prefWidth="330.0" style="-fx-background-color:  #5073ed;-fx-border-style: 0" />
                </children>
                 </StackPane>
             </items>

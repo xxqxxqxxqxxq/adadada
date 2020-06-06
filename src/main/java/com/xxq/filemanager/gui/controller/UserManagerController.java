@@ -4,6 +4,7 @@ import com.xxq.FileClient;
 import com.xxq.filemanager.bean.DepartInfo;
 import com.xxq.filemanager.bean.SysUserInfo;
 import com.xxq.filemanager.gui.view.UserParaView;
+import com.xxq.filemanager.service.interfaceI.DepartService;
 import com.xxq.filemanager.springJavafxSupport.FXMLController;
 import com.xxq.filemanager.service.interfaceI.UserService;
 import com.xxq.filemanager.table.SimpleUserProperty;
@@ -42,6 +43,8 @@ public class UserManagerController implements Initializable {
     UserService userService;
     @Autowired
     UserParaController userParaController;
+    @Autowired
+    DepartService departService;
     @FXML
     private TextField TF_Username;
     @FXML
@@ -86,7 +89,8 @@ public class UserManagerController implements Initializable {
         delCol.setCellValueFactory(new PropertyValueFactory<SimpleUserProperty, CheckBox>("delCheckBox"));
 
         CMB_DepartName.getItems().add(Constants.PLEASE_SELECT);
-        for(DepartInfo d:FileClient.departInfoList){
+        List<DepartInfo> departInfos = departService.selectAllDepart();
+        for(DepartInfo d:departInfos){
             CMB_DepartName.getItems().add(d.getDepartName());
         }
       //  dataTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);

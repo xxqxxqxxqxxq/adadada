@@ -21,6 +21,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 /**
@@ -54,7 +55,8 @@ public class RegisterUserController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         R_CDepart.getItems().add(Constants.PLEASE_SELECT);
-        for(DepartInfo d: FileClient.departInfoList){
+        List<DepartInfo> departInfos = departService.selectAllDepart();
+        for(DepartInfo d: departInfos){
             R_CDepart.getItems().add(d.getDepartName());
         }
     }
@@ -78,6 +80,7 @@ public class RegisterUserController implements Initializable {
             departName = R_CDepart.getSelectionModel().getSelectedItem().toString();
             // 设置机构名称
             count = departService.queryAmountByDepartName(departName);
+            sysUserInfo.setDepartName(departName);
             userParaController.setdepart(sysUserInfo,departName);
             count = count +1;
             DepartEntity departEntity = new DepartEntity();
